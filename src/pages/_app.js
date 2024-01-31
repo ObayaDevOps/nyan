@@ -7,15 +7,15 @@ import SideBar from '../components/sidebar.js'
 
 //fonts - https://github.com/chakra-ui/chakra-ui/discussions/7235
 import {  Unbounded, Permanent_Marker } from 'next/font/google'
-import { extendTheme } from '@chakra-ui/react'
 
-const sidebarFont = Permanent_Marker({ subsets: [ 'latin' ], weight: ['400'] })
+const sidebarFont = Unbounded({ subsets: [ 'latin' ], weight: ['400'] })
 
 
 
 const theme = extendBaseTheme({
   fonts: {
-    sidebarFont: 'sidebarFont.style.fontFamily, sans-serif',
+    // sidebarFont: 'sidebarFont.style.fontFamily, sans-serif',
+    sidebarFont: sidebarFont.style.fontFamily
 
   },
 })
