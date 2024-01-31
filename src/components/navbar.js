@@ -31,7 +31,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('red.600', 'gray.800')}
+        bg={useColorModeValue('yellow.400', 'gray.800')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -226,14 +226,5 @@ const NAV_ITEMS = [
     href: '/food',
     
   },
-  {
-    label: 'Drinks Menu',
-    href: '/drinks',
 
-  },
-  {
-    label: 'About',
-    href: '/about',
-
-  },
 ]
