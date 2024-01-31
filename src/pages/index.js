@@ -1,18 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 
 import { Heading, Text, Box,AbsoluteCenter, Container, VStack, SimpleGrid, Center, Button, AspectRatio, Alert, AlertIcon, useToast } from '@chakra-ui/react'
 import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryImageRetreival';
 
-import Navbar from '../components/navbar'
 import NextLink from 'next/link'
 
 import SideBar from '../components/sidebar.js' 
-
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (

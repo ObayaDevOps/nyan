@@ -1,21 +1,21 @@
 import '@/styles/globals.css'
 import * as React from 'react'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraBaseProvider, extendBaseTheme} from '@chakra-ui/react'
 import Footer from '../components/footer' 
 import SideBar from '../components/sidebar.js' 
 
 
 //fonts - https://github.com/chakra-ui/chakra-ui/discussions/7235
-import {  Unbounded } from 'next/font/google'
+import {  Unbounded, Permanent_Marker } from 'next/font/google'
 import { extendTheme } from '@chakra-ui/react'
 
-const sidebarFont = Unbounded({ subsets: [ 'latin' ], weight: ['600'] })
+const sidebarFont = Permanent_Marker({ subsets: [ 'latin' ], weight: ['400'] })
 
 
 
-const theme = extendTheme({
+const theme = extendBaseTheme({
   fonts: {
-    sidebarFont: sidebarFont.style.fontFamily,
+    sidebarFont: 'sidebarFont.style.fontFamily, sans-serif',
 
   },
 })
@@ -23,11 +23,11 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraBaseProvider theme={theme}>
       {/* <SideBar /> */}
       <Component {...pageProps} />
       {/* <Footer /> */}
-    </ChakraProvider>
+    </ChakraBaseProvider>
 
       )
 }
