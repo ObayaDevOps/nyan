@@ -29,17 +29,17 @@ export default function Home() {
       </Box>
 
       <Box>
-        <AbsoluteCenter mt={{base: -10, md: 0, lg: 'auto'}} ml={{base:0, lg: 60}}>
+        <AbsoluteCenter mt={{base: 0, md: 0, lg: 'auto'}} ml={{base:0, lg: 60}}>
           <NextLink href='/about'>
             <Image
-              src={getCloudinaryImage('nekosero1.svg')} 
+              src={getCloudinaryImage('nekosero5.png')} 
               alt="Nekosero Brand Logo"
-              width={300}
-              height= {300}
+              width={500}
+              height= {500}
               priority
               placeholder="blur"
               
-              blurDataURL={getCloudinaryImageBlur('nekosero1.svg')}
+              blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
               />
             </NextLink>
         </AbsoluteCenter>

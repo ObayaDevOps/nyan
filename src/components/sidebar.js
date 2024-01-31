@@ -33,6 +33,9 @@ import { GiMountaintop } from "react-icons/gi";
 import { GiEarthAfricaEurope } from "react-icons/gi";
 import { GiColombianStatue } from "react-icons/gi";
 
+import { GiStakeHammer } from "react-icons/gi";
+
+
 
 
 import { FaInstagram } from 'react-icons/fa';
@@ -193,6 +196,22 @@ const SocialsStack = () => {
             isRound
           />
 
+
+        <IconButton
+          as='a'
+            aria-label="Developer"
+            variant="ghost"
+            color={'black'}
+            size="lg"
+            fontSize="xl"
+            href={'https://www.dralegawebops.com/'}
+            icon={<GiStakeHammer />}
+            _hover={{
+              bg: 'yellow.500',
+              color: useColorModeValue('white', 'gray.700'),
+            }}
+            isRound
+          />
 
 
           
