@@ -24,7 +24,7 @@ export default function Home() {
 
       <Box>
         <AbsoluteCenter mt={{base: 0, md: 0, lg: 'auto'}} ml={{base:0, lg: 60}}>
-          <NextLink href='/about'>
+          <NextLink href='/#'>
             <Image
               src={getCloudinaryImage('nekosero5.png')} 
               alt="Nekosero Brand Logo"
