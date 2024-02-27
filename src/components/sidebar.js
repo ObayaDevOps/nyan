@@ -92,11 +92,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box>
       <Box
         bg={useColorModeValue('yellow.400', 'gray.900')}
-      //   borderRight="1px"
-      //   borderRightColor={useColorModeValue('gray.200', 'gray.700')}
         w={{ base: 'full', lg: '30vw' }}
         pos="fixed"
         h="full"
+        overflowY='auto'
+        top='0'
+        bottom='20'
         {...rest}>
         <Flex h={{base:"16", md: "24",lg:"10"}} alignItems="center" mx="8" justifyContent="space-between">
           <CloseButton display={{ base: 'flex', md: 'flex', lg: 'none' }} onClick={onClose} />
@@ -106,11 +107,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
             {link.name}
           </NavItem>
         ))}
-
-
       </Box>
 
-      <Box {...rest} position='absolute' bottom='0' p={{base: 2, md: 6}}>
+      <Box 
+      {...rest} 
+      position='absolute' 
+      bottom='0' 
+      p={{base: 2, md: 6}} 
+      bg={'yellow.400'}
+      w={{ base: 'full', lg: '30vw' }}
+      
+      >
         <SocialsStack />
       </Box>
       
