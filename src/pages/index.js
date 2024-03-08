@@ -15,6 +15,10 @@ export default function Home() {
         <title>Nekosero</title>
         <meta name="description" content="A bundle of fun" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:image" content="/cat-face.png" />
+        <meta property="og:image:type" content="png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         {/* <meta property="og:image" content="/cat-face.svg"/> */}
         <link rel="icon" href="/cat-face.svg" />
       </Head>
