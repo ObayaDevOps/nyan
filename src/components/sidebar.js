@@ -46,9 +46,9 @@ import { RiMapPinLine } from "react-icons/ri";
 
 
 const LinkItems = [
-  { name: 'Yujo Izakaya', icon: PiBowlFoodLight, href: 'https://yujo-clean.vercel.app/' },
+  { name: 'Yujo Izakaya', icon: PiBowlFoodLight, href: 'https://yujo.ug' },
   { name: 'Buziga Hill', icon: GiSewingMachine, href: 'https://buzigahill.com/' },
-  { name: 'AFRPCN Capsule Gallery', icon: GiEarthAfricaEurope, href: 'https://www.afropocene.com/' },
+  { name: 'AFRPCN Capsule Gallery', icon: GiEarthAfricaEurope, href: 'https://www.afropocene.com/capsule-gallery/about-capsule' },
   { name: 'Kanchu with a camera', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
   { name: 'Bananage Brewing Co.', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
   { name: 'T.I.A', icon: GiColombianStatue, href: 'https://www.facebook.com/tiauganda/' },
