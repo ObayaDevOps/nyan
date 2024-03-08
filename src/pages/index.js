@@ -10,12 +10,12 @@ import SideBar from '../components/sidebar.js'
 
 export default function Home() {
   return (
-    <Box  height={'100vh'}>
+    <Box  height={'100vh'} bgColor={'yellow.300'}>
       <Head>
         <title>Nekosero</title>
         <meta name="description" content="A bundle of fun" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="/cat-face.svg"/>
+        {/* <meta property="og:image" content="/cat-face.svg"/> */}
         <link rel="icon" href="/cat-face.svg" />
       </Head>
       
