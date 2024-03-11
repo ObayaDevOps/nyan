@@ -16,7 +16,7 @@ export default function Home() {
         <meta name="description" content="Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta property="og:title" content="Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space." />
+        <meta property="og:title" content="Nekosero" />
 
         <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1706709313/nekosero5.png" />
         <meta property="og:image:type" content="png" />
