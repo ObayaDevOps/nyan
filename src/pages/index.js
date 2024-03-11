@@ -20,8 +20,8 @@ export default function Home() {
 
         <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1706709313/nekosero5.png" />
         <meta property="og:image:type" content="png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="100" />
+        <meta property="og:image:height" content="50" />
         {/* <meta property="og:image" content="/cat-face.svg"/> */}
         <link rel="icon" href="/cat-face.svg" />
       </Head>
