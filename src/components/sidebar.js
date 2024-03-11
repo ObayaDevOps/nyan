@@ -34,6 +34,11 @@ import { GiEarthAfricaEurope } from "react-icons/gi";
 import { GiColombianStatue } from "react-icons/gi";
 
 import { GiStakeHammer } from "react-icons/gi";
+import { MdElectricBike } from "react-icons/md";
+import { BiSolidCarBattery } from "react-icons/bi";
+import { GiFullMotorcycleHelmet } from "react-icons/gi";
+
+
 
 
 
@@ -53,9 +58,12 @@ const LinkItems = [
   { name: 'Bananage Brewing Co.', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
   { name: 'T.I.A', icon: GiColombianStatue, href: 'https://www.facebook.com/tiauganda/' },
   { name: 'Silicon Advocates', icon: VscLaw, href: 'https://www.linkedin.com/company/silicon-advocates/' },
-  { name: 'Maneki Neko Cafe', icon: FaCat, href: 'https://images.app.goo.gl/BNwT1ZCxPfHg6JPG6' },
+  // { name: 'Maneki Neko Cafe', icon: FaCat, href: 'https://images.app.goo.gl/BNwT1ZCxPfHg6JPG6' },
   { name: 'Little Kobe Japanese Market', icon: BsBasketFill, href: 'https://www.facebook.com/littlekobejapanesemarket/' },
-  { name: 'Mount Royal', icon: GiMountaintop, href: '/#' },
+  { name: 'Women on Wheels', icon: GiFullMotorcycleHelmet, href: 'https://womenrisingforafrica.org/our-programs/' },
+  { name: 'Zembo Swap Station', icon: MdElectricBike, href: 'https://www.zem.bo/' },
+
+  // { name: 'Mount Royal', icon: GiMountaintop, href: '/#' },
 
 ]
 
