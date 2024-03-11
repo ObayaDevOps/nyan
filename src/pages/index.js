@@ -12,10 +12,13 @@ export default function Home() {
   return (
     <Box  height={'100vh'} bgColor={'yellow.300'}>
       <Head>
-        <title>Nekosero</title>
-        <meta name="description" content="A bundle of fun" />
+        <title>Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
+        <meta name="description" content="Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:image" content="/cat-face.png" />
+
+        <meta property="og:title" content="Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space." />
+
+        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1706709313/nekosero5.png" />
         <meta property="og:image:type" content="png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
