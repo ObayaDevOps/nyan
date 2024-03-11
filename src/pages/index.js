@@ -16,12 +16,12 @@ export default function Home() {
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
-        <meta property="og:title" content="Nekosero" />
-
-        {/* <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/c_pad,w_50,h_89,ar_9:16/v1706709313/nekosero5.png" /> */}
-        
-        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710193060/nekosero5_ozuxco.png" />
+        <meta property="og:title" content="Nekosero" />        
+        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710195370/nekosero5_-_Landscape_Post_1_d9yvq5.png" />
         <meta property="og:image:type" content="png" />
+        <meta property="og:url" content="https://www.nekosero.ug/" />
+
+        
         {/* <meta property="og:image:width" content="2956" />
         <meta property="og:image:height" content="3804" /> */}
         {/* <meta property="og:image" content="/cat-face.svg"/> */}
