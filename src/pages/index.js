@@ -16,15 +16,13 @@ export default function Home() {
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
-        <meta property="og:title" content="Nekosero" />        
+        <meta property="og:title" content="Nekosero" /> 
+        <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
         <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710195370/nekosero5_-_Landscape_Post_1_d9yvq5.png" />
         <meta property="og:image:type" content="png" />
         <meta property="og:url" content="https://www.nekosero.ug/" />
-
+        <meta property="og:type" content="website" />
         
-        {/* <meta property="og:image:width" content="2956" />
-        <meta property="og:image:height" content="3804" /> */}
-        {/* <meta property="og:image" content="/cat-face.svg"/> */}
         <link rel="icon" href="/cat-face.svg" />
       </Head>
       
