@@ -18,7 +18,7 @@ export default function Home() {
 
         <meta property="og:title" content="Nekosero" />
 
-        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1706709313/nekosero5.png" />
+        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/c_pad,w_50,h_89,ar_9:16/v1706709313/nekosero5.png" />
         <meta property="og:image:type" content="png" />
         <meta property="og:image:width" content="100" />
         <meta property="og:image:height" content="50" />
