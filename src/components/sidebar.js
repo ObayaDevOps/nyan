@@ -119,7 +119,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
       <Box 
       {...rest} 
-      position='absolute' 
+      position='fixed' 
       bottom='0' 
       p={{base: 2, md: 6}} 
       bg={'yellow.400'}

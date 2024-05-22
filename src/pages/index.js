@@ -44,7 +44,14 @@ export default function Home() {
               blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
               />
             </NextLink>
+
+            <Box>
+              <Button colorScheme='red' variant='outline' as ='a' href='/events'>
+                Events
+              </Button>
+            </Box>
         </AbsoluteCenter>
+
       </Box>
 
     </Box>
