@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import * as React from 'react'
-import { ChakraBaseProvider, extendBaseTheme} from '@chakra-ui/react'
+import { ChakraBaseProvider, ChakraProvider, extendBaseTheme, extendTheme} from '@chakra-ui/react'
 import Footer from '../components/footer' 
 import SideBar from '../components/sidebar.js' 
 
@@ -12,7 +12,7 @@ const sidebarFont = Unbounded({ subsets: [ 'latin' ], weight: ['400'] })
 
 
 
-const theme = extendBaseTheme({
+const theme = extendTheme({
   fonts: {
     // sidebarFont: 'sidebarFont.style.fontFamily, sans-serif',
     sidebarFont: sidebarFont.style.fontFamily
@@ -23,11 +23,11 @@ const theme = extendBaseTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ChakraBaseProvider theme={theme}>
+    <ChakraProvider theme={theme}>
       {/* <SideBar /> */}
       <Component {...pageProps} />
       {/* <Footer /> */}
-    </ChakraBaseProvider>
+    </ChakraProvider>
 
       )
 }

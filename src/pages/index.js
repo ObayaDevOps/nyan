@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import { Heading, Text, Box,AbsoluteCenter, Container, VStack, SimpleGrid, Center, Button, AspectRatio, Alert, AlertIcon, useToast } from '@chakra-ui/react'
+import { Box,AbsoluteCenter, Button,
+Flex,
+
+  } from '@chakra-ui/react'
 import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryImageRetreival';
 
 import NextLink from 'next/link'
@@ -31,6 +34,7 @@ export default function Home() {
       </Box>
 
       <Box>
+
         <AbsoluteCenter mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 60}}>
           <NextLink href='/#'>
             <Image
@@ -45,11 +49,14 @@ export default function Home() {
               />
             </NextLink>
 
-            <Box>
-              <Button colorScheme='red' variant='outline' as ='a' href='/events'>
-                Events
+            <Flex 
+            justify='center'
+            mt={20}
+            >
+              <Button colorScheme='black' variant='outline' href='/events'>
+                What's On
               </Button>
-            </Box>
+            </Flex>
         </AbsoluteCenter>
 
       </Box>
