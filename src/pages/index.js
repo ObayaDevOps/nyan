@@ -26,7 +26,7 @@ export default function Home() {
         <meta property="og:url" content="https://www.nekosero.ug/" />
         <meta property="og:type" content="website" />
         
-        <link rel="icon" href="/cat-face.svg" />
+        <link rel="icon" href="/neko-logo.svg" />
       </Head>
       
       <Box>

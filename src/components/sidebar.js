@@ -51,19 +51,27 @@ import { RiMapPinLine } from "react-icons/ri";
 
 
 const LinkItems = [
-  { name: 'Yujo Izakaya', icon: PiBowlFoodLight, href: 'https://yujo.ug' },
-  { name: 'Buziga Hill', icon: GiSewingMachine, href: 'https://buzigahill.com/' },
-  { name: 'AFRPCN Capsule Gallery', icon: GiEarthAfricaEurope, href: 'https://www.afropocene.com/capsule-gallery/about-capsule' },
-  { name: 'Kanchu with a camera', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
-  { name: 'Bananage Brewing Co.', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
-  { name: 'T.I.A', icon: GiColombianStatue, href: 'https://www.facebook.com/tiauganda/' },
-  { name: 'Silicon Advocates', icon: VscLaw, href: 'https://www.linkedin.com/company/silicon-advocates/' },
+  { name: 'Yujo Izakaya', category:'Drinks & Dining', icon: PiBowlFoodLight, href: 'https://yujo.ug' },
+  { name: 'Buziga Hill', category:'Art, Apparel & Decor', icon: GiSewingMachine, href: 'https://buzigahill.com/' },
+  { name: 'AFRPCN Capsule Gallery', category:'Art, Apparel & Decor', icon: GiEarthAfricaEurope, href: 'https://www.afropocene.com/capsule-gallery/about-capsule' },
+  { name: 'Kanchu with a camera', category:'Art, Apparel & Decor', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
+  { name: 'Bananage Brewing Co.', category:'Drinks & Dining', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
+  { name: 'T.I.A', category:'Art, Apparel & Decor', icon: GiColombianStatue, href: 'https://www.facebook.com/tiauganda/' },
+  { name: 'Silicon Advocates', category:'Business Services', icon: VscLaw, href: 'https://www.linkedin.com/company/silicon-advocates/' },
   // { name: 'Maneki Neko Cafe', icon: FaCat, href: 'https://images.app.goo.gl/BNwT1ZCxPfHg6JPG6' },
-  { name: 'Little Kobe Japanese Market', icon: BsBasketFill, href: 'https://www.facebook.com/littlekobejapanesemarket/' },
-  { name: 'Women on Wheels', icon: GiFullMotorcycleHelmet, href: 'https://womenrisingforafrica.org/our-programs/' },
-  { name: 'Zembo Swap Station', icon: MdElectricBike, href: 'https://www.zem.bo/' },
+  { name: 'Little Kobe Japanese Market', category:'Drinks & Dining', icon: BsBasketFill, href: 'https://www.facebook.com/littlekobejapanesemarket/' },
+  { name: 'Women on Wheels', category:'Renewable Energy', icon: GiFullMotorcycleHelmet, href: 'https://womenrisingforafrica.org/our-programs/' },
+  { name: 'Zembo Swap Station', category:'Renewable Energy', icon: MdElectricBike, href: 'https://www.zem.bo/' },
+  { name: 'Vibes Popup', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/___vibespopup?igsh=MW5ncTV6eDA2cXUxdg==' },
+  { name: 'TL Studio', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/tahirlalaniphotography?igsh=bHB4enp3dHRsNWUz' },
+  { name: 'enPower.Life', category:'Renewable Energy', icon: GiMountaintop, href: 'http://enpower.life/' },
+  { name: 'Ribbo Coffee', category:'Drinks & Dining', icon: GiMountaintop, href: '/https://ribbocoffee.com/' },
+  { name: 'First Circle Capital', category:'Business Services', icon: GiMountaintop, href: 'https://www.firstcirclecap.com/' },
+  { name: 'Kila Kitu', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/kila_kitu_shopping?igsh=bDYyd2s0azQ3aXBt' },
 
-  // { name: 'Mount Royal', icon: GiMountaintop, href: '/#' },
+
+
+
 
 ]
 
