@@ -62,6 +62,8 @@ import { PiBowlFoodFill } from "react-icons/pi";
 import { MdEnergySavingsLeaf } from "react-icons/md";
 import { MdBusinessCenter } from "react-icons/md";
 import { BsFillCalendarDayFill } from "react-icons/bs";
+import { BsFillCalendarHeartFill } from "react-icons/bs";
+import { BiSolidHomeAlt2 } from "react-icons/bi";
 
 
 
@@ -73,11 +75,11 @@ import { BsFillCalendarDayFill } from "react-icons/bs";
 const LinkCategories = [
   {
     label:'Home',
-    icon: IoMdHome,
+    icon: BiSolidHomeAlt2,
   },
   {
     label:'Events',
-    icon: BsFillCalendarDayFill, 
+    icon: BsFillCalendarHeartFill, 
     href: '/events'
   },
     {
@@ -94,6 +96,7 @@ const LinkCategories = [
     label:'Art, Apparel & Decor',
     icon: GiColombianStatue, 
     children: [
+     { label: 'AFRPCN Capsule Gallery', category:'Art, Apparel & Decor', icon: GiEarthAfricaEurope, href: 'https://www.afropocene.com/capsule-gallery/about-capsule' },
      { label: 'Buziga Hill', category:'Art, Apparel & Decor', icon: GiSewingMachine, href: 'https://buzigahill.com/' },
      { label: 'Kanchu with a camera', category:'Art, Apparel & Decor', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
      { label: 'Vibes Popup', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/___vibespopup?igsh=MW5ncTV6eDA2cXUxdg==' },

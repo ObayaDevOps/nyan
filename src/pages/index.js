@@ -53,7 +53,7 @@ export default function Home() {
             justify='center'
             mt={20}
             >
-              <Button as='a' colorScheme='black' variant='outline' href='/events'>
+              <Button as='a' colorScheme='black'  fontFamily='sidebarFont' variant='outline' href='/events'>
                 What's On
               </Button>
             </Flex>

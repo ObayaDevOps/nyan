@@ -15,6 +15,7 @@ import {
   useColorMode,
   Container,
   VStack,
+  Flex,
   SimpleGrid,
   AbsoluteCenter,
   Avatar
@@ -119,7 +120,7 @@ function EventCard(props) {
 const EventList = ({eventPage}) => {
 
   return (
-    <Box height={'100vh'} bgColor={'yellow.300'}>
+    <Flex bgColor={'yellow.300'}  h='calc(120vh)'>
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -169,14 +170,13 @@ const EventList = ({eventPage}) => {
       
       
       
-      <Box
+      {/* <Box
         marginTop={{ base: '1', sm: '5' }}
         display="flex"
         flexDirection={{ base: 'column', sm: 'row' }}
         justifyContent="space-between">
-      </Box>
+      </Box> */}
 
-      <Divider marginTop="5" />
 
       <SimpleGrid
           columns={{ base: 1, xl: 2 }}
@@ -193,7 +193,7 @@ const EventList = ({eventPage}) => {
         </Box>
 
 
-    </Box>
+    </Flex>
   );
 };
 
