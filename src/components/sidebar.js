@@ -13,11 +13,23 @@ import {
   DrawerContent,
   useDisclosure,
   BoxProps,
+  Link,
+  Collapse,
+
   Stack,
   Tooltip,
   useClipboard,
   FlexProps,
 } from '@chakra-ui/react'
+
+
+import {
+  HamburgerIcon,
+  CloseIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+} from '@chakra-ui/icons';
+
 import {
   FiMenu,
 } from 'react-icons/fi'
@@ -38,16 +50,80 @@ import { MdElectricBike } from "react-icons/md";
 import { BiSolidCarBattery } from "react-icons/bi";
 import { GiFullMotorcycleHelmet } from "react-icons/gi";
 
-
-
-
-
-
 import { FaInstagram } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 
 import { HiOutlineMail } from 'react-icons/hi';  
 import { RiMapPinLine } from "react-icons/ri";
+
+import { IoMdHome } from "react-icons/io";
+import { FaCalendarAlt } from "react-icons/fa";
+import { PiBowlFoodFill } from "react-icons/pi";
+import { MdEnergySavingsLeaf } from "react-icons/md";
+import { MdBusinessCenter } from "react-icons/md";
+import { BsFillCalendarDayFill } from "react-icons/bs";
+
+
+
+
+
+
+
+
+const LinkCategories = [
+  {
+    label:'Home',
+    icon: IoMdHome,
+  },
+  {
+    label:'Events',
+    icon: BsFillCalendarDayFill, 
+    href: '/events'
+  },
+    {
+    label:'Food, Drinks & Dining',
+    icon: PiBowlFoodFill, 
+    children: [
+     { label: 'Yujo Izakaya', category:'Drinks & Dining', icon: PiBowlFoodLight, href: 'https://yujo.ug' },
+     { label: 'Bananage Brewing Co.', category:'Drinks & Dining', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
+     { label: 'Little Kobe Japanese Market', category:'Drinks & Dining', icon: BsBasketFill, href: 'https://www.facebook.com/littlekobejapanesemarket/' },
+     { label: 'Ribbo Coffee', category:'Drinks & Dining', icon: GiMountaintop, href: 'https://ribbocoffee.com/' },
+    ],
+  },
+  {
+    label:'Art, Apparel & Decor',
+    icon: GiColombianStatue, 
+    children: [
+     { label: 'Buziga Hill', category:'Art, Apparel & Decor', icon: GiSewingMachine, href: 'https://buzigahill.com/' },
+     { label: 'Kanchu with a camera', category:'Art, Apparel & Decor', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
+     { label: 'Vibes Popup', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/___vibespopup?igsh=MW5ncTV6eDA2cXUxdg==' },
+     { label: 'T.I.A', category:'Art, Apparel & Decor', icon: GiColombianStatue, href: 'https://www.facebook.com/tiauganda/' },
+     { label: 'TL Studio', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/tahirlalaniphotography?igsh=bHB4enp3dHRsNWUz' },
+     { label: 'Kila Kitu', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/kila_kitu_shopping?igsh=bDYyd2s0azQ3aXBt' },
+
+
+    ],
+  },
+  {
+    label:'Renewable Energy',
+    icon: MdEnergySavingsLeaf, 
+    children: [
+     { label: 'enPower.Life', category:'Renewable Energy', icon: GiMountaintop, href: 'http://enpower.life/' },
+     { label: 'Women on Wheels', category:'Renewable Energy', icon: GiFullMotorcycleHelmet, href: 'https://womenrisingforafrica.org/our-programs/' },
+     { label: 'Zembo Swap Station', category:'Renewable Energy', icon: MdElectricBike, href: 'https://www.zem.bo/' },
+
+    ],
+  },
+  {
+    label:'Business Services',
+    icon: MdBusinessCenter, 
+    children: [
+      { label: 'First Circle Capital', category:'Business Services', icon: GiMountaintop, href: 'https://www.firstcirclecap.com/' },
+      { label: 'Silicon Advocates', category:'Business Services', icon: VscLaw, href: 'https://www.linkedin.com/company/silicon-advocates/' },
+
+    ],
+  },
+]
 
 
 const LinkItems = [
@@ -118,9 +194,14 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <Flex h={{base:"16", md: "24",lg:"10"}} alignItems="center" mx="8" justifyContent="space-between">
           <CloseButton display={{ base: 'flex', md: 'flex', lg: 'none' }} onClick={onClose} />
         </Flex>
-        {LinkItems.map((link) => (
-          <NavItem key={link.name} icon={link.icon} href={link.href}>
-            {link.name}
+        {LinkCategories.map((category) => (
+          <NavItem key={category.label} children={category.children} {...category}
+          
+          // label={category.label} icon={category.icon} href={category.href} children={category.children}
+          
+          >
+            {category.children}
+            {/* {category.label} */}
           </NavItem>
         ))}
       </Box>
@@ -245,26 +326,36 @@ const SocialsStack = () => {
   )
 }
 
-const NavItem = ({ icon, href, children, ...rest }) => {
+
+
+const NavItem = ({ label, children, icon, ...rest }) => {
+  const { isOpen, onToggle } = useDisclosure();
+  console.log('EEEERE aR your childs bitch')
+  console.log(children)
+  console.log(label)
+  console.log(icon)
+
+
+
+
   return (
-    <Box
-      as="a"
-      href={href}
-      style={{ textDecoration: 'none' }}
-      _focus={{ boxShadow: 'none' }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: 'yellow.500',
-          color: 'white',
-        }}
-        {...rest}>
-        {icon && (
+
+    <Stack spacing={0} onClick={children && onToggle}>
+    <Flex
+      py={2}
+      ml={8}
+      as={Link}
+      href={'#'}
+      // justify={'space-between'}
+      align={'center'}
+      textColor='black'
+      fontFamily="sidebarFont"
+
+      _hover={{
+        textDecoration: 'none',
+      }}>
+
+     {icon && (
           <Icon
             mr="4"
             fontSize="16"
@@ -275,19 +366,87 @@ const NavItem = ({ icon, href, children, ...rest }) => {
             as={icon}
           />
         )}
-        <Text 
-        fontFamily={'sidebarFont'}
-        color='gray.900'
-        fontSize={{base:'sm',md:'md', lg: 'md'}}
-        _hover={{
-          bg: 'yellow.500',
-          color: 'white',
-        }}
-        >
-          {children}
-        </Text>
-      </Flex>
-    </Box>
+
+      <Text
+        fontWeight={500}
+        color={useColorModeValue('black', 'gray.200')}>
+        {label}
+      </Text>
+      {children && (
+        <Icon
+          as={ChevronDownIcon}
+          transition={'all .25s ease-in-out'}
+          transform={isOpen ? 'rotate(180deg)' : ''}
+          w={6}
+          h={6}
+          ml={2}
+          // justifyItems='left'
+        />
+      )}
+    </Flex>
+
+    <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
+      <Stack
+        pl={20}
+        borderLeft={1}
+        borderStyle={'solid'}
+        textColor='black'
+
+        borderColor={useColorModeValue('green.700', 'gray.700')}
+        align={'start'}>
+        {children &&
+          children.map((child) => (
+              <Link  py={2}  fontFamily="sidebarFont"
+              href={child.href} key={child.label}
+              >
+                {child.label}
+              </Link>
+          ))}
+      </Stack>
+    </Collapse>
+  </Stack>
+    // <Box
+    //   as="a"
+    //   href={href}
+    //   style={{ textDecoration: 'none' }}
+    //   _focus={{ boxShadow: 'none' }}>
+    //   <Flex
+    //     align="center"
+    //     p="4"
+    //     mx="4"
+    //     borderRadius="lg"
+    //     role="group"
+    //     cursor="pointer"
+    //     _hover={{
+    //       bg: 'yellow.500',
+    //       color: 'white',
+    //     }}
+    //     {...rest}>
+    //     {icon && (
+    //       <Icon
+    //         mr="4"
+    //         fontSize="16"
+    //         boxSize={{base:'1em', md:'2em'}}
+    //         _groupHover={{
+    //           color: 'white',
+    //         }}
+    //         as={icon}
+    //       />
+    //     )}
+    //     <Text 
+    //     fontFamily={'sidebarFont'}
+    //     color='gray.900'
+    //     fontSize={{base:'sm',md:'md', lg: 'md'}}
+    //     _hover={{
+    //       bg: 'yellow.500',
+    //       color: 'white',
+    //     }}
+    //     >
+    //       {children}
+    //     </Text>
+    //   </Flex>
+    // </Box>
+
   )
 }
 
