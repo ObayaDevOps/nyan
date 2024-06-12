@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import {
   Box,
   Heading,
@@ -15,11 +15,17 @@ import {
   useColorMode,
   Container,
   VStack,
+  Input,
+  InputLeftElement,
+  InputGroup,
   Flex,
   SimpleGrid,
   AbsoluteCenter,
   Avatar
 } from '@chakra-ui/react';
+
+import { FaSearch } from "react-icons/fa";
+
 
 import Head from 'next/head'
 import NextLink from 'next/link'
@@ -117,7 +123,30 @@ function EventCard(props) {
 // tHis is what is exported:
 
 // I need to show that I can access the sanoty ehibition data here too , just like in [slug]
-const EventList = ({eventPage}) => {
+const EventList = ({eventPages}) => {
+  const [searchItem, setSearchItem] = useState('')
+  const [filteredEvents, setFilteredEvents] = useState(eventPages)
+
+
+  const handleInputChange = (e) => { 
+    const searchTerm = e.target.value;
+    setSearchItem(searchTerm)
+
+    // console.log(eventPages)
+
+    const filteredItems = eventPages.filter((myEvent) =>
+    myEvent.eventName.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    setFilteredEvents(filteredItems)
+    console.log('Filtered')
+    console.log(filteredItems)
+
+
+
+  }
+
+
+
 
   return (
     <Flex bgColor={'yellow.300'}  h='calc(120vh)'>
@@ -141,49 +170,57 @@ const EventList = ({eventPage}) => {
       </Box>
 
       <Box>
-      <AbsoluteCenter mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 60}}>
+        <AbsoluteCenter mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 60}}>
       
-      <Heading
-              as={'h1'}
-                mb={{base: 2, md: 6}}
-                fontSize={{ base: "5xl",md: "6xl", lg:"7xl",}}
-                minHeight={'1vh'}
-                fontWeight="bold"
-                lineHeight="none"
-                letterSpacing={{base: "normal",md: "tight" }}
-                color="yellow.900"
-                textAlign='center'
-              >
-                <Text
-                  w="full"
-                  // bgClip="text"
-                  // bgGradient='linear(to-r, blackAlpha.800, yellow.600)'
-                  fontWeight="extrabold"
-                  fontFamily='sidebarFont'
-                  transition="all .65s ease" _hover={{ transform: 'scale(1.005)', filter: "brightness(120%)", }}
-                  pt={8}
-                  pb={6}
+        <Heading
+                as={'h1'}
+                  mb={{base: 2, md: 6}}
+                  fontSize={{ base: "5xl",md: "6xl", lg:"7xl",}}
+                  minHeight={'1vh'}
+                  fontWeight="bold"
+                  lineHeight="none"
+                  letterSpacing={{base: "normal",md: "tight" }}
+                  color="yellow.900"
+                  textAlign='center'
                 >
-                  Nekosero Events
-                </Text>
-      </Heading>
-      
-      
-      
-      {/* <Box
-        marginTop={{ base: '1', sm: '5' }}
-        display="flex"
-        flexDirection={{ base: 'column', sm: 'row' }}
-        justifyContent="space-between">
-      </Box> */}
+                  <Text
+                    w="full"
+                    // bgClip="text"
+                    // bgGradient='linear(to-r, blackAlpha.800, yellow.600)'
+                    fontWeight="extrabold"
+                    fontFamily='sidebarFont'
+                    transition="all .65s ease" _hover={{ transform: 'scale(1.005)', filter: "brightness(120%)", }}
+                    pt={8}
+                    pb={6}
+                  >
+                    Nekosero Events
+                  </Text>
+        </Heading>
+    
 
+      <InputGroup>
+          <InputLeftElement pointerEvents='none'>
+            <FaSearch color='gray.300' />
+          </InputLeftElement>
+
+          <Input 
+            placeholder='Event Search'  
+            id="eventSearchInput"
+            type="text"
+            name="eventSearchInput"
+            focusBorderColor='yellow.900' 
+            bgColor='white' 
+            onChange={handleInputChange}
+          />
+
+        </InputGroup>
 
       <SimpleGrid
           columns={{ base: 1, xl: 2 }}
           spacing={'20'}
           mt={16}
           mx={'auto'}>
-          {eventPage.map((cardInfo, index) => (
+          {filteredEvents.map((cardInfo, index) => (
             <EventCard {...cardInfo} index={index} key={index} />
           ))}
       </SimpleGrid>
@@ -214,17 +251,17 @@ const query = groq`*[_type == "eventPage"]{
 
 
 export async function getStaticProps(context) {
-  const eventPage = await client.fetch(
+  const eventPages = await client.fetch(
       query    
   )
 
-  console.log("RETURNR2")
-  console.log(eventPage)
+  // console.log("RETURNR2")
+  // console.log(eventPages)
 
 
   return {
       props: {
-        eventPage
+        eventPages
       },
       revalidate: 10,
 

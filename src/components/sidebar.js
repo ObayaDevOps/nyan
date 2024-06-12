@@ -333,10 +333,10 @@ const SocialsStack = () => {
 
 const NavItem = ({ label, children, icon, ...rest }) => {
   const { isOpen, onToggle } = useDisclosure();
-  console.log('EEEERE aR your childs bitch')
-  console.log(children)
-  console.log(label)
-  console.log(icon)
+  // console.log('EEEERE aR your childs bitch')
+  // console.log(children)
+  // console.log(label)
+  // console.log(icon)
 
 
 
