@@ -26,6 +26,9 @@ import {
 
 import { FaSearch } from "react-icons/fa";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 import Head from 'next/head'
 import NextLink from 'next/link'
@@ -126,6 +129,7 @@ function EventCard(props) {
 const EventList = ({eventPages}) => {
   const [searchItem, setSearchItem] = useState('')
   const [filteredEvents, setFilteredEvents] = useState(eventPages)
+  const [startDate, setStartDate] = useState(new Date());
 
 
   const handleInputChange = (e) => { 
@@ -140,9 +144,6 @@ const EventList = ({eventPages}) => {
     setFilteredEvents(filteredItems)
     console.log('Filtered')
     console.log(filteredItems)
-
-
-
   }
 
 
@@ -214,6 +215,16 @@ const EventList = ({eventPages}) => {
           />
 
         </InputGroup>
+
+      <Flex py={2}>
+        <DatePicker
+          showIcon 
+          // inline
+          placeholderText='Date Range'
+          selected={startDate} 
+          onChange={(date) => setStartDate(date)} />
+      </Flex>
+
 
       <SimpleGrid
           columns={{ base: 1, xl: 2 }}
