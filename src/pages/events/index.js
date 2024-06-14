@@ -15,6 +15,7 @@ import {
   useColorMode,
   Container,
   VStack,
+  Button,
   Input,
   InputLeftElement,
   InputGroup,
@@ -129,7 +130,7 @@ function EventCard(props) {
 const EventList = ({eventPages}) => {
   const [searchItem, setSearchItem] = useState('')
   const [filteredEvents, setFilteredEvents] = useState(eventPages)
-  const [startDate, setStartDate] = useState(new Date());
+  const [searchDate, setSearchDate] = useState(new Date());
 
 
   const handleInputChange = (e) => { 
@@ -139,11 +140,61 @@ const EventList = ({eventPages}) => {
     // console.log(eventPages)
 
     const filteredItems = eventPages.filter((myEvent) =>
+
     myEvent.eventName.toLowerCase().includes(searchTerm.toLowerCase()));
 
     setFilteredEvents(filteredItems)
     console.log('Filtered')
     console.log(filteredItems)
+  }
+
+  const handleDateSelect = (e) => {
+    const selectedDate = e;
+    setSearchDate(selectedDate)
+
+    // console.log('Date Select')
+    // console.log(new Date(selectedDate) );
+    // console.log(myEvent.eventDate);
+
+    const filteredItems = eventPages.filter((myEvent) => {
+      const myEventDate = new Date(myEvent.eventDate).setHours(0,0,0,0);
+      const mySelectedDate = new Date(selectedDate).setHours(0,0,0,0);
+
+      // console.log('eventDate')
+      // console.log(myEvent.eventDate);
+      // console.log(new Date(myEvent.eventDate));
+      // console.log(myEventDate);
+      // console.log(new Date(myEvent.eventDate) >= new Date(selectedDate) )
+
+      return myEventDate >= mySelectedDate 
+    })
+    
+    console.log('Filtered Items')
+    console.log(filteredItems)
+
+    setFilteredEvents(filteredItems)
+  }
+
+  //TODO: apply filtering but on todays date + 7 days
+  const handleWeekDateSelect = (e) => {
+    const selectedDate = e;
+    // setSearchDate(selectedDate)
+
+    console.log('Date Select')
+    console.log(selectedDate);
+  }
+
+  //TODO: apply filtering but on todays date + 31 days
+  const handleMonthDateSelect = (e) => {
+    const selectedDate = e;
+    // setSearchDate(selectedDate)
+
+    console.log('Date Select')
+    console.log(selectedDate);
+  }
+
+  const handleClearAllFilters = () => {
+    setFilteredEvents(eventPages)
   }
 
 
@@ -221,8 +272,22 @@ const EventList = ({eventPages}) => {
           showIcon 
           // inline
           placeholderText='Date Range'
-          selected={startDate} 
-          onChange={(date) => setStartDate(date)} />
+          selected={searchDate} 
+          onChange={handleDateSelect} />
+      </Flex>
+
+      <Flex>
+        <Button onClick={handleWeekDateSelect}  variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
+          This Week
+        </Button>
+
+        <Button onClick={handleMonthDateSelect} variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
+          This Month
+        </Button>
+
+        <Button onClick={handleClearAllFilters} variant='outline' colorScheme='red' fontFamily='sidebarFont' fontSize='sm'>
+          Clear Filters
+        </Button>
       </Flex>
 
 
@@ -266,8 +331,8 @@ export async function getStaticProps(context) {
       query    
   )
 
-  // console.log("RETURNR2")
-  // console.log(eventPages)
+  console.log("RETURNR2")
+  console.log(eventPages)
 
 
   return {

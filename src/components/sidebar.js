@@ -64,6 +64,8 @@ import { MdBusinessCenter } from "react-icons/md";
 import { BsFillCalendarDayFill } from "react-icons/bs";
 import { BsFillCalendarHeartFill } from "react-icons/bs";
 import { BiSolidHomeAlt2 } from "react-icons/bi";
+import { FaClockRotateLeft } from "react-icons/fa6";
+
 
 
 
@@ -125,6 +127,16 @@ const LinkCategories = [
       { label: 'Silicon Advocates', category:'Business Services', icon: VscLaw, href: 'https://www.linkedin.com/company/silicon-advocates/' },
 
     ],
+  },
+  {
+    label:'Past Tenants',
+    icon: FaClockRotateLeft,
+    children: [
+      { label: 'Yujo Izakaya', category:'Drinks & Dining', icon: PiBowlFoodLight, href: 'https://yujo.ug' },
+      { label: 'Bananage Brewing Co.', category:'Drinks & Dining', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
+      { label: 'Little Kobe Japanese Market', category:'Drinks & Dining', icon: BsBasketFill, href: 'https://www.facebook.com/littlekobejapanesemarket/' },
+      { label: 'Ribbo Coffee', category:'Drinks & Dining', icon: GiMountaintop, href: 'https://ribbocoffee.com/' },
+     ],
   },
 ]
 
@@ -338,9 +350,6 @@ const NavItem = ({ label, children, icon, ...rest }) => {
   // console.log(label)
   // console.log(icon)
 
-
-
-
   return (
 
     <Stack spacing={0} onClick={children && onToggle}>
@@ -408,47 +417,7 @@ const NavItem = ({ label, children, icon, ...rest }) => {
       </Stack>
     </Collapse>
   </Stack>
-    // <Box
-    //   as="a"
-    //   href={href}
-    //   style={{ textDecoration: 'none' }}
-    //   _focus={{ boxShadow: 'none' }}>
-    //   <Flex
-    //     align="center"
-    //     p="4"
-    //     mx="4"
-    //     borderRadius="lg"
-    //     role="group"
-    //     cursor="pointer"
-    //     _hover={{
-    //       bg: 'yellow.500',
-    //       color: 'white',
-    //     }}
-    //     {...rest}>
-    //     {icon && (
-    //       <Icon
-    //         mr="4"
-    //         fontSize="16"
-    //         boxSize={{base:'1em', md:'2em'}}
-    //         _groupHover={{
-    //           color: 'white',
-    //         }}
-    //         as={icon}
-    //       />
-    //     )}
-    //     <Text 
-    //     fontFamily={'sidebarFont'}
-    //     color='gray.900'
-    //     fontSize={{base:'sm',md:'md', lg: 'md'}}
-    //     _hover={{
-    //       bg: 'yellow.500',
-    //       color: 'white',
-    //     }}
-    //     >
-    //       {children}
-    //     </Text>
-    //   </Flex>
-    // </Box>
+
 
   )
 }
