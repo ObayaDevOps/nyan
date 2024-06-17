@@ -79,11 +79,11 @@ const LinkCategories = [
     label:'Home',
     icon: BiSolidHomeAlt2,
   },
-  {
-    label:'Events',
-    icon: BsFillCalendarHeartFill, 
-    href: '/events'
-  },
+  // {
+  //   label:'Events',
+  //   icon: BsFillCalendarHeartFill, 
+  //   href: '/events'
+  // },
     {
     label:'Food, Drinks & Dining',
     icon: PiBowlFoodFill, 
@@ -132,10 +132,8 @@ const LinkCategories = [
     label:'Past Tenants',
     icon: FaClockRotateLeft,
     children: [
-      { label: 'Yujo Izakaya', category:'Drinks & Dining', icon: PiBowlFoodLight, href: 'https://yujo.ug' },
-      { label: 'Bananage Brewing Co.', category:'Drinks & Dining', icon: GiBeerBottle, href: 'https://www.banangebrewing.com/' },
-      { label: 'Little Kobe Japanese Market', category:'Drinks & Dining', icon: BsBasketFill, href: 'https://www.facebook.com/littlekobejapanesemarket/' },
-      { label: 'Ribbo Coffee', category:'Drinks & Dining', icon: GiMountaintop, href: 'https://ribbocoffee.com/' },
+      { label: 'Coming Soon ...', category:'Drinks & Dining', icon: PiBowlFoodLight, href: '/#' },
+      
      ],
   },
 ]

@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <Box  height={'100vh'} bgColor={'yellow.300'}>
       <Head>
-        <title>Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
+        <title>Nekosero | A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
         {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
@@ -49,14 +49,14 @@ export default function Home() {
               />
             </NextLink>
 
-            <Flex 
+            {/* <Flex 
             justify='center'
             mt={20}
             >
               <Button as='a' colorScheme='black'  fontFamily='sidebarFont' variant='outline' href='/events'>
                 What's On
               </Button>
-            </Flex>
+            </Flex> */}
         </AbsoluteCenter>
 
       </Box>
