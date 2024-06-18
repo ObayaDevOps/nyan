@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import React, { useRef } from "react";
+import { useInView } from "framer-motion";
+
 
 import { Box,AbsoluteCenter, Button,
-Flex,
+Flex,   ScaleFade,
+
 
   } from '@chakra-ui/react'
 import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryImageRetreival';
@@ -12,7 +16,14 @@ import NextLink from 'next/link'
 import SideBar from '../components/sidebar.js' 
 
 export default function Home() {
+  const ref1 = useRef(null)
+  const isInView1 = useInView(ref1)
+
   return (
+
+    <ScaleFade initialScale={0.6}
+    in={isInView1}>
+
     <Box  height={'100vh'} bgColor={'yellow.300'} border={'2px'}>
       <Head>
         <title>Nekosero | A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
@@ -37,7 +48,10 @@ export default function Home() {
 
         <AbsoluteCenter mt={{base: 0, md: 'auto'}} 
         // ml={{base:0,lg: 60}}
+        
+
         >
+          <Box ref={ref1}>
           <NextLink href='/#'>
             <Image
               src={getCloudinaryImage('nekosero5.png')} 
@@ -50,6 +64,7 @@ export default function Home() {
               blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
               />
             </NextLink>
+            </Box>
 
             <Flex 
             justify='center'
@@ -64,5 +79,7 @@ export default function Home() {
       </Box>
 
     </Box>
+
+    </ScaleFade>
   )
 }
