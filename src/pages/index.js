@@ -13,7 +13,7 @@ import SideBar from '../components/sidebar.js'
 
 export default function Home() {
   return (
-    <Box  height={'100vh'} bgColor={'yellow.300'}>
+    <Box  height={'100vh'} bgColor={'yellow.300'} border={'2px'}>
       <Head>
         <title>Nekosero | A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -49,14 +49,14 @@ export default function Home() {
               />
             </NextLink>
 
-            {/* <Flex 
+            <Flex 
             justify='center'
             mt={20}
             >
-              <Button as='a' colorScheme='black'  fontFamily='sidebarFont' variant='outline' href='/events'>
+              <Button as='a' colorScheme='black' rounded={'none'} fontFamily='sidebarFont' variant='outline' href='/events'>
                 What's On
               </Button>
-            </Flex> */}
+            </Flex>
         </AbsoluteCenter>
 
       </Box>

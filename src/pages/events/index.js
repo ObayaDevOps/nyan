@@ -201,7 +201,7 @@ const EventList = ({eventPages}) => {
 
 
   return (
-    <Flex bgColor={'yellow.300'}  h='calc(120vh)'>
+    <Flex bgColor={'yellow.300'} border={'2px'} h='calc(120vh)'>
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -221,7 +221,7 @@ const EventList = ({eventPages}) => {
         <SideBar />
       </Box>
 
-      <Box>
+      <Flex>
         <AbsoluteCenter mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 60}}>
       
         <Heading
@@ -260,13 +260,20 @@ const EventList = ({eventPages}) => {
             id="eventSearchInput"
             type="text"
             name="eventSearchInput"
-            focusBorderColor='yellow.900' 
-            bgColor='white' 
+            focusBorderColor='black' 
+            // bgColor='white' 
+            border='2px'
+            borderColor='black' 
+            bgColor='yellow.400' 
+
+
+            rounded={'none'}
             onChange={handleInputChange}
           />
 
         </InputGroup>
 
+      <HStack>
       <Flex py={2}>
         <DatePicker
           showIcon 
@@ -277,18 +284,19 @@ const EventList = ({eventPages}) => {
       </Flex>
 
       <Flex>
-        <Button onClick={handleWeekDateSelect}  variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
+        {/* <Button onClick={handleWeekDateSelect}  variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
           This Week
         </Button>
 
         <Button onClick={handleMonthDateSelect} variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
           This Month
-        </Button>
+        </Button> */}
 
-        <Button onClick={handleClearAllFilters} variant='outline' colorScheme='red' fontFamily='sidebarFont' fontSize='sm'>
+        <Button onClick={handleClearAllFilters} variant='outline' colorScheme='red'  rounded='none' fontFamily='sidebarFont' fontSize='sm'>
           Clear Filters
         </Button>
       </Flex>
+      </HStack>
 
 
       <SimpleGrid
@@ -303,7 +311,7 @@ const EventList = ({eventPages}) => {
 
 
         </AbsoluteCenter>
-        </Box>
+        </Flex>
 
 
     </Flex>

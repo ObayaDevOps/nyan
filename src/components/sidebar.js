@@ -79,11 +79,11 @@ const LinkCategories = [
     label:'Home',
     icon: BiSolidHomeAlt2,
   },
-  // {
-  //   label:'Events',
-  //   icon: BsFillCalendarHeartFill, 
-  //   href: '/events'
-  // },
+  {
+    label:'Events',
+    icon: BsFillCalendarHeartFill, 
+    href: '/events'
+  },
     {
     label:'Food, Drinks & Dining',
     icon: PiBowlFoodFill, 
@@ -197,6 +197,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box>
       <Box
         bg={useColorModeValue('yellow.400', 'gray.900')}
+        border={'2px'}
         w={{ base: 'full', lg: '30vw' }}
         pos="fixed"
         h="full"
@@ -226,7 +227,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       p={{base: 2, md: 6}} 
       bg={'yellow.400'}
       w={{ base: 'full', lg: '30vw' }}
-      
+      border={'2px'}
       >
         <SocialsStack />
       </Box>
@@ -244,7 +245,7 @@ const SocialsStack = () => {
     <Flex
     >
       <Stack direction={'row'} spacing={6} p={{base:1, md:2}} >
-        <Tooltip
+        <Tooltip        
           label={hasCopied ? 'Email Copied!' : 'Copy Email'}
           closeOnClick={false}
           hasArrow>
@@ -400,13 +401,14 @@ const NavItem = ({ label, children, icon, ...rest }) => {
         pl={20}
         borderLeft={1}
         borderStyle={'solid'}
-        textColor='black'
-
-        borderColor={useColorModeValue('green.700', 'gray.700')}
+        textColor='white'
+        bgColor={'black'}
+        py={4}
+        // borderColor={useColorModeValue('green.700', 'gray.700')}
         align={'start'}>
         {children &&
           children.map((child) => (
-              <Link  py={2}  fontFamily="sidebarFont"
+              <Link  py={2}   fontFamily="sidebarFont"
               href={child.href} key={child.label}
               >
                 {child.label}
