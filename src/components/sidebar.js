@@ -68,12 +68,6 @@ import { FaClockRotateLeft } from "react-icons/fa6";
 
 
 
-
-
-
-
-
-
 const LinkCategories = [
   {
     label:'Home',
@@ -198,22 +192,25 @@ const SidebarContent = ({ onClose, ...rest }) => {
         border={'2px'}
         w={{ base: 'full', lg: 'full' }}
         pos="fixed"
-        h="full"
+        h="90vh"
+        // mb={'60vh'}
         overflowY='auto'
         top='0'
-        bottom='20'
+        // bottom='20'
+        
         {...rest}>
         <Flex h={{base:"16", md: "24",lg:"20"}} alignItems="center" mx="8" justifyContent="space-between">
           <CloseButton display={{ base: 'flex', md: 'flex', lg: 'flex' }} onClick={onClose} mt={12} border={'2px'} rounded='none' size='lg' p={3} />
         </Flex>
+
+        <Box pt={10}>
         {LinkCategories.map((category) => (
-          <NavItem key={category.label} children={category.children} {...category}
-          
-          >
+          <NavItem key={category.label} children={category.children} {...category} >
             {category.children}
             {/* {category.label} */}
           </NavItem>
         ))}
+        </Box>
       </Box>
 
       <Box 
@@ -224,7 +221,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       bg={'yellow.400'}
       w={{ base: 'full', lg: 'full' }}
       border={'2px'}
-      borderTop='0'
+      h={'10vh'}
       >
         <SocialsStack />
       </Box>
