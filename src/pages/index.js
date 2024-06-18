@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
 
-    <ScaleFade initialScale={0.6}
+    <ScaleFade initialScale={0.1}
     in={isInView1}>
 
     <Box  height={'100vh'} bgColor={'yellow.300'} border={'2px'}>
@@ -70,7 +70,12 @@ export default function Home() {
             justify='center'
             mt={20}
             >
-              <Button as='a' colorScheme='black' rounded={'none'} fontFamily='sidebarFont' border={'2px'} variant='outline' href='/events'>
+              <Button
+               as='a'  
+                _hover={{
+                transform: 'scale(1.15)',
+              }}
+               colorScheme='black' rounded={'none'} fontFamily='sidebarFont' border={'2px'} variant='outline' href='/events'>
                 See What's On
               </Button>
             </Flex>

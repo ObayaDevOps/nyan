@@ -200,7 +200,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
         
         {...rest}>
         <Flex h={{base:"16", md: "24",lg:"20"}} alignItems="center" mx="8" justifyContent="space-between">
-          <CloseButton display={{ base: 'flex', md: 'flex', lg: 'flex' }} onClick={onClose} mt={12} border={'2px'} rounded='none' size='lg' p={3} />
+          <CloseButton 
+            display={{ base: 'flex', md: 'flex', lg: 'flex' }} 
+            onClick={onClose} 
+            mt={12} 
+            border={'2px'} 
+            rounded='none' 
+            size='lg' 
+            _hover={{
+              transform: 'scale(1.15)',
+            }}
+            p={3} />
         </Flex>
 
         <Box pt={10}>
@@ -217,10 +227,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest} 
       position='fixed' 
       bottom='0' 
-      p={{base: 2, md: 6}} 
+      p={{base: 2, md: 4}} 
       bg={'yellow.400'}
       w={{ base: 'full', lg: 'full' }}
       border={'2px'}
+      borderTop={0}
       h={'10vh'}
       >
         <SocialsStack />
@@ -238,7 +249,8 @@ const SocialsStack = () => {
   return (
     <Flex
     >
-      <Stack direction={'row'} spacing={6} p={{base:1, md:2}} >
+      <Stack direction={'row'} spacing={6} p={{base:1, md:1}}>
+
         <Tooltip        
           label={hasCopied ? 'Email Copied!' : 'Copy Email'}
           closeOnClick={false}
@@ -443,6 +455,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
         p={3}
         rounded='none'
         border={'2px'}
+        _hover={{
+          transform: 'scale(1.15)',
+        }}
       />
     </Flex>
   )
