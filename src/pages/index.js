@@ -35,7 +35,9 @@ export default function Home() {
 
       <Box>
 
-        <AbsoluteCenter mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 60}}>
+        <AbsoluteCenter mt={{base: 0, md: 'auto'}} 
+        // ml={{base:0,lg: 60}}
+        >
           <NextLink href='/#'>
             <Image
               src={getCloudinaryImage('nekosero5.png')} 
@@ -53,8 +55,8 @@ export default function Home() {
             justify='center'
             mt={20}
             >
-              <Button as='a' colorScheme='black' rounded={'none'} fontFamily='sidebarFont' variant='outline' href='/events'>
-                What's On
+              <Button as='a' colorScheme='black' rounded={'none'} fontFamily='sidebarFont' border={'2px'} variant='outline' href='/events'>
+                See What's On
               </Button>
             </Flex>
         </AbsoluteCenter>

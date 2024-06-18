@@ -22,6 +22,7 @@ import {
   Flex,
   SimpleGrid,
   AbsoluteCenter,
+  Center,
   Avatar
 } from '@chakra-ui/react';
 
@@ -41,6 +42,7 @@ import client from '../../../sanity/lib/client'
 import groq from 'groq'
 
 import SideBar from '../../components/sidebar' 
+import { BsFileXFill } from 'react-icons/bs';
 
 
 
@@ -48,52 +50,44 @@ import SideBar from '../../components/sidebar'
 
 export const EventAuthor = (props) => {
   return (
-    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
-      {/* <Image
-        borderRadius="full"
-        boxSize="40px"
-        src={artistPFP}
-        alt={`Avatar of ${props.artistName}`}
-      /> */}
-      <Text fontWeight="medium">{props.authorName}</Text>
-      <Text>—</Text>
-      <Text>{props.date.toLocaleDateString()}</Text>
+    <HStack marginY="4" spacing="0" display="flex" alignItems="center">
+      <Text fontWeight="400">{props.authorName}</Text>
+      {/* <Text>—</Text> */}
+      <Text fontSize='md'>{props.date.toLocaleDateString()}</Text>
     </HStack>
   );
 };
 
 const EventTags = (props) => {
   return (
-    <HStack spacing={2} marginTop={props.marginTop}>
+    <Flex marginTop={props.marginTop}>
       {props.tags.map((tag) => {
         return (
-          <Tag size={'md'} variant="solid" colorScheme="green" key={tag}>
-            {tag}
-          </Tag>
+          <Box mx={2}>
+            <Tag size={'sm'}  p={2} variant="solid" variant='outline'  bg='blackAlpha.900' textColor='white' fontFamily='sidebarFont' key={tag}>
+              {tag}
+            </Tag>
+          </Box>
         );
       })}
-    </HStack>
+    </Flex>
   );
 };
 
 
 
 function EventCard(props) {
-
-  // console.log("RETURNR3")
-  // console.log(props)
-
-
+  
   const {eventName,authorName,eventDate, eventTagList, eventLandingPageDisplayShortDescription,
     eventLandingDisplayImage, slug
     } = props;  
 
-
+  const slugLink = '/events/' + slug;
 
   return (
-          <Box w="100%">
+          <Box w="100%" bg='yellow.400' p={6} border={'2px'}>
             <Box overflow="hidden">
-              <NextLink href={slug} passHref>
+              <NextLink href={slugLink} passHref>
               {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
                 <NextImage
                  src={eventLandingDisplayImage} 
@@ -102,22 +96,23 @@ function EventCard(props) {
               {/* </Link> */}
               </NextLink>
             </Box>
-            <EventTags tags={eventTagList} marginTop="3" />
-            <Heading fontSize="2xl" marginTop="2">
-            <NextLink href={slug} passHref>
+            <EventTags tags={eventTagList} marginTop="4" />
+            <Heading fontSize="xl" marginTop="2" fontFamily='sidebarFont'>
+            <NextLink href={slug} passHref >
               {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
                 {eventName}
               {/* </Link> */}
             </NextLink>
 
-            </Heading>
-            <Text as="p" fontSize="md" marginTop="2">
-                {eventLandingPageDisplayShortDescription}
-            </Text>
             <EventAuthor
               name={authorName}
               date={new Date(eventDate)}
             />
+            </Heading>
+
+            <Text as="p" fontSize="md" marginTop="2" fontFamily='Helvetica'>
+                {eventLandingPageDisplayShortDescription}
+            </Text>
           </Box>
 
   )
@@ -125,8 +120,6 @@ function EventCard(props) {
 }
 
 // tHis is what is exported:
-
-// I need to show that I can access the sanoty ehibition data here too , just like in [slug]
 const EventList = ({eventPages}) => {
   const [searchItem, setSearchItem] = useState('')
   const [filteredEvents, setFilteredEvents] = useState(eventPages)
@@ -201,7 +194,7 @@ const EventList = ({eventPages}) => {
 
 
   return (
-    <Flex bgColor={'yellow.300'} border={'2px'} h='calc(120vh)'>
+    <Box bgColor={'yellow.300'} border={'2px'} minH='100vh'>
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -221,9 +214,8 @@ const EventList = ({eventPages}) => {
         <SideBar />
       </Box>
 
-      <Flex>
-        <AbsoluteCenter mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 60}}>
-      
+      {/* The Top Title and search Container */}
+      <Container>
         <Heading
                 as={'h1'}
                   mb={{base: 2, md: 6}}
@@ -232,13 +224,12 @@ const EventList = ({eventPages}) => {
                   fontWeight="bold"
                   lineHeight="none"
                   letterSpacing={{base: "normal",md: "tight" }}
-                  color="yellow.900"
+                  // color="yellow.900"
+                  color="black"
                   textAlign='center'
                 >
                   <Text
                     w="full"
-                    // bgClip="text"
-                    // bgGradient='linear(to-r, blackAlpha.800, yellow.600)'
                     fontWeight="extrabold"
                     fontFamily='sidebarFont'
                     transition="all .65s ease" _hover={{ transform: 'scale(1.005)', filter: "brightness(120%)", }}
@@ -250,71 +241,61 @@ const EventList = ({eventPages}) => {
         </Heading>
     
 
-      <InputGroup>
-          <InputLeftElement pointerEvents='none'>
-            <FaSearch color='gray.300' />
-          </InputLeftElement>
+        <InputGroup>
+            <InputLeftElement pointerEvents='none'>
+              <FaSearch color='gray.300' />
+            </InputLeftElement>
 
-          <Input 
-            placeholder='Event Search'  
-            id="eventSearchInput"
-            type="text"
-            name="eventSearchInput"
-            focusBorderColor='black' 
-            // bgColor='white' 
-            border='2px'
-            borderColor='black' 
-            bgColor='yellow.400' 
-
-
-            rounded={'none'}
-            onChange={handleInputChange}
-          />
+            <Input 
+              placeholder='Event Search'  
+              id="eventSearchInput"
+              type="text"
+              name="eventSearchInput"
+              focusBorderColor='black' 
+              fontFamily='sidebarFont'
+              border='2px'
+              borderColor='black' 
+              bgColor='yellow.400' 
+              rounded={'none'}
+              onChange={handleInputChange}
+            />
 
         </InputGroup>
 
-      <HStack>
-      <Flex py={2}>
-        <DatePicker
-          showIcon 
-          // inline
-          placeholderText='Date Range'
-          selected={searchDate} 
-          onChange={handleDateSelect} />
-      </Flex>
+        <HStack>
+          <Flex py={2}>
+            <DatePicker
+              showIcon 
+              // inline
+              placeholderText='Date Range'
+              selected={searchDate} 
+              onChange={handleDateSelect} />
+          </Flex>
 
-      <Flex>
-        {/* <Button onClick={handleWeekDateSelect}  variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
-          This Week
-        </Button>
-
-        <Button onClick={handleMonthDateSelect} variant='outline' colorScheme='black' fontFamily='sidebarFont' fontSize='sm'>
-          This Month
-        </Button> */}
-
-        <Button onClick={handleClearAllFilters} variant='outline' colorScheme='red'  rounded='none' fontFamily='sidebarFont' fontSize='sm'>
-          Clear Filters
-        </Button>
-      </Flex>
-      </HStack>
+          <Flex>
+            <Button onClick={handleClearAllFilters}  size={{base: 'md', md: 'md'}} variant='outline' colorScheme='red'  rounded='none' fontFamily='sidebarFont' fontSize='sm'>
+              Clear
+            </Button>
+          </Flex>
+        </HStack>
+      </Container>
 
 
-      <SimpleGrid
-          columns={{ base: 1, xl: 2 }}
-          spacing={'20'}
-          mt={16}
-          mx={'auto'}>
-          {filteredEvents.map((cardInfo, index) => (
-            <EventCard {...cardInfo} index={index} key={index} />
-          ))}
-      </SimpleGrid>
+      {/* <Flex> */}
+        <Center mt={{base: 0, md: 'auto'}} p={{base:8, md:16,  lg:32}} >
+          <SimpleGrid
+              columns={{ base: 1, md: 2, xl: 3 }}
+              spacing={'20'}
+              mt={16}
+              mx={'auto'}>
+              {filteredEvents.map((cardInfo, index) => (
+                <EventCard {...cardInfo} index={index} key={index} />
+              ))}
+          </SimpleGrid>
+        </Center>
+    {/* </Flex> */}
 
-
-        </AbsoluteCenter>
-        </Flex>
-
-
-    </Flex>
+    </Box>
   );
 };
 
@@ -322,7 +303,7 @@ const EventList = ({eventPages}) => {
 
 
 
-//I wanr the query to return all the info
+//I want the query to return all the info
 const query = groq`*[_type == "eventPage"]{
     eventName,
     authorName,
@@ -342,7 +323,6 @@ export async function getStaticProps(context) {
   console.log("RETURNR2")
   console.log(eventPages)
 
-
   return {
       props: {
         eventPages
@@ -351,8 +331,6 @@ export async function getStaticProps(context) {
 
   }
 }
-
-
 
 
 

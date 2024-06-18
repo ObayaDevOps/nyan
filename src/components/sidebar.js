@@ -78,6 +78,7 @@ const LinkCategories = [
   {
     label:'Home',
     icon: BiSolidHomeAlt2,
+    href: '/'
   },
   {
     label:'Events',
@@ -168,7 +169,7 @@ export default function SimpleSidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Box>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', lg: 'block' }} />
+      <SidebarContent onClose={() => onClose} display={{ base: 'none', lg: 'none' }} />
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -181,11 +182,8 @@ export default function SimpleSidebar() {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', lg:'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, lg: 60 }} p="4">
-        {/* Content */}
-        
-      </Box>
+      <MobileNav display={{ base: 'flex', lg:'flex' }} onOpen={onOpen} />
+
     </Box>
   )
 }
@@ -198,20 +196,18 @@ const SidebarContent = ({ onClose, ...rest }) => {
       <Box
         bg={useColorModeValue('yellow.400', 'gray.900')}
         border={'2px'}
-        w={{ base: 'full', lg: '30vw' }}
+        w={{ base: 'full', lg: 'full' }}
         pos="fixed"
         h="full"
         overflowY='auto'
         top='0'
         bottom='20'
         {...rest}>
-        <Flex h={{base:"16", md: "24",lg:"10"}} alignItems="center" mx="8" justifyContent="space-between">
-          <CloseButton display={{ base: 'flex', md: 'flex', lg: 'none' }} onClick={onClose} />
+        <Flex h={{base:"16", md: "24",lg:"20"}} alignItems="center" mx="8" justifyContent="space-between">
+          <CloseButton display={{ base: 'flex', md: 'flex', lg: 'flex' }} onClick={onClose} mt={12} border={'2px'} rounded='none' size='lg' p={3} />
         </Flex>
         {LinkCategories.map((category) => (
           <NavItem key={category.label} children={category.children} {...category}
-          
-          // label={category.label} icon={category.icon} href={category.href} children={category.children}
           
           >
             {category.children}
@@ -226,8 +222,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
       bottom='0' 
       p={{base: 2, md: 6}} 
       bg={'yellow.400'}
-      w={{ base: 'full', lg: '30vw' }}
+      w={{ base: 'full', lg: 'full' }}
       border={'2px'}
+      borderTop='0'
       >
         <SocialsStack />
       </Box>
@@ -342,7 +339,7 @@ const SocialsStack = () => {
 
 
 
-const NavItem = ({ label, children, icon, ...rest }) => {
+const NavItem = ({ label, children, href, icon, ...rest }) => {
   const { isOpen, onToggle } = useDisclosure();
   // console.log('EEEERE aR your childs bitch')
   // console.log(children)
@@ -355,8 +352,8 @@ const NavItem = ({ label, children, icon, ...rest }) => {
     <Flex
       py={2}
       ml={8}
-      as={Link}
-      href={'#'}
+      // as={Link}
+      // href={'#'}
       // justify={'space-between'}
       align={'center'}
       textColor='black'
@@ -378,11 +375,17 @@ const NavItem = ({ label, children, icon, ...rest }) => {
           />
         )}
 
-      <Text
+      {/* <Text
         fontWeight={500}
         color={useColorModeValue('black', 'gray.200')}>
         {label}
-      </Text>
+      </Text> */}
+      <Link  py={2}   fontFamily="sidebarFont"
+      href={href} key={label}
+              >
+        {label}
+      </Link>
+
       {children && (
         <Icon
           as={ChevronDownIcon}
@@ -425,8 +428,9 @@ const NavItem = ({ label, children, icon, ...rest }) => {
 const MobileNav = ({ onOpen, ...rest }) => {
   return (
     <Flex
-      ml={{ base: 0, lg: 60 }}
-      px={{ base: 4, lg: 24 }}
+      ml={{ base: 0, lg: 0 }}
+      px={{ base: 4, lg: 10 }}
+      mt={5}
       height="20"
       alignItems="center"
       bg={useColorModeValue('yellow.300', 'gray.900')}
@@ -437,6 +441,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
         onClick={onOpen}
         aria-label="open menu"
         icon={<FiMenu />}
+        size='xl'
+        color='black'
+        p={3}
+        rounded='none'
+        border={'2px'}
       />
     </Flex>
   )
