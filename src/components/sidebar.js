@@ -445,7 +445,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       mt={5}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('red.300', 'gray.900')}
+      bg={useColorModeValue('yellow.300', 'gray.900')}
       justifyContent="flex-start"
       {...rest}>
       <IconButton
@@ -463,18 +463,18 @@ const MobileNav = ({ onOpen, ...rest }) => {
         }}
       />
 
-{/* <Center>
-<Image
-              src={getCloudinaryImage('nekosero5.png')} 
-              alt="Nekosero Brand Logo"
-              width={70}
-              height= {70}
-              priority
-              placeholder="blur"
-              
-              blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
-              />
-              </Center> */}
+          {/* <Box ml={'calc(75vh)'}>
+            <Image
+                src={getCloudinaryImage('nekosero5.png')} 
+                alt="Nekosero Brand Logo"
+                width={70}
+                height= {70}
+                priority
+                placeholder="blur"
+                
+                blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
+                />
+              </Box> */}
     </Flex>
 
   )

@@ -98,7 +98,7 @@ function EventCard(props) {
             </Box>
             <EventTags tags={eventTagList} marginTop="4" />
             <Heading fontSize="xl" marginTop="2" fontFamily='sidebarFont'>
-            <NextLink href={slug} passHref >
+            <NextLink href={slugLink} passHref >
               {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
                 {eventName}
               {/* </Link> */}
@@ -236,7 +236,7 @@ const EventList = ({eventPages}) => {
                     pt={8}
                     pb={6}
                   >
-                    Nekosero Events
+                    What's On at Nekosero
                   </Text>
         </Heading>
     
@@ -282,7 +282,7 @@ const EventList = ({eventPages}) => {
 
 
       {/* <Flex> */}
-        <Center mt={{base: 0, md: 'auto'}} p={{base:8, md:16,  lg:32}} >
+        <Center mt={{base: 0, md: 'auto'}} p={{base:8, md:16,  lg:32}} h={'80vh'} w={'100vw'} >
           <SimpleGrid
               columns={{ base: 1, md: 2, xl: 3 }}
               spacing={'20'}

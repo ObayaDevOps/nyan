@@ -78,7 +78,7 @@ const Event = ({eventPage}) => {
           spacing={{ base: 8, md: 10 }}
           py={{ base: 18, md: 24, lg:0 }}
         >
-          <Box alignItems='center' p={{base: 4, md: 12}}>
+          <Box alignItems='center' m={{base: 4, md: 12}} border={'4px'}>
             <NextImage
               src={eventPage.eventLandingDisplayImage} 
               height={1824/4} width={2736/4}        
@@ -101,8 +101,8 @@ const Event = ({eventPage}) => {
                       ></NextImage>
 
                 </Center> */}
-                <Stack spacing={{ base: 6, md: 10 }}>
-                  <Box as={'header'}>
+                <Stack spacing={{ base: 6, md: 10 }} >
+                  <Box as={'header'} >
                     <Heading
                       lineHeight={1.1}
                       fontWeight={600}

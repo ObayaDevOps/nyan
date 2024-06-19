@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
 
-    <ScaleFade initialScale={0.1}
+    <ScaleFade initialScale={0.6}
     in={isInView1}>
 
     <Box  height={'100vh'} bgColor={'yellow.300'} border={'2px'}>
