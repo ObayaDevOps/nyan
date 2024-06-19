@@ -60,7 +60,7 @@ export const EventAuthor = (props) => {
 
 const EventTags = (props) => {
   return (
-    <Flex marginTop={props.marginTop}>
+    <Flex marginTop={props.marginTop} ml={-2}>
       {props.tags.map((tag) => {
         return (
           <Box mx={2}>
@@ -78,14 +78,14 @@ const EventTags = (props) => {
 
 function EventCard(props) {
   
-  const {eventName,authorName,eventDate, eventTagList, eventLandingPageDisplayShortDescription,
+  const {eventName,authorName, eventStartTime, eventEndTime, eventTagList, eventLandingPageDisplayShortDescription,
     eventLandingDisplayImage, slug
     } = props;  
 
   const slugLink = '/events/' + slug;
 
   return (
-          <Box w="100%" bg='yellow.400' p={6} border={'2px'}>
+          <Box w="100%" bg='yellow.400' p={6} border={'4px'}>
             <Box overflow="hidden">
               <NextLink href={slugLink} passHref>
               {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
@@ -96,7 +96,7 @@ function EventCard(props) {
               {/* </Link> */}
               </NextLink>
             </Box>
-            <EventTags tags={eventTagList} marginTop="4" />
+            <EventTags tags={eventTagList} marginTop="4"  />
             <Heading fontSize="xl" marginTop="2" fontFamily='sidebarFont'>
             <NextLink href={slugLink} passHref >
               {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
@@ -106,7 +106,7 @@ function EventCard(props) {
 
             <EventAuthor
               name={authorName}
-              date={new Date(eventDate)}
+              date={new Date(eventStartTime)}
             />
             </Heading>
 
@@ -282,7 +282,7 @@ const EventList = ({eventPages}) => {
 
 
       {/* <Flex> */}
-        <Center mt={{base: 0, md: 'auto'}} p={{base:8, md:16,  lg:32}} h={'80vh'} w={'100vw'} >
+        <Center mt={{base: 0, md: 'auto'}} p={{base:8, md:16,  lg:32}} h={'full'} w={'100vw'} >
           <SimpleGrid
               columns={{ base: 1, md: 2, xl: 3 }}
               spacing={'20'}
@@ -306,8 +306,8 @@ const EventList = ({eventPages}) => {
 //I want the query to return all the info
 const query = groq`*[_type == "eventPage"]{
     eventName,
-    authorName,
-    eventDate,
+    eventStartTime,
+    eventEndTime,
     eventTagList,
     eventLandingPageDisplayShortDescription,
     "eventLandingDisplayImage":eventLandingDisplayImage.asset->url,

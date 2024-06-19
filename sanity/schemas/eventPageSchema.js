@@ -39,82 +39,6 @@ export default defineType({
       title: 'Sub Title',
       type: 'string',
     }),
-    defineField({
-        name: 'authorName',
-        title: 'Author Name',
-        type: 'string',
-        validation: (rule) => rule.required(),
-      }),
-
-      defineField({
-        name: 'eventDate',
-        title: 'Event Date',
-        type: 'date',
-        validation: (rule) => rule.required(),
-      }),    
-
-    defineField({
-        name: 'eventParagraphHeading1',
-        title: 'Event Paragraph Heading 1',
-        type: 'text',
-      }),
-    defineField({
-      name: 'eventParagraphText1',
-      title: 'Event Paragraph Text 1',
-      type: 'text',
-      validation: (rule) => rule.required(),
-    }),
-
-
-    defineField({
-      name: 'eventParagraphHeading2',
-      title: 'Event Paragraph Heading 2',
-      type: 'text',
-    }),
-    defineField({
-      name: 'eventParagraphText2',
-      title: 'Event Paragraph Text 2',
-      type: 'text',
-    }),
-
-    defineField({
-      name: 'eventParagraphHeading3',
-      title: 'Event Paragraph Heading 3',
-      type: 'text',
-    }),
-    defineField({
-      name: 'eventParagraphText3',
-      title: 'Event Paragraph Text 3',
-      type: 'text',
-    }),
-
-    defineField({
-      name: 'eventParagraphHeading4',
-      title: 'Event Paragraph Heading 4',
-      type: 'text',
-    }),
-    defineField({
-      name: 'eventParagraphText4',
-      title: 'Event Paragraph Text 4',
-      type: 'text',
-    }),
-
-    defineField({
-        name: 'eventTagList',
-        title: 'Event Tag List',
-        type: 'array',
-        of:[{type: 'string'}],
-        validation: (rule) => rule.required(),
-      }),
-
-
-      //For the Archive Page
-      defineField({
-        name: 'eventLandingPageDisplayShortDescription',
-        title: 'Event Landing Page Display Short Description',
-        type: 'string',
-        validation: (rule) => rule.required(),
-      }),
 
     //Archive Images
     defineField({
@@ -125,18 +49,60 @@ export default defineType({
           hotspot: true,
         },
       }),
+
       defineField({
-        name: 'authorPFP',
-        title: 'Author Profile Picture',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
+        name: 'eventStartTime',
+        title: 'Event Start Time',
+        type: 'datetime',
+        validation: (rule) => rule.required(),
+      }), 
+
+      defineField({
+        name: 'eventEndTime',
+        title: 'Event End Time',
+        type: 'datetime',
+        validation: (rule) => rule.required(),
+      }), 
+
+      //For the Archive Page
+      defineField({
+        name: 'eventLandingPageDisplayShortDescription',
+        title: 'Event Landing Page Display Short Description',
+        type: 'string',
+        validation: (rule) => rule.required(),
       }),
+
+    defineField({
+      name: 'eventParagraphText1',
+      title: 'Event Description Paragraph 1',
+      type: 'text',
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
+      name: 'eventParagraphText2',
+      title: 'Event Paragraph Text 2 (Optional)',
+      type: 'text',
+    }),
+
+    defineField({
+      name: 'eventParagraphText3',
+      title: 'Event Paragraph Text 3 (Optional)',
+      type: 'text',
+    }),
+
+    defineField({
+      name: 'eventTagList',
+      title: 'Event Tag List (One Word - Max 3)',
+      type: 'array',
+      of:[{type: 'string'}],
+      validation: (rule) => rule.required(),
+    }),
+
 
     //Slug - URL
     {
-        title: 'Slug',
+        title: 'Slug (This will be the url link name - just click generate)',
         name: 'slug',
         type: 'slug',
         options: {

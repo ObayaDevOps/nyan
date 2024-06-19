@@ -192,7 +192,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box>
       <Box
         bg={useColorModeValue('yellow.400', 'gray.900')}
-        border={'2px'}
+        border={'4px'}
         w={{ base: 'full', lg: 'full' }}
         pos="fixed"
         h="90vh"

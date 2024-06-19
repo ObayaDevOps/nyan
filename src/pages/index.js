@@ -24,7 +24,7 @@ export default function Home() {
     <ScaleFade initialScale={0.6}
     in={isInView1}>
 
-    <Box  height={'100vh'} bgColor={'yellow.300'} border={'2px'}>
+    <Box  height={'100vh'} bgColor={'yellow.300'} border={'4px'}>
       <Head>
         <title>Nekosero | A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />

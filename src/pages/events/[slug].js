@@ -19,8 +19,10 @@ import {
     useColorModeValue,
     AbsoluteCenter,
     Image,
+    Tag,
     List,
     ListItem,
+    HStack,
     Link
   } from '@chakra-ui/react';
 import { MdLocalShipping } from 'react-icons/md'
@@ -39,8 +41,18 @@ import SideBar from '../../components/sidebar'
 
 const Event = ({eventPage}) => {
 
+  const start = new Date(eventPage.eventStartTime);
+  const startDateFormatted = start.toLocaleDateString()
+  const startHourFormatted = start.toLocaleTimeString()
+  
+  const end = new Date(eventPage.eventEndTime);
+  const endDateFormatted = end.toLocaleDateString()
+  const endHourFormatted = end.toLocaleTimeString()
+
+
+
     return (
-      <Box bg="yellow.300"  pb={12}  border={'2px'} 
+      <Box bg="yellow.300"  pb={12}  border={'4px'} 
       // h='calc(120vh)'
       minH={'100vh'}
       // overflow='scroll' 
@@ -74,33 +86,27 @@ const Event = ({eventPage}) => {
         > */}
 
         <SimpleGrid 
-          columns={{base: 1, md: 2}}
+          columns={{base: 1, md: 1, lg: 2}}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 18, md: 24, lg:0 }}
+          py={{ base: 18, md:0, lg:0 }}
         >
-          <Box alignItems='center' m={{base: 4, md: 12}} border={'4px'}>
+          <Box  m={{base: 4, md: 12, lg: 12}} border={'4px'} >
             <NextImage
               src={eventPage.eventLandingDisplayImage} 
-              height={1824/4} width={2736/4}        
+              height={1824/4} width={2736/4}     
+                
             ></NextImage>
 
           </Box>
 
-          <Box mt={{base: 0, md: 'auto'}} ml={{base:0,lg: 0}} >
+          <Box mt={{base: 0, md: 20}} ml={{base:0,lg: 0}} >
 
             <Container maxW={{base:'1xl',md:'75vw'}} >
               <SimpleGrid
                 columns={1}
                 spacing={{ base: 8, md: 10 }}
                 py={{ base: 0, md: 5, lg:8 }}>
-                {/* <Center alignItems='center'>
-                      <NextImage
-                      src={eventPage.eventLandingDisplayImage} 
-                      height={1824/4} width={2736/4}
-                      
-                      ></NextImage>
 
-                </Center> */}
                 <Stack spacing={{ base: 6, md: 10 }} >
                   <Box as={'header'} >
                     <Heading
@@ -123,7 +129,7 @@ const Event = ({eventPage}) => {
                         fontWeight={300}
                         fontFamily='sidebarFont'
                         fontSize={'md'}>
-                        By {eventPage.authorName}
+                        Date: {startDateFormatted}  -  {endDateFormatted}
                       </Text>
                       <Text
                         color={useColorModeValue('gray.600', 'gray.400')}
@@ -131,7 +137,7 @@ const Event = ({eventPage}) => {
                         fontFamily='sidebarFont'
 
                         fontSize={'md'}>
-                        {eventPage.eventDate}
+                        Time: {startHourFormatted} -  {endHourFormatted}
                       </Text>
                     </Box>
                   </Box>
@@ -140,14 +146,34 @@ const Event = ({eventPage}) => {
                     spacing={{ base: 4, sm: 6 }}
                     direction={'column'}
                     >
-                    <VStack spacing={{ base: 4, sm: 6 }}>
+                      <HStack>
+                          <Flex ml={-2}>
+                            {eventPage.eventTagList.map((tag) => {
+                              return (
+                                <Box mx={2}>
+                                  <Tag size={'sm'}  p={2} variant="solid" variant='outline'  bg='blackAlpha.900' textColor='white' fontFamily='sidebarFont' key={tag}>
+                                    {tag}
+                                  </Tag>
+                                </Box>
+                              );
+                            })}
+                          </Flex>
+                      </HStack>
+
+
                       <Text
-                        color={useColorModeValue('gray.500', 'gray.400')}
+                        textAlign='left'
+                        color={useColorModeValue('black', 'gray.400')}
                         fontSize={'2xl'}
-                        fontWeight={'300'}>
-                          
+                        fontWeight={'300'}
+                        fontFamily={'sidebarFont'}
+                        
+                        >
+                          About
                       </Text>
-                      <Text fontFamily='Helvetica'  fontSize={'lg'}>
+
+                    <VStack spacing={{ base: 4, sm: 6 }}>
+                      <Text fontFamily='Helvetica'  fontSize={'lg'} >
                       {eventPage.eventParagraphText1}
                       </Text>
                       <Text fontFamily='Helvetica' fontSize={'lg'}>
@@ -235,10 +261,9 @@ export async function getStaticPaths() {
 
 const query = groq`*[_type == "eventPage" && slug.current == $slug][0]{
     artistName,
-    "authorPFPUrl": authorPFP.asset->url,
     "eventLandingDisplayImage":eventLandingDisplayImage.asset->url,
-    eventDate,
-    authorName,
+    eventStartTime,
+    eventEndTime,
     eventName,
     eventParagraphText1,
     eventParagraphText2,
