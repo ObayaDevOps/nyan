@@ -339,10 +339,7 @@ const SocialsStack = () => {
             }}
             isRound
           />
-
-
-          
-      
+   
       </Stack>
   </Flex>
     

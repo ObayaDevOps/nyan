@@ -64,7 +64,7 @@ const EventTags = (props) => {
       {props.tags.map((tag) => {
         return (
           <Box mx={2}>
-            <Tag size={'sm'}  p={2} variant="solid" variant='outline'  bg='blackAlpha.900' textColor='white' fontFamily='sidebarFont' key={tag}>
+            <Tag size={'sm'}  p={2} variant="solid" variant='outline' rounded='none' bg='blackAlpha.900' textColor='white' fontFamily='sidebarFont' key={tag}>
               {tag}
             </Tag>
           </Box>
@@ -85,7 +85,7 @@ function EventCard(props) {
   const slugLink = '/events/' + slug;
 
   return (
-          <Box w="100%" bg='yellow.400' p={6} border={'4px'}>
+          <Box w="100%" bg='yellow.400' p={6} border={'2px'}>
             <Box overflow="hidden">
               <NextLink href={slugLink} passHref>
               {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
@@ -124,6 +124,7 @@ const EventList = ({eventPages}) => {
   const [searchItem, setSearchItem] = useState('')
   const [filteredEvents, setFilteredEvents] = useState(eventPages)
   const [searchDate, setSearchDate] = useState(new Date());
+  const [eventSearchPlaceholder, setEventSearchPlaceholder] = useState('Event Searchaaddd')
 
 
   const handleInputChange = (e) => { 
@@ -187,14 +188,16 @@ const EventList = ({eventPages}) => {
   }
 
   const handleClearAllFilters = () => {
-    setFilteredEvents(eventPages)
+    setFilteredEvents(eventPages);
+    setEventSearchPlaceholder('Event Search')
+    
   }
 
 
 
 
   return (
-    <Box bgColor={'yellow.300'} border={'2px'} minH='100vh'>
+    <Box bgColor={'yellow.300'} border={'4px'} minH='100vh'>
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -243,11 +246,11 @@ const EventList = ({eventPages}) => {
 
         <InputGroup>
             <InputLeftElement pointerEvents='none'>
-              <FaSearch color='gray.300' />
+              <FaSearch color='black' />
             </InputLeftElement>
 
             <Input 
-              placeholder='Event Search'  
+              placeholder={eventSearchPlaceholder}
               id="eventSearchInput"
               type="text"
               name="eventSearchInput"
@@ -255,7 +258,7 @@ const EventList = ({eventPages}) => {
               fontFamily='sidebarFont'
               border='2px'
               borderColor='black' 
-              bgColor='yellow.400' 
+              bgColor='white' 
               rounded={'none'}
               onChange={handleInputChange}
             />
@@ -263,10 +266,11 @@ const EventList = ({eventPages}) => {
         </InputGroup>
 
         <HStack>
-          <Flex py={2}>
+          <Flex my={2} border='2px'>
             <DatePicker
               showIcon 
               // inline
+              border='2px'
               placeholderText='Date Range'
               selected={searchDate} 
               onChange={handleDateSelect} />
