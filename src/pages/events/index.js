@@ -113,6 +113,8 @@ function EventCard(props) {
             <Text as="p" fontSize="md" marginTop="2" fontFamily='Helvetica'>
                 {eventLandingPageDisplayShortDescription}
             </Text>
+
+            
           </Box>
 
   )
@@ -124,7 +126,7 @@ const EventList = ({eventPages}) => {
   const [searchItem, setSearchItem] = useState('')
   const [filteredEvents, setFilteredEvents] = useState(eventPages)
   const [searchDate, setSearchDate] = useState(new Date());
-  const [eventSearchPlaceholder, setEventSearchPlaceholder] = useState('Event Searchaaddd')
+  const [eventSearchPlaceholder, setEventSearchPlaceholder] = useState('Event Search')
 
 
   const handleInputChange = (e) => { 
