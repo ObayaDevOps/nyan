@@ -90,7 +90,7 @@ const Event = ({eventPage}) => {
           spacing={{ base: 8, md: 10 }}
           py={{ base: 18, md:0, lg:0 }}
         >
-          <Box  m={{base: 4, md: 12, lg: 12}} >
+          <Box  m={{base: 4, md: 12, lg: 20}} >
             <NextImage
               src={eventPage.eventLandingDisplayImage} 
               height={1824/4} width={2736/4}     
@@ -172,7 +172,7 @@ const Event = ({eventPage}) => {
                           About
                       </Text>
 
-                    <VStack spacing={{ base: 4, sm: 6 }}>
+                    <VStack spacing={{ base: 4, sm: 6 }} maxW={'2xl'}>
                       <Text fontFamily='textFont'  fontSize={'lg'} >
                       {eventPage.eventParagraphText1}
                       </Text>
@@ -186,6 +186,7 @@ const Event = ({eventPage}) => {
 
                     {/* <NextLink href="/info/contact-enquiry"> */}
                         <Button
+                        maxW={'2xl'}
                         as="a"
                         href="/info/contact-enquiry"
                         // colorScheme="green"

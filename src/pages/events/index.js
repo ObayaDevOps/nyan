@@ -85,7 +85,8 @@ function EventCard(props) {
   const slugLink = '/events/' + slug;
 
   return (
-          <Box w="100%" bg='black'  >
+          <Box w="100%" bg='black'               shadow='2xl'
+          >
             <Box overflow="hidden">
               <NextLink href={slugLink} passHref>
                 <NextImage
@@ -291,12 +292,12 @@ const EventList = ({eventPages}) => {
 
 
       {/* <Flex> */}
-        <Center mt={{base: 0, md: 'auto'}} p={{base:8, md:16,  lg:32}} h={'full'} w={'100vw'} >
+        <Center mt={{base: 0, md: 'auto'}} p={{base:0, md:10,  lg:32}} h={'full'} w={'100vw'} >
           <SimpleGrid
               columns={{ base: 1, md: 2, xl: 3 }}
               spacing={'20'}
               mt={16}
-              mx={'auto'}>
+              mx={0}>
               {filteredEvents.map((cardInfo, index) => (
                 <EventCard {...cardInfo} index={index} key={index} />
               ))}
