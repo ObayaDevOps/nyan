@@ -52,7 +52,7 @@ const Event = ({eventPage}) => {
 
 
     return (
-      <Box bg="yellow.300"  pb={12}  border={'4px'} 
+      <Box bg="yellow.300"  pb={12}  border={'1px'} 
       // h='calc(120vh)'
       minH={'100vh'}
       // overflow='scroll' 
@@ -90,7 +90,7 @@ const Event = ({eventPage}) => {
           spacing={{ base: 8, md: 10 }}
           py={{ base: 18, md:0, lg:0 }}
         >
-          <Box  m={{base: 4, md: 12, lg: 12}} border={'4px'} >
+          <Box  m={{base: 4, md: 12, lg: 12}} >
             <NextImage
               src={eventPage.eventLandingDisplayImage} 
               height={1824/4} width={2736/4}     
@@ -123,7 +123,7 @@ const Event = ({eventPage}) => {
                       fontSize={'xl'}>
                       {eventPage.subTitle}
                     </Text>
-                    <Box py={4}>
+                    <Box py={6}>
                       <Text
                         color={useColorModeValue('gray.600', 'gray.400')}
                         fontWeight={300}
@@ -146,7 +146,7 @@ const Event = ({eventPage}) => {
                     spacing={{ base: 4, sm: 6 }}
                     direction={'column'}
                     >
-                      <HStack>
+                      {/* <HStack>
                           <Flex ml={-2}>
                             {eventPage.eventTagList.map((tag) => {
                               return (
@@ -158,7 +158,7 @@ const Event = ({eventPage}) => {
                               );
                             })}
                           </Flex>
-                      </HStack>
+                      </HStack> */}
 
 
                       <Text
@@ -173,13 +173,13 @@ const Event = ({eventPage}) => {
                       </Text>
 
                     <VStack spacing={{ base: 4, sm: 6 }}>
-                      <Text fontFamily='Helvetica'  fontSize={'lg'} >
+                      <Text fontFamily='textFont'  fontSize={'lg'} >
                       {eventPage.eventParagraphText1}
                       </Text>
-                      <Text fontFamily='Helvetica' fontSize={'lg'}>
+                      <Text fontFamily='textFont' fontSize={'lg'}>
                       {eventPage.eventParagraphText2}
                       </Text>
-                      <Text fontFamily='Helvetica'fontSize={'lg'}>
+                      <Text fontFamily='textFont'fontSize={'lg'}>
                       {eventPage.eventParagraphText3}
                       </Text>
                     </VStack>

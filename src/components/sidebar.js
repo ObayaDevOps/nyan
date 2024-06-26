@@ -192,7 +192,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box>
       <Box
         bg={useColorModeValue('yellow.400', 'gray.900')}
-        border={'4px'}
+        // border={'4px'}
         w={{ base: 'full', lg: 'full' }}
         pos="fixed"
         h="90vh"
@@ -207,7 +207,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
             display={{ base: 'flex', md: 'flex', lg: 'flex' }} 
             onClick={onClose} 
             mt={12} 
-            border={'2px'} 
+            // border={'2px'} 
             rounded='none' 
             size='lg' 
             _hover={{
@@ -233,9 +233,9 @@ const SidebarContent = ({ onClose, ...rest }) => {
       p={{base: 2, md: 4}} 
       bg={'yellow.400'}
       w={{ base: 'full', lg: 'full' }}
-      border={'2px'}
-      borderTop={0}
-      h={'10vh'}
+      // border={'2px'}
+      // borderTop={0}
+      h={'20vh'}
       >
         <SocialsStack />
       </Box>
@@ -452,9 +452,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
         icon={<FiMenu />}
         size='xl'
         color='black'
-        p={3}
+        p={6}
         rounded='none'
-        border={'2px'}
+        // border={'2px'}
         _hover={{
           transform: 'scale(1.15)',
         }}

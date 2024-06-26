@@ -85,34 +85,35 @@ function EventCard(props) {
   const slugLink = '/events/' + slug;
 
   return (
-          <Box w="100%" bg='yellow.400' p={6} border={'2px'}>
+          <Box w="100%" bg='black'  >
             <Box overflow="hidden">
               <NextLink href={slugLink} passHref>
-              {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
                 <NextImage
                  src={eventLandingDisplayImage} 
                  height={1824} width={2736}
                  ></NextImage>
-              {/* </Link> */}
               </NextLink>
             </Box>
-            <EventTags tags={eventTagList} marginTop="4"  />
-            <Heading fontSize="xl" marginTop="2" fontFamily='sidebarFont'>
-            <NextLink href={slugLink} passHref >
-              {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
-                {eventName}
-              {/* </Link> */}
-            </NextLink>
+            {/* <EventTags tags={eventTagList} marginTop="4"  /> */}
 
-            <EventAuthor
-              name={authorName}
-              date={new Date(eventStartTime)}
-            />
-            </Heading>
+            <Box p={6} mt={-4}>
+              <Heading fontSize="xl" marginTop="6" fontFamily='sidebarFont' textColor='white'>
+              <NextLink href={slugLink} passHref >
+                {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
+                  {eventName}
+                {/* </Link> */}
+              </NextLink>
 
-            <Text as="p" fontSize="md" marginTop="2" fontFamily='Helvetica'>
-                {eventLandingPageDisplayShortDescription}
-            </Text>
+              <EventAuthor
+                name={authorName}
+                date={new Date(eventStartTime)}
+              />
+              </Heading>
+
+              <Text as="p" fontSize="md" marginTop="0" fontFamily='Helvetica' textColor='white'>
+                  {eventLandingPageDisplayShortDescription}
+              </Text>
+            </Box>
 
             
           </Box>
@@ -199,7 +200,9 @@ const EventList = ({eventPages}) => {
 
 
   return (
-    <Box bgColor={'yellow.300'} border={'4px'} minH='100vh'>
+    <Box bgColor={'yellow.300'} 
+    border={'1px'} 
+    minH='100vh'>
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -256,10 +259,10 @@ const EventList = ({eventPages}) => {
               id="eventSearchInput"
               type="text"
               name="eventSearchInput"
-              focusBorderColor='black' 
+              // focusBorderColor='black' 
               fontFamily='sidebarFont'
-              border='2px'
-              borderColor='black' 
+              // border='2px'
+              // borderColor='black' 
               bgColor='white' 
               rounded={'none'}
               onChange={handleInputChange}
@@ -268,18 +271,18 @@ const EventList = ({eventPages}) => {
         </InputGroup>
 
         <HStack>
-          <Flex my={2} border='2px'>
+          <Flex my={2} >
             <DatePicker
               showIcon 
               // inline
-              border='2px'
+              // border='2px'
               placeholderText='Date Range'
               selected={searchDate} 
               onChange={handleDateSelect} />
           </Flex>
 
           <Flex>
-            <Button onClick={handleClearAllFilters}  size={{base: 'md', md: 'md'}} variant='outline' colorScheme='red'  rounded='none' fontFamily='sidebarFont' fontSize='sm'>
+            <Button onClick={handleClearAllFilters}  size={{base: 'sm', md: 'sm'}} textColor='black' rounded='none' fontFamily='sidebarFont' fontSize='sm'>
               Clear
             </Button>
           </Flex>

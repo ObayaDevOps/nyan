@@ -21,10 +21,14 @@ export default function Home() {
 
   return (
 
-    <ScaleFade initialScale={0.6}
-    in={isInView1}>
+    // <ScaleFade initialScale={0.6}
+    // in={isInView1}>
 
-    <Box  height={'100vh'} bgColor={'yellow.300'} border={'4px'}>
+    <Box  
+    minH={'100vh'} 
+    bgColor={'yellow.300'} 
+    border={'1px'}
+    >
       <Head>
         <title>Nekosero | A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -46,7 +50,7 @@ export default function Home() {
 
       <Box>
 
-        <AbsoluteCenter mt={{base: 0, md: 'auto'}} 
+        <AbsoluteCenter mt={{base: 0, md: 0}} 
         // ml={{base:0,lg: 60}}
         
 
@@ -85,6 +89,6 @@ export default function Home() {
 
     </Box>
 
-    </ScaleFade>
+    // </ScaleFade>
   )
 }
