@@ -98,7 +98,6 @@ const LinkCategories = [
     children: [
      { label: 'AFRPCN Capsule Gallery', category:'Art, Apparel & Decor', icon: GiEarthAfricaEurope, href: 'https://www.afropocene.com/capsule-gallery/about-capsule' },
      { label: 'Buziga Hill', category:'Art, Apparel & Decor', icon: GiSewingMachine, href: 'https://buzigahill.com/' },
-     { label: 'Kanchu with a camera', category:'Art, Apparel & Decor', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
      { label: 'Vibes Popup', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/___vibespopup?igsh=MW5ncTV6eDA2cXUxdg==' },
      { label: 'T.I.A', category:'Art, Apparel & Decor', icon: GiColombianStatue, href: 'https://www.facebook.com/tiauganda/' },
      { label: 'TL Studio', category:'Art, Apparel & Decor', icon: GiMountaintop, href: 'https://www.instagram.com/tahirlalaniphotography?igsh=bHB4enp3dHRsNWUz' },
@@ -130,7 +129,7 @@ const LinkCategories = [
     label:'Past Tenants',
     icon: FaClockRotateLeft,
     children: [
-      { label: 'Coming Soon ...', category:'Drinks & Dining', icon: PiBowlFoodLight, href: '/#' },
+      { label: 'Kanchuwithacamera', category:'Art, Apparel & Decor', icon: FaCameraRetro, href: 'https://www.kanchuwithacamera.com/' },
       
      ],
   },

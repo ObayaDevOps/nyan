@@ -110,7 +110,7 @@ function EventCard(props) {
               />
               </Heading>
 
-              <Text as="p" fontSize="md" marginTop="0" fontFamily='Helvetica' textColor='white'>
+              <Text as="p" fontSize="md" marginTop="0" fontFamily='textFont' textColor='white'>
                   {eventLandingPageDisplayShortDescription}
               </Text>
             </Box>
