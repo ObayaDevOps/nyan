@@ -234,7 +234,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       w={{ base: 'full', lg: 'full' }}
       // border={'2px'}
       // borderTop={0}
-      h={'20vh'}
+      h={{base:'20vh', lg: '10vh'}}
       >
         <SocialsStack />
       </Box>

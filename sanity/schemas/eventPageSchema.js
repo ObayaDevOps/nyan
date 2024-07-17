@@ -92,13 +92,12 @@ export default defineType({
     }),
 
     defineField({
-      name: 'eventTagList',
-      title: 'Event Tag List (One Word - Max 3)',
-      type: 'array',
-      of:[{type: 'string'}],
+      name: 'contactSocialLink',
+      title: 'Contact Social Link (Instagram)',
+      type: 'url',
       validation: (rule) => rule.required(),
-    }),
 
+    }),
 
     //Slug - URL
     {

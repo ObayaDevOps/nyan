@@ -188,7 +188,7 @@ const Event = ({eventPage}) => {
                         <Button
                         maxW={'2xl'}
                         as="a"
-                        href="/info/contact-enquiry"
+                        href={eventPage.contactSocialLink}
                         // colorScheme="green"
                         variant='outline'
                         display="inline-flex"
@@ -269,7 +269,7 @@ const query = groq`*[_type == "eventPage" && slug.current == $slug][0]{
     eventParagraphText1,
     eventParagraphText2,
     eventParagraphText3,
-    eventTagList,
+    contactSocialLink,
     subTitle,
     title
 }`
