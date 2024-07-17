@@ -330,8 +330,8 @@ export async function getStaticProps(context) {
       query    
   )
 
-  console.log("RETURNR2")
-  console.log(eventPages)
+  // console.log("RETURNR2")
+  // console.log(eventPages)
 
   return {
       props: {

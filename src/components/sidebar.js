@@ -70,6 +70,21 @@ import { FaClockRotateLeft } from "react-icons/fa6";
 import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryImageRetreival';
 import Image from 'next/image'
 
+import tenantListData from '../data/preBuild/tenantListData.json'
+
+
+const LinkCategoriesTop = [
+  {
+    label:'Home',
+    icon: BiSolidHomeAlt2,
+    href: '/'
+  },
+  {
+    label:'Events',
+    icon: BsFillCalendarHeartFill, 
+    href: '/events'
+  },
+]
 
 const LinkCategories = [
   {
@@ -161,6 +176,11 @@ const LinkItems = [
 
 ]
 
+
+//NOTE: In order to pull in the data from a non-pages component we need to use :
+// https://dev.to/brewhousedigital/nextjs-getstaticprops-with-components-f25
+
+
 export default function SimpleSidebar() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
@@ -216,10 +236,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
 
         <Box pt={10}>
-        {LinkCategories.map((category) => (
+        {LinkCategoriesTop.map((category) => (
           <NavItem key={category.label} children={category.children} {...category} >
-            {category.children}
-            {/* {category.label} */}
+            {/* {category.children} */}
+          </NavItem>
+        ))}
+
+        {tenantListData.map((category) => (
+          <NavItem key={category.title} children={category.tenantNameAndURL} label={category.title} {...category} >
+            {/* {category.title} */}
           </NavItem>
         ))}
         </Box>
@@ -349,10 +374,11 @@ const SocialsStack = () => {
 
 const NavItem = ({ label, children, href, icon, ...rest }) => {
   const { isOpen, onToggle } = useDisclosure();
-  // console.log('EEEERE aR your childs bitch')
-  // console.log(children)
-  // console.log(label)
-  // console.log(icon)
+  console.log('EEEERE aR your childs bitch')
+  console.log(children)
+  console.log(label)
+  console.log(icon)
+
 
   return (
 
@@ -383,11 +409,6 @@ const NavItem = ({ label, children, href, icon, ...rest }) => {
           />
         )}
 
-      {/* <Text
-        fontWeight={500}
-        color={useColorModeValue('black', 'gray.200')}>
-        {label}
-      </Text> */}
       <Link  py={2}   fontFamily="sidebarFont"
       href={href} key={label}
               >
@@ -402,7 +423,6 @@ const NavItem = ({ label, children, href, icon, ...rest }) => {
           w={6}
           h={6}
           ml={2}
-          // justifyItems='left'
         />
       )}
     </Flex>
@@ -415,14 +435,13 @@ const NavItem = ({ label, children, href, icon, ...rest }) => {
         textColor='white'
         bgColor={'black'}
         py={4}
-        // borderColor={useColorModeValue('green.700', 'gray.700')}
         align={'start'}>
         {children &&
           children.map((child) => (
               <Link  py={2}   fontFamily="sidebarFont"
               href={child.href} key={child.label}
               >
-                {child.label}
+                {child.tenantName}
               </Link>
           ))}
       </Stack>
@@ -453,25 +472,13 @@ const MobileNav = ({ onOpen, ...rest }) => {
         color='black'
         p={6}
         rounded='none'
-        // border={'2px'}
         _hover={{
           transform: 'scale(1.15)',
         }}
       />
-
-          {/* <Box ml={'calc(75vh)'}>
-            <Image
-                src={getCloudinaryImage('nekosero5.png')} 
-                alt="Nekosero Brand Logo"
-                width={70}
-                height= {70}
-                priority
-                placeholder="blur"
-                
-                blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
-                />
-              </Box> */}
     </Flex>
 
   )
 }
+
+
