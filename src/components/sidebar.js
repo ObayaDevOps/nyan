@@ -1,6 +1,7 @@
 'use client'
 
 import React, { ReactNode } from 'react'
+
 import {
   IconButton,
   Box,
@@ -30,6 +31,11 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+
+
+
+import * as Icons from "react-icons/fa";
+
 
 import {
   FiMenu,
@@ -243,7 +249,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         ))}
 
         {tenantListData.map((category) => (
-          <NavItem key={category.title} children={category.tenantNameAndURL} label={category.title} {...category} >
+          <NavItem key={category.title} children={category.tenantNameAndURL} label={category.title} iconText={category.icon} {...category} >
             {/* {category.title} */}
           </NavItem>
         ))}
@@ -372,12 +378,30 @@ const SocialsStack = () => {
 
 
 
-const NavItem = ({ label, children, href, icon, ...rest }) => {
+const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
   const { isOpen, onToggle } = useDisclosure();
-  console.log('EEEERE aR your childs bitch')
-  console.log(children)
-  console.log(label)
-  console.log(icon)
+
+  const DynamicFaIcon = ({ name }) => {
+    console.log('ICON!!')
+    console.log(name)
+    const IconComponent = Icons[name];
+    console.log(IconComponent)
+
+  
+    if (!IconComponent) { // Return a default one
+      return <Icons.FaCameraRetro size={35} />;
+      // return <Icons.FaBeer />;
+
+    }
+  
+    return <IconComponent size={35}  />;
+  };
+
+
+  // console.log('EEEERE aR your childs bitch')
+  // console.log(children)
+  // console.log(label)
+  // console.log(icon)
 
 
   return (
@@ -397,7 +421,27 @@ const NavItem = ({ label, children, href, icon, ...rest }) => {
         textDecoration: 'none',
       }}>
 
-     {icon && (
+
+      {iconText && (
+      <Box mr="4" boxSize={{base:'1em', md:'2em'}} >
+        {/* <DynamicFaIcon name="FaCameraRetro" /> */}
+        {/* <DynamicFaIcon name="FaGlassMartini" /> */}
+        {/* <DynamicFaIcon name="FaCameraRetro" /> */}
+        {/* <DynamicFaIcon name="FaBatteryFull" /> */}
+        {/* <DynamicFaIcon name="FaLeaf" /> */}
+
+        {/* <DynamicFaIcon name="FaBusinessTime" /> */}
+        {/* <DynamicFaIcon name="FaBatteryFull" /> */}
+        {/* <DynamicFaIcon name="FaUserClock" /> */}
+        <DynamicFaIcon name={iconText} />
+
+
+
+      </Box>
+      )}
+
+
+     {(icon && !iconText) && (
           <Icon
             mr="4"
             fontSize="16"
@@ -439,7 +483,7 @@ const NavItem = ({ label, children, href, icon, ...rest }) => {
         {children &&
           children.map((child) => (
               <Link  py={2}   fontFamily="sidebarFont"
-              href={child.href} key={child.label}
+              href={child.tenantLink} key={child.label}
               >
                 {child.tenantName}
               </Link>

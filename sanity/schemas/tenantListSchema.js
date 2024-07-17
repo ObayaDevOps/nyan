@@ -30,17 +30,19 @@ export default defineType({
     }),
 
     defineField({
+      name: 'icon',
+      title: 'Icon (Do Not Change!)',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
       name: 'tenantNameAndURL',
       title: 'Tenant List',
       type: 'array',
       of:[{
             type: 'object',
             fields: [
-              {
-                name: 'categoryName',
-                title: 'Category Name',
-                type: 'string'
-              },
               {
                 name: 'tenantName',
                 title: 'Tenant Name',
