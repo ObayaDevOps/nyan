@@ -28,6 +28,7 @@ export default function Home() {
     minH={'100vh'} 
     bgColor={'yellow.300'} 
     border={'1px'}
+    borderColor={'yellow.300'}
     >
       <Head>
         <title>Nekosero | A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
