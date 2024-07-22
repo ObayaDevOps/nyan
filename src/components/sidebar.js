@@ -382,10 +382,10 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   const DynamicFaIcon = ({ name }) => {
-    console.log('ICON!!')
-    console.log(name)
+    // console.log('ICON!!')
+    // console.log(name)
     const IconComponent = Icons[name];
-    console.log(IconComponent)
+    // console.log(IconComponent)
 
   
     if (!IconComponent) { // Return a default one

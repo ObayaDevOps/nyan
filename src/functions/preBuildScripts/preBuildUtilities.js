@@ -11,8 +11,8 @@ module.exports.preBuildDevelopment = async() => {
 
     const response = await axios.get(API);
 
-    console.log("PREBUILD")
-    console.log(response.data.result)
+    // console.log("PREBUILD")
+    // console.log(response.data.result)
 
     const data = response.data.result;
 

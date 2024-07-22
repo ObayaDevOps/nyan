@@ -41,13 +41,23 @@ import SideBar from '../../components/sidebar'
 
 const Event = ({eventPage}) => {
 
-  const start = new Date(eventPage.eventStartTime);
-  const startDateFormatted = start.toLocaleDateString()
-  const startHourFormatted = start.toLocaleTimeString()
-  
-  const end = new Date(eventPage.eventEndTime);
-  const endDateFormatted = end.toLocaleDateString()
-  const endHourFormatted = end.toLocaleTimeString()
+  console.log('EVENT ')
+  console.log(eventPage)
+
+  console.log('EVENT START')
+  console.log(eventPage.eventStartTime)
+
+
+  // if( typeof eventPage != 'undefined') {
+    const start = new Date(eventPage.eventStartTime);
+    const startDateFormatted = start.toLocaleDateString()
+    const startHourFormatted = start.toLocaleTimeString()
+    
+    const end = new Date(eventPage.eventEndTime);
+    const endDateFormatted = end.toLocaleDateString()
+    const endHourFormatted = end.toLocaleTimeString()
+  // }
+
 
 
 
@@ -256,7 +266,7 @@ export async function getStaticPaths() {
 
     return {
         paths: paths.map((slug) => ({params: {slug}})),
-        fallback: true,
+        fallback: false,
     }
 }
 
@@ -284,7 +294,7 @@ export async function getStaticProps(context) {
         query, { slug }    
     )
 
-    console.log("RETURNR")
+    console.log("SLUG PAGE - DETAILS")
     console.log(eventPage)
 
 

@@ -9,6 +9,7 @@
     "build:dev": "next build",
     "prebuild:prod": "node src/functions/preBuildScripts/preBuildProd.js",
     "build:prod": "next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

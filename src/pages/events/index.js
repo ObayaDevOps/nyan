@@ -142,8 +142,8 @@ const EventList = ({eventPages}) => {
     myEvent.eventName.toLowerCase().includes(searchTerm.toLowerCase()));
 
     setFilteredEvents(filteredItems)
-    console.log('Filtered')
-    console.log(filteredItems)
+    // console.log('Filtered')
+    // console.log(filteredItems)
   }
 
   const handleDateSelect = (e) => {
@@ -167,8 +167,8 @@ const EventList = ({eventPages}) => {
       return myEventDate >= mySelectedDate 
     })
     
-    console.log('Filtered Items')
-    console.log(filteredItems)
+    // console.log('Filtered Items')
+    // console.log(filteredItems)
 
     setFilteredEvents(filteredItems)
   }
@@ -178,8 +178,8 @@ const EventList = ({eventPages}) => {
     const selectedDate = e;
     // setSearchDate(selectedDate)
 
-    console.log('Date Select')
-    console.log(selectedDate);
+    // console.log('Date Select')
+    // console.log(selectedDate);
   }
 
   //TODO: apply filtering but on todays date + 31 days
@@ -187,8 +187,8 @@ const EventList = ({eventPages}) => {
     const selectedDate = e;
     // setSearchDate(selectedDate)
 
-    console.log('Date Select')
-    console.log(selectedDate);
+    // console.log('Date Select')
+    // console.log(selectedDate);
   }
 
   const handleClearAllFilters = () => {
