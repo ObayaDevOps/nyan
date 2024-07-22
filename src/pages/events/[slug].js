@@ -100,11 +100,15 @@ const Event = ({eventPage}) => {
           spacing={{ base: 8, md: 10 }}
           py={{ base: 18, md:0, lg:0 }}
         >
-          <Box  m={{base: 4, md: 12, lg: 20}} >
+          <Box  m={{base: 0, md: 16, lg: 20}} >
             <NextImage
               src={eventPage.eventLandingDisplayImage} 
-              height={1824/4} width={2736/4} 
-              blurDataURL={eventPage.eventLandingDisplayImage}     
+              height={1824/4} width={2736/4}
+              // layout='fill' 
+              placeholder="blur"	
+              blurDataURL={eventPage.eventLandingDisplayImage}
+              alt={eventPage.eventName}
+     
                 
             ></NextImage>
 

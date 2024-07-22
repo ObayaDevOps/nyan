@@ -92,7 +92,9 @@ function EventCard(props) {
                 <NextImage
                  src={eventLandingDisplayImage} 
                  height={1824} width={2736}
-                 blurDataURL={eventLandingDisplayImage}
+                 placeholder="blur"	
+                 blurDataURL={eventPage.eventLandingDisplayImage}
+                 alt={eventPage.eventName}
                  ></NextImage>
               </NextLink>
             </Box>
