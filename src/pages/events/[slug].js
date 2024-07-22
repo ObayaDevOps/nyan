@@ -103,7 +103,8 @@ const Event = ({eventPage}) => {
           <Box  m={{base: 4, md: 12, lg: 20}} >
             <NextImage
               src={eventPage.eventLandingDisplayImage} 
-              height={1824/4} width={2736/4}     
+              height={1824/4} width={2736/4} 
+              blurDataURL={eventPage.eventLandingDisplayImage}     
                 
             ></NextImage>
 
