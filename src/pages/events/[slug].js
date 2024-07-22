@@ -256,7 +256,7 @@ export async function getStaticPaths() {
 
     return {
         paths: paths.map((slug) => ({params: {slug}})),
-        fallback: false,
+        fallback: true,
     }
 }
 
@@ -296,5 +296,9 @@ export async function getStaticProps(context) {
 
     }
 }
+
+
+
+
 
 export default Event
