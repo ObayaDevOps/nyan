@@ -529,7 +529,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         <Show below='md'>
         <Flex flex={{ base: 1 }} ml={-16} justify={{ base: 'center', md: 'start' }}>
 
-          {/* <Box  m={{base: '22vw', md: 16, lg: 20}} as='a' href='/#' > */}
+          <Box as='a' href='/#' >
               <NextImage
                 src={"/neko-logo.svg"} 
                 height={50} width={50}
@@ -539,7 +539,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 alt={'nekosero logo'}
       
               ></NextImage>
-            {/* </Box> */}
+            </Box>
             </Flex>
           </Show>
     </Flex>
