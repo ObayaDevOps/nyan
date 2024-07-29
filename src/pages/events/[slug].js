@@ -83,7 +83,7 @@ const Event = ({eventPage}) => {
         </Head>
 
         <Box>
-          <SideBar />
+          <SideBar showNavIcon={true}/>
         </Box>
 
 

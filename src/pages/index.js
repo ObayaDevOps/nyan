@@ -46,7 +46,7 @@ export default function Home() {
       </Head>
       
       <Box>
-        <SideBar />
+        <SideBar showNavIcon={false} />
       </Box>
 
       <Box>

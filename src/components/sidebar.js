@@ -207,7 +207,7 @@ export default function SimpleSidebar(props) {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', lg:'flex' }} onOpen={onOpen} />
+      <MobileNav display={{ base: 'flex', lg:'flex' }} onOpen={onOpen} showNavIcon={props.showNavIcon} />
 
     </Box>
   )
@@ -501,7 +501,11 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
   )
 }
 
-const MobileNav = ({ onOpen, ...rest }) => {
+const MobileNav = ({ onOpen, showNavIcon, ...rest }) => {
+  console.log('NAV ICON')
+  console.log(showNavIcon)
+
+
   return (
     <Flex
       ml={{ base: 0, lg: 0 }}
@@ -526,9 +530,12 @@ const MobileNav = ({ onOpen, ...rest }) => {
         }}
       />
       
-        <Show below='md'>
-        <Flex flex={{ base: 1 }} ml={-16} justify={{ base: 'center', md: 'start' }}>
 
+      { showNavIcon && (
+            
+        
+        <Show below='md'>
+          <Flex flex={{ base: 1 }} ml={-16} justify={{ base: 'center', md: 'start' }}>
           <Box as='a' href='/#' >
               <NextImage
                 src={"/neko-logo.svg"} 
@@ -542,6 +549,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
             </Box>
             </Flex>
           </Show>
+
+      )}
     </Flex>
 
   )

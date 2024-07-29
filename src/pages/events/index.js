@@ -224,7 +224,7 @@ const EventList = ({eventPages}) => {
       </Head>
 
       <Box>
-        <SideBar />
+        <SideBar showNavIcon={true} />
       </Box>
 
       {/* The Top Title and search Container */}
