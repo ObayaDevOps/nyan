@@ -135,7 +135,8 @@ const Event = ({eventPage}) => {
                       color={useColorModeValue('gray.600', 'gray.400')}
                       fontWeight={300}
                       fontFamily='sidebarFont'
-                      fontSize={'xl'}>
+                      pt={2}
+                      fontSize={{base: 'md', md: 'xl'}}>
                       {eventPage.subTitle}
                     </Text>
                     <Box py={6}>

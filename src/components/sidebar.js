@@ -17,7 +17,8 @@ import {
   Link,
   Collapse,
   Center,
-
+  Show,
+  Hide,
   Stack,
   Tooltip,
   useClipboard,
@@ -35,6 +36,8 @@ import {
 
 
 import * as Icons from "react-icons/fa";
+import NextImage from 'next/image'
+
 
 
 import {
@@ -187,7 +190,7 @@ const LinkItems = [
 // https://dev.to/brewhousedigital/nextjs-getstaticprops-with-components-f25
 
 
-export default function SimpleSidebar() {
+export default function SimpleSidebar(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Box>
@@ -389,12 +392,12 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
 
   
     if (!IconComponent) { // Return a default one
-      return <Icons.FaCameraRetro size={35} />;
+      return <Icons.FaCameraRetro size={20} />;
       // return <Icons.FaBeer />;
 
     }
   
-    return <IconComponent size={35}  />;
+    return <IconComponent size={20}  />;
   };
 
 
@@ -443,8 +446,10 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
 
      {(icon && !iconText) && (
           <Icon
-            mr="4"
-            fontSize="16"
+            mr={{base: 4, md: 6}}
+            fontSize={{base: 18, md: 10}}
+            // fontSize="16"
+
             boxSize={{base:'1em', md:'2em'}}
             _groupHover={{
               color: 'white',
@@ -520,6 +525,23 @@ const MobileNav = ({ onOpen, ...rest }) => {
           transform: 'scale(1.15)',
         }}
       />
+      
+        <Show below='md'>
+        <Flex flex={{ base: 1 }} ml={-16} justify={{ base: 'center', md: 'start' }}>
+
+          {/* <Box  m={{base: '22vw', md: 16, lg: 20}} as='a' href='/#' > */}
+              <NextImage
+                src={"/neko-logo.svg"} 
+                height={50} width={50}
+                // layout='fill' 
+                // placeholder="blur"	
+                // blurDataURL={eventPage.eventLandingDisplayImage}
+                alt={'nekosero logo'}
+      
+              ></NextImage>
+            {/* </Box> */}
+            </Flex>
+          </Show>
     </Flex>
 
   )
