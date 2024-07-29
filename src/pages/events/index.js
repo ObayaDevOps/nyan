@@ -318,7 +318,7 @@ const EventList = ({eventPages}) => {
 
 
 //I want the query to return all the info
-const query = groq`*[_type == "eventPage"]{
+const query = groq`*[_type == "eventPage"] | order(eventStartTime desc) {
     eventName,
     eventStartTime,
     eventEndTime,
