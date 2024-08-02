@@ -103,6 +103,7 @@ const Event = ({eventPage}) => {
           columns={{base: 1, md: 1, lg: 2}}
           spacing={{ base: 8, md: 10 }}
           py={{ base: 18, md:0, lg:0 }}
+          mt={-4}
         >
           <Box  m={{base: 0, md: 16, lg: 20}} >
             <NextImage
