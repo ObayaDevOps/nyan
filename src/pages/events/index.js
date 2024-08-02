@@ -204,10 +204,12 @@ const EventList = ({eventPages}) => {
 
 
   return (
-    <Box bgColor={'yellow.300'} 
-    border={'1px'}
-    borderColor={'yellow.300'}
-    minH='100vh'>
+    <Box bgColor={'yellow.300'}
+    marginTop={-5} 
+    // border={'1px'}
+    // borderColor={'whiteAlpha.100'}
+    minH='100vh'
+    >
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />

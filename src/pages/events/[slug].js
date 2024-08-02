@@ -62,7 +62,11 @@ const Event = ({eventPage}) => {
 
 
     return (
-      <Box bg="yellow.300"  pb={12}  border={'1px'}  borderColor={'yellow.300'}
+      <Box bg="yellow.300"  
+      mt={-5}
+      pb={12}  
+      // border={'1px'}  
+      // borderColor={'yellow.300'}
       // h='calc(120vh)'
       minH={'100vh'}
       // overflow='scroll' 
