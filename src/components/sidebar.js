@@ -357,7 +357,7 @@ const SocialsStack = () => {
           />
 
 
-        <IconButton
+        {/* <IconButton
           as='a'
             aria-label="Developer"
             variant="ghost"
@@ -371,7 +371,14 @@ const SocialsStack = () => {
               color: useColorModeValue('white', 'gray.700'),
             }}
             isRound
-          />
+          /> */}
+
+          <Text fontFamily={'sidebarFont'} fontSize={{base:'9px', md: '10px'}} mt={4}>
+             
+            <Link href={'https://www.dwo.vercel.app'}>
+            Built By Dralega Web Ops
+            </Link>
+          </Text>
    
       </Stack>
   </Flex>

@@ -106,7 +106,7 @@ function EventCard(props) {
                   {eventName}
               </NextLink>
 
-              <HStack spacing={{base:16, md: 10, lg:20,  xl: 24}}>
+              <HStack spacing={{base:16, md: 10, lg:20,  xl: 24}} pt={{base: 2, md: 2}}>
               <EventDate
                 name={authorName}
                 date={new Date(eventStartTime)}
@@ -116,6 +116,7 @@ function EventCard(props) {
                   maxW={'6xl'}
                   as="a"
                   p={2}
+                  href={slugLink}
                   // _hover={{colorScheme}}
                   colorScheme="black"
                   // variant='outline'
@@ -133,9 +134,7 @@ function EventCard(props) {
                   size={{base: 'xs', lg: 'xs'}}
                   cursor="pointer"
                   >  
-                  <Link href={slugLink}>       
                     Details
-                  </Link> 
                 </Button>
                 </HStack>
 
@@ -143,7 +142,7 @@ function EventCard(props) {
 
 
 
-              <Text as="p" fontSize="md" marginTop={{base: 2, md: 4}} fontFamily='textFont' textColor='white'>
+              <Text as="p" fontSize="md" marginTop={{base: 2, md: 4}} pb={6} fontFamily='textFont' textColor='white'>
                   {eventLandingPageDisplayShortDescription}
               </Text>
             </Box>
