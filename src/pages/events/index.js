@@ -48,7 +48,7 @@ import { BsFileXFill } from 'react-icons/bs';
 
 
 
-export const EventAuthor = (props) => {
+export const EventDate = (props) => {
   return (
     <HStack marginY="4" spacing="0" display="flex" alignItems="center">
       <Text fontWeight="400">{props.authorName}</Text>
@@ -103,22 +103,52 @@ function EventCard(props) {
             <Box p={6} mt={-4}>
               <Heading fontSize="xl" marginTop="6" fontFamily='sidebarFont' textColor='white'>
               <NextLink href={slugLink} passHref >
-                {/* <Link textDecoration="none" _hover={{ textDecoration: 'none' }}> */}
                   {eventName}
-                {/* </Link> */}
               </NextLink>
 
-              <EventAuthor
+              <HStack spacing={{base:16, md: 10, lg:20,  xl: 24}}>
+              <EventDate
                 name={authorName}
                 date={new Date(eventStartTime)}
               />
+                <Button
+                  
+                  maxW={'6xl'}
+                  as="a"
+                  p={2}
+                  // _hover={{colorScheme}}
+                  colorScheme="black"
+                  // variant='outline'
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  border={'1px'}
+                  rounded='none'
+                  fontFamily='sidebarFont'
+                  textColor={ 'white'}
+                  w={{
+                      base: "50%",
+                      sm: "40%",
+                  }}
+                  size={{base: 'xs', lg: 'xs'}}
+                  cursor="pointer"
+                  >  
+                  <Link href={slugLink}>       
+                    Details
+                  </Link> 
+                </Button>
+                </HStack>
+
               </Heading>
 
-              <Text as="p" fontSize="md" marginTop="0" fontFamily='textFont' textColor='white'>
+
+
+              <Text as="p" fontSize="md" marginTop={{base: 2, md: 4}} fontFamily='textFont' textColor='white'>
                   {eventLandingPageDisplayShortDescription}
               </Text>
             </Box>
 
+          
             
           </Box>
 
