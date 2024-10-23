@@ -43,10 +43,14 @@ import SideBar from '../../components/sidebar'
 import { BsFileXFill } from 'react-icons/bs';
 
 export const EventDate = (props) => {
+  const formatDate = (date) => {
+    return date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
+  };
+
   return (
     <HStack marginY="4" spacing="0" display="flex" alignItems="center">
       <Text fontWeight="400">{props.authorName}</Text>
-      <Text fontSize='md'>{props.date.toLocaleDateString()}</Text>
+      <Text fontSize='md'>{formatDate(props.date)}</Text>
     </HStack>
   );
 };
