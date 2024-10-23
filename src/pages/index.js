@@ -32,7 +32,7 @@ export default function Home() {
         <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
         <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710195370/nekosero5_-_Landscape_Post_1_d9yvq5.png" />
         <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710196588/nekosero5_-_Landscape_Post_1_vviwsg.png" />
-        <meta property="og:url" content="https://www.nekosero.ug/" />
+        <meta property="og:url" content="https://www.nekosero.ug" />
         <meta property="og:type" content="website" />
         
         <link rel="icon" href="/neko-logo.svg" />
