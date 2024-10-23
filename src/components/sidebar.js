@@ -541,21 +541,16 @@ const MobileNav = ({ onOpen, showNavIcon, ...rest }) => {
       { showNavIcon && (
             
         
-        <Show below='md'>
-          <Flex flex={{ base: 1 }} ml={-16} justify={{ base: 'center', md: 'start' }}>
+          <Flex flex={{ base: 1 }} ml={-16} justify={{ base: 'center' }}>
           <Box as='a' href='/#' >
               <NextImage
                 src={"/neko-logo.svg"} 
                 height={50} width={50}
-                // layout='fill' 
-                // placeholder="blur"	
-                // blurDataURL={eventPage.eventLandingDisplayImage}
                 alt={'nekosero logo'}
       
               ></NextImage>
             </Box>
             </Flex>
-          </Show>
 
       )}
     </Flex>

@@ -50,21 +50,6 @@ export const EventDate = (props) => {
   );
 };
 
-const EventTags = (props) => {
-  return (
-    <Flex marginTop={props.marginTop} ml={-2}>
-      {props.tags.map((tag) => {
-        return (
-          <Box mx={2} key={tag}>
-            <Tag size={'sm'}  p={2} variant="solid" variant='outline' rounded='none' bg='blackAlpha.900' textColor='white' fontFamily='sidebarFont'>
-              {tag}
-            </Tag>
-          </Box>
-        );
-      })}
-    </Flex>
-  );
-};
 
 function EventCard(props) {
   const {eventName, authorName, eventStartTime, eventEndTime, eventTagList, eventLandingPageDisplayShortDescription,
