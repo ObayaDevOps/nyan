@@ -177,7 +177,7 @@ const EventList = ({eventPages}) => {
   const [searchItem, setSearchItem] = useState('');
   const [filteredEvents, setFilteredEvents] = useState(eventPages);
   const [selectedFilter, setSelectedFilter] = useState('all');
-  const [eventSearchPlaceholder, setEventSearchPlaceholder] = useState('Event Search');
+  const [eventSearchPlaceholder, setEventSearchPlaceholder] = useState('Search events...');
 
   const handleInputChange = (e) => { 
     const searchTerm = e.target.value;
@@ -298,6 +298,30 @@ const EventList = ({eventPages}) => {
           </Text>
         </Heading>
 
+        <InputGroup mb={4}>
+          <InputLeftElement pointerEvents='none'>
+            <FaSearch color='black' />
+          </InputLeftElement>
+          <Input 
+            placeholder={eventSearchPlaceholder}
+            value={searchItem}
+            onChange={handleInputChange}
+            bg={searchItem ? "white" : "transparent"}
+            border={{base: "1px", md: "2px"}}
+            borderColor="black"
+            color="black"
+            _placeholder={{ color: 'black' }}
+            _hover={{
+              bg: "rgba(255, 255, 255, 0.1)"
+            }}
+            _focus={{
+              bg: "white"
+            }}
+            transition="all 0.3s"
+            rounded="none"
+            fontFamily="sidebarFont"
+          />
+        </InputGroup>
       </Container>
 
       <DateButtons selectedFilter={selectedFilter} onFilterChange={handleFilterChange} />
