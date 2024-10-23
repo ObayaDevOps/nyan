@@ -48,15 +48,16 @@ const Event = ({eventPage}) => {
   console.log(eventPage.eventStartTime)
 
 
-  // if( typeof eventPage != 'undefined') {
     const start = new Date(eventPage.eventStartTime);
-    const startDateFormatted = start.toLocaleDateString()
-    const startHourFormatted = start.toLocaleTimeString()
+    const startDateFormatted = start.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+    const startHourFormatted = start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
     
     const end = new Date(eventPage.eventEndTime);
-    const endDateFormatted = end.toLocaleDateString()
-    const endHourFormatted = end.toLocaleTimeString()
-  // }
+    const endDateFormatted = end.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+    const endHourFormatted = end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+
+
 
 
 
@@ -90,14 +91,6 @@ const Event = ({eventPage}) => {
           <SideBar showNavIcon={true}/>
         </Box>
 
-
-        {/* <Container 
-          maxW={{base:'1xl',md:'85vw'}} 
-          py={12} 
-          rounded='3xl' 
-          ml={{base:0,lg: 60}}
-
-        > */}
 
         <SimpleGrid 
           columns={{base: 1, md: 1, lg: 2}}
@@ -150,7 +143,7 @@ const Event = ({eventPage}) => {
                         fontWeight={300}
                         fontFamily='sidebarFont'
                         fontSize={'md'}>
-                        Date: {startDateFormatted}  -  {endDateFormatted}
+                        Date: {startDateFormatted} - {endDateFormatted}
                       </Text>
                       <Text
                         color={useColorModeValue('gray.600', 'gray.400')}
@@ -158,7 +151,7 @@ const Event = ({eventPage}) => {
                         fontFamily='sidebarFont'
 
                         fontSize={'md'}>
-                        Time: {startHourFormatted} -  {endHourFormatted}
+                        Time: {startHourFormatted} - {endHourFormatted}
                       </Text>
                     </Box>
                   </Box>
@@ -167,21 +160,6 @@ const Event = ({eventPage}) => {
                     spacing={{ base: 4, sm: 6 }}
                     direction={'column'}
                     >
-                      {/* <HStack>
-                          <Flex ml={-2}>
-                            {eventPage.eventTagList.map((tag) => {
-                              return (
-                                <Box mx={2}>
-                                  <Tag size={'sm'}  p={2} variant="solid" variant='outline'  bg='blackAlpha.900' textColor='white' fontFamily='sidebarFont' key={tag}>
-                                    {tag}
-                                  </Tag>
-                                </Box>
-                              );
-                            })}
-                          </Flex>
-                      </HStack> */}
-
-
                       <Text
                         textAlign='left'
                         color={useColorModeValue('black', 'gray.400')}
@@ -205,12 +183,10 @@ const Event = ({eventPage}) => {
                       </Text>
                     </VStack>
 
-                    {/* <NextLink href="/info/contact-enquiry"> */}
                         <Button
                         maxW={'2xl'}
                         as="a"
                         href={eventPage.contactSocialLink}
-                        // colorScheme="green"
                         variant='outline'
                         display="inline-flex"
                         alignItems="center"
@@ -218,9 +194,6 @@ const Event = ({eventPage}) => {
                         border={'2px'}
                         rounded='none'
                         fontFamily='sidebarFont'
-                        // shadow={'lg'}
-                        // textColor={ 'white'}
-
 
                         w={{
                             base: "full",
@@ -232,7 +205,6 @@ const Event = ({eventPage}) => {
                         }}
                         size="lg"
                         cursor="pointer"
-                        // fontFamily="Helvetica"
 
                         >
                         Get in Contact
@@ -244,7 +216,6 @@ const Event = ({eventPage}) => {
                             />
                         </Icon>
                         </Button>
-                      {/* </NextLink> */}
 
                   </Stack>
         
