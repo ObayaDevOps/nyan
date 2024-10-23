@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import React, { useRef } from "react";
-import { useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 import { Box,AbsoluteCenter, Button,
@@ -16,14 +16,7 @@ import NextLink from 'next/link'
 import SideBar from '../components/sidebar.js' 
 
 export default function Home() {
-  const ref1 = useRef(null)
-  const isInView1 = useInView(ref1)
-
   return (
-
-    // <ScaleFade initialScale={0.6}
-    // in={isInView1}>
-
     <Box  
     minH={'100vh'} 
     bgColor={'yellow.300'} 
@@ -50,46 +43,52 @@ export default function Home() {
       </Box>
 
       <Box>
-
-        <AbsoluteCenter mt={{base: 0, md: 0}} 
-        // ml={{base:0,lg: 60}}
-        
-
-        >
-          <Box ref={ref1}>
-          <NextLink href='/#'>
-            <Image
-              src={getCloudinaryImage('nekosero5.png')} 
-              alt="Nekosero Brand Logo"
-              width={250}
-              height= {250}
-              priority
-              placeholder="blur"
-              
-              blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
+        <AbsoluteCenter mt={{base: 0, md: 0}}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <NextLink href='/#'>
+              <Image
+                src={getCloudinaryImage('nekosero5.png')} 
+                alt="Nekosero Brand Logo"
+                width={250}
+                height={250}
+                priority
+                placeholder="blur"
+                blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
               />
             </NextLink>
-            </Box>
+          </motion.div>
 
-            <Flex 
+          <Flex 
             justify='center'
             mt={20}
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
             >
               <Button
-               as='a'  
+                as='a'  
                 _hover={{
-                transform: 'scale(1.15)',
-              }}
-               colorScheme='black' rounded={'none'} fontFamily='sidebarFont' border={'2px'} variant='outline' href='/events'>
+                  transform: 'scale(1.15)',
+                }}
+                colorScheme='black' 
+                rounded={'none'} 
+                fontFamily='sidebarFont' 
+                border={'2px'} 
+                variant='outline' 
+                href='/events'
+              >
                 See What's On
               </Button>
-            </Flex>
+            </motion.div>
+          </Flex>
         </AbsoluteCenter>
-
       </Box>
-
     </Box>
-
-    // </ScaleFade>
   )
 }
