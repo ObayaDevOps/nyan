@@ -215,7 +215,7 @@ export default function SimpleSidebar(props) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
-
+  console.log('tenantListData:', tenantListData);
   return (
     <Box>
       <Box
@@ -247,13 +247,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <Box pt={10}>
         {LinkCategoriesTop.map((category) => (
           <NavItem key={category.label} children={category.children} {...category} >
-            {/* {category.children} */}
           </NavItem>
         ))}
 
         {tenantListData.map((category) => (
           <NavItem key={category.title} children={category.tenantNameAndURL} label={category.title} iconText={category.icon} {...category} >
-            {/* {category.title} */}
           </NavItem>
         ))}
         </Box>
@@ -392,26 +390,16 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   const DynamicFaIcon = ({ name }) => {
-    // console.log('ICON!!')
-    // console.log(name)
     const IconComponent = Icons[name];
-    // console.log(IconComponent)
 
   
     if (!IconComponent) { // Return a default one
       return <Icons.FaCameraRetro size={20} />;
-      // return <Icons.FaBeer />;
 
     }
   
     return <IconComponent size={20}  />;
   };
-
-
-  // console.log('EEEERE aR your childs bitch')
-  // console.log(children)
-  // console.log(label)
-  // console.log(icon)
 
 
   return (
@@ -420,9 +408,6 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
     <Flex
       py={2}
       ml={8}
-      // as={Link}
-      // href={'#'}
-      // justify={'space-between'}
       align={'center'}
       textColor='black'
       fontFamily="sidebarFont"
@@ -434,15 +419,6 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
 
       {iconText && (
       <Box mr="4" boxSize={{base:'1em', md:'2em'}} >
-        {/* <DynamicFaIcon name="FaCameraRetro" /> */}
-        {/* <DynamicFaIcon name="FaGlassMartini" /> */}
-        {/* <DynamicFaIcon name="FaCameraRetro" /> */}
-        {/* <DynamicFaIcon name="FaBatteryFull" /> */}
-        {/* <DynamicFaIcon name="FaLeaf" /> */}
-
-        {/* <DynamicFaIcon name="FaBusinessTime" /> */}
-        {/* <DynamicFaIcon name="FaBatteryFull" /> */}
-        {/* <DynamicFaIcon name="FaUserClock" /> */}
         <DynamicFaIcon name={iconText} />
 
 
@@ -455,8 +431,6 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
           <Icon
             mr={{base: 4, md: 6}}
             fontSize={{base: 18, md: 10}}
-            // fontSize="16"
-
             boxSize={{base:'1em', md:'2em'}}
             _groupHover={{
               color: 'white',
@@ -509,9 +483,6 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
 }
 
 const MobileNav = ({ onOpen, showNavIcon, ...rest }) => {
-  console.log('NAV ICON')
-  console.log(showNavIcon)
-
 
   return (
     <Flex

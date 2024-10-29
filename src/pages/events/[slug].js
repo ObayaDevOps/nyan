@@ -41,11 +41,11 @@ import SideBar from '../../components/sidebar'
 
 const Event = ({eventPage}) => {
 
-  console.log('EVENT ')
-  console.log(eventPage)
+  // console.log('EVENT ')
+  // console.log(eventPage)
 
-  console.log('EVENT START')
-  console.log(eventPage.eventStartTime)
+  // console.log('EVENT START')
+  // console.log(eventPage.eventStartTime)
 
 
     const start = new Date(eventPage.eventStartTime);
@@ -240,8 +240,10 @@ export async function getStaticPaths() {
         `*[_type == "eventPage" && defined(slug.current)][].slug.current`
     )
 
-    console.log("paths:")
-    console.log(paths) //prints the slug - is this what I need in navbar
+    // console.log("paths:")
+    // console.log(paths) 
+    
+    //prints the slug - is this what I need in navbar
     //remember all this routing only works in the 'pages' directory
 
     //so how to get into navbar ? - navbar cannot be a page
@@ -276,8 +278,8 @@ export async function getStaticProps(context) {
         query, { slug }    
     )
 
-    console.log("SLUG PAGE - DETAILS")
-    console.log(eventPage)
+    // console.log("SLUG PAGE - DETAILS")
+    // console.log(eventPage)
 
 
     return {
