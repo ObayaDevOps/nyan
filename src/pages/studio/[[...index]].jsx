@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { NextStudio } from 'next-sanity/studio'
-import { NextStudioHead } from 'next-sanity/studio/head'
+// import { NextStudioHead } from 'next-sanity/studio/head'
 import config from '../../../sanity.config'
 
 import {
@@ -15,7 +15,7 @@ export default function StudioPage() {
             <meta name="description" content="Nekosero Webpage" />
             <link rel="icon" href="/cat-face.svg" />
 
-            <NextStudioHead />
+            {/* <NextStudioHead /> */}
         </Head>
         
         <NextStudio config={config} />
