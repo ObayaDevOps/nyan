@@ -23,7 +23,13 @@ import {
     List,
     ListItem,
     HStack,
-    Link
+    Link,
+    useDisclosure,
+    FormControl,
+    FormLabel,
+    Input,
+    useToast,
+    Collapse
   } from '@chakra-ui/react';
 import { MdLocalShipping } from 'react-icons/md'
 
@@ -37,15 +43,140 @@ import NextImage from 'next/image'
 
 import SideBar from '../../components/sidebar' 
 
-
+import { useState } from 'react';
 
 const Event = ({eventPage}) => {
+    const { isOpen, onToggle } = useDisclosure();
+    const toast = useToast();
+    
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: ''
+    });
+    
+    const [errors, setErrors] = useState({});
 
-  // console.log('EVENT ')
-  // console.log(eventPage)
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+        if (errors[name]) {
+            setErrors(prev => ({
+                ...prev,
+                [name]: ''
+            }));
+        }
+    };
 
-  // console.log('EVENT START')
-  // console.log(eventPage.eventStartTime)
+    const validateForm = () => {
+        const newErrors = {};
+        
+        if (!formData.name.trim()) {
+            newErrors.name = 'Name is required';
+        } else if (formData.name.length < 2) {
+            newErrors.name = 'Name must be at least 2 characters';
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!formData.email) {
+            newErrors.email = 'Email is required';
+        } else if (!emailRegex.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email';
+        }
+        
+        const phoneRegex = /^\+?[\d\s-]{10,}$/;
+        if (!formData.phone) {
+            newErrors.phone = 'Phone number is required';
+        } else if (!phoneRegex.test(formData.phone)) {
+            newErrors.phone = 'Please enter a valid phone number';
+        }
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+//EventName, Name, Email, PhoneNumber
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        if (validateForm()) {
+          let userTypedData = {
+            EventName: eventPage.eventName,
+            EventDate: startDateFormatted + ' - ' + endDateFormatted,
+            EventTime: startHourFormatted + ' - ' + endHourFormatted,
+            EventLink: eventPage.contactSocialLink,
+            Name: e.target.name.value,
+            Email: e.target.email.value,
+            PhoneNumber: e.target.phone.value
+          }
+    
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userTypedData)
+          })
+
+
+            toast({
+                title: "Thanks for registering interest!",
+                description: "We'll get back to you soon.",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+                position: 'top',
+                render: ({ onClose }) => (
+                    <Box
+                        p={4}
+                        bg="green"
+                        border="2px"
+                        borderColor="yellow.300"
+                        color="white"
+                        fontFamily="sidebarFont"
+                    >
+                        <VStack align="start" spacing={2}>
+                            <Text fontWeight={600}>Thanks for registering interest!</Text>
+                            <Text>We'll get back to you soon.</Text>
+                        </VStack>
+                    </Box>
+                )
+            });
+            setFormData({ name: '', email: '', phone: '' });
+        } else {
+            toast({
+                title: "Form validation failed",
+                description: "Please check the form and try again.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+                position: 'top',
+                render: ({ onClose }) => (
+                    <Box
+                        p={4}
+                        bg="black"
+                        border="2px"
+                        borderColor="red.500"
+                        color="red.500"
+                        fontFamily="sidebarFont"
+                    >
+                        <VStack align="start" spacing={2}>
+                            <Text fontWeight={600}>Form validation failed</Text>
+                            <Text>Please check the form and try again.</Text>
+                        </VStack>
+                    </Box>
+                )
+            });
+        }
+    };
+
+    // console.log('EVENT ')
+    // console.log(eventPage)
+
+    // console.log('EVENT START')
+    // console.log(eventPage.eventStartTime)
 
 
     const start = new Date(eventPage.eventStartTime);
@@ -217,6 +348,157 @@ const Event = ({eventPage}) => {
                         </Icon>
                         </Button>
 
+                        <Button
+                        maxW={'2xl'}
+                        as="a"
+                        variant='outline'
+                        display="inline-flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        border={'2px'}
+                        rounded='none'
+                        fontFamily='sidebarFont'
+                        onClick={onToggle}
+                        bg={isOpen ? 'black' : 'transparent'}
+                        color={isOpen ? 'yellow.300' : 'black'}
+                        _hover={{
+                          bg: isOpen ? 'black' : 'transparent',
+                          color: isOpen ? 'yellow.300' : 'black'
+                        }}
+                        w={{
+                            base: "full",
+                            sm: "auto",
+                        }}
+                        mb={{
+                            base: 2,
+                            sm: 0,
+                        }}
+                        size="lg"
+                        cursor="pointer"
+                        >
+                        Register Interest
+                        </Button>
+
+                        <Collapse in={isOpen} animateOpacity>
+                          <Box
+                            as="form"
+                            onSubmit={handleSubmit}
+                            mt={4}
+                            p={6}
+                            bg="black"
+                            borderWidth="2px"
+                            borderColor='yellow.300'
+                            borderRadius="none"
+                            maxW={'2xl'}
+                          >
+                            <VStack spacing={4}>
+                              <FormControl isRequired isInvalid={errors.name}>
+                                <FormLabel 
+                                  fontFamily='sidebarFont' 
+                                  color="yellow.300"
+                                  fontSize={{base: 'md', md: 'lg'}}
+                                  fontWeight={500}
+                                >
+                                  Name
+                                </FormLabel>
+                                <Input 
+                                  name="name"
+                                  value={formData.name}
+                                  onChange={handleChange}
+                                  fontFamily='sidebarFont'
+                                  rounded='none'
+                                  borderWidth="2px"
+                                  borderColor={errors.name ? 'red.500' : 'yellow.300'}
+                                  bg="yellow.300"
+                                  color="black"
+                                  _hover={{ borderColor: 'yellow.400' }}
+                                />
+                                {errors.name && (
+                                  <Text color="red.500" fontSize="sm" mt={1}>
+                                    {errors.name}
+                                  </Text>
+                                )}
+                              </FormControl>
+                              
+                              <FormControl isRequired isInvalid={errors.email}>
+                                <FormLabel 
+                                  fontFamily='sidebarFont' 
+                                  color="yellow.300"
+                                  fontSize={{base: 'md', md: 'lg'}}
+                                  fontWeight={500}
+                                >
+                                  Email
+                                </FormLabel>
+                                <Input 
+                                  name="email"
+                                  type="email"
+                                  value={formData.email}
+                                  onChange={handleChange}
+                                  fontFamily='sidebarFont'
+                                  rounded='none'
+                                  borderWidth="2px"
+                                  borderColor={errors.email ? 'red.500' : 'yellow.300'}
+                                  bg="yellow.300"
+                                  color="black"
+                                  _hover={{ borderColor: 'yellow.400' }}
+                                />
+                                {errors.email && (
+                                  <Text color="red.500" fontSize="sm" mt={1}>
+                                    {errors.email}
+                                  </Text>
+                                )}
+                              </FormControl>
+                              
+                              <FormControl isRequired isInvalid={errors.phone}>
+                                <FormLabel 
+                                  fontFamily='sidebarFont' 
+                                  color="yellow.300"
+                                  fontSize={{base: 'md', md: 'lg'}}
+                                  fontWeight={500}
+                                >
+                                  Phone Number
+                                </FormLabel>
+                                <Input 
+                                  name="phone"
+                                  type="tel"
+                                  value={formData.phone}
+                                  onChange={handleChange}
+                                  fontFamily='sidebarFont'
+                                  rounded='none'
+                                  borderWidth="2px"
+                                  borderColor={errors.phone ? 'red.500' : 'yellow.300'}
+                                  bg="yellow.300"
+                                  color="black"
+                                  _hover={{ borderColor: 'yellow.400' }}
+                                />
+                                {errors.phone && (
+                                  <Text color="red.500" fontSize="sm" mt={1}>
+                                    {errors.phone}
+                                  </Text>
+                                )}
+                              </FormControl>
+                              
+                              <Button
+                                type="submit"
+                                variant='outline'
+                                border={'2px'}
+                                rounded='none'
+                                fontFamily='sidebarFont'
+                                w="full"
+                                mt={4}
+                                borderColor="yellow.300"
+                                color="yellow.300"
+                                _hover={{
+                                  bg: 'yellow.300',
+                                  color: 'black'
+                                }}
+                              >
+                                Submit
+                              </Button>
+                            </VStack>
+                          </Box>
+                        </Collapse>
+
                   </Stack>
         
                 </Stack>
@@ -240,13 +522,6 @@ export async function getStaticPaths() {
         `*[_type == "eventPage" && defined(slug.current)][].slug.current`
     )
 
-    // console.log("paths:")
-    // console.log(paths) 
-    
-    //prints the slug - is this what I need in navbar
-    //remember all this routing only works in the 'pages' directory
-
-    //so how to get into navbar ? - navbar cannot be a page
 
     return {
         paths: paths.map((slug) => ({params: {slug}})),
