@@ -380,6 +380,9 @@ const Event = ({eventPage}) => {
                         </Button>
 
                         <Collapse in={isOpen} animateOpacity>
+                        <Text fontFamily='sidebarFont' fontSize={{base:'md', md:'lg'}}>
+                          Give us your details and we'll get back to you soon!
+                          </Text>
                           <Box
                             as="form"
                             onSubmit={handleSubmit}
