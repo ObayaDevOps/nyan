@@ -356,6 +356,7 @@ const Event = ({eventPage}) => {
                         alignItems="center"
                         justifyContent="center"
                         border={'2px'}
+                        borderColor='black'
                         rounded='none'
                         fontFamily='sidebarFont'
                         onClick={onToggle}
@@ -390,7 +391,7 @@ const Event = ({eventPage}) => {
                             p={6}
                             bg="black"
                             borderWidth="2px"
-                            borderColor='yellow.300'
+                            borderColor='black'
                             borderRadius="none"
                             maxW={'2xl'}
                           >
