@@ -224,7 +224,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         // border={'4px'}
         w={{ base: 'full', lg: 'full' }}
         pos="fixed"
-        h="90vh"
+        h="100vh"
         // mb={'60vh'}
         overflowY='auto'
         top='0'
@@ -258,19 +258,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Box>
       </Box>
 
-      <Box 
+      {/* <Box 
       {...rest} 
       position='fixed' 
       bottom='0' 
       p={{base: 2, md: 4}} 
       bg={'yellow.400'}
       w={{ base: 'full', lg: 'full' }}
-      // border={'2px'}
-      // borderTop={0}
       h={{base:'20vh', lg: '10vh'}}
       >
         <SocialsStack />
-      </Box>
+      </Box> */}
       
 
     </Box>
