@@ -221,31 +221,30 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box>
       <Box
         bg={useColorModeValue('yellow.400', 'gray.900')}
-        // border={'4px'}
         w={{ base: 'full', lg: 'full' }}
         pos="fixed"
         h="100vh"
-        // mb={'60vh'}
         overflowY='auto'
         top='0'
-        // bottom='20'
-        
+        pb={{base:"60", md:"60", lg:"60"}}
+
         {...rest}>
-        <Flex h={{base:"16", md: "24",lg:"20"}} alignItems="center" mx="8" justifyContent="space-between">
+        <Flex h={{base:"16", md: "24",lg:"20"}} alignItems="center" mx="6" justifyContent="space-between">
           <CloseButton 
             display={{ base: 'flex', md: 'flex', lg: 'flex' }} 
             onClick={onClose} 
             mt={12} 
-            // border={'2px'} 
             rounded='none' 
             size='lg' 
             _hover={{
               transform: 'scale(1.15)',
             }}
-            p={3} />
+            // p={4}
+            
+             />
         </Flex>
 
-        <Box pt={10}>
+        <Box pt={10} >
         {LinkCategoriesTop.map((category) => (
           <NavItem key={category.label} children={category.children} {...category} >
           </NavItem>
@@ -258,7 +257,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Box>
       </Box>
 
-      {/* <Box 
+      <Box 
       {...rest} 
       position='fixed' 
       bottom='0' 
@@ -268,7 +267,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h={{base:'20vh', lg: '10vh'}}
       >
         <SocialsStack />
-      </Box> */}
+      </Box>
       
 
     </Box>
@@ -439,7 +438,7 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
         )}
 
       <Link  py={2}   fontFamily="sidebarFont"
-      href={href} key={label}
+      href={href} key={label} fontSize={{base:'12px', md:'14px'}}
               >
         {label}
       </Link>
@@ -461,6 +460,9 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
         pl={20}
         borderLeft={1}
         borderStyle={'solid'}
+        border={'2px'}
+        borderColor={'black'}
+
         textColor='white'
         bgColor={'black'}
         py={4}
@@ -468,7 +470,7 @@ const NavItem = ({ label, children, href, icon, iconText , ...rest }) => {
         {children &&
           children.map((child) => (
               <Link  py={2}   fontFamily="sidebarFont"
-              href={child.tenantLink} key={child.label}
+              href={child.tenantLink} key={child.label} fontSize={{base:'12px', md:'14px'}}
               >
                 {child.tenantName}
               </Link>
