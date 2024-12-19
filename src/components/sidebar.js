@@ -378,7 +378,7 @@ const SocialsStack = () => {
 
           <Text fontFamily={'sidebarFont'} fontSize={{base:'9px', md: '10px'}} mt={4}>
              
-            <Link href={'https://www.dwo.vercel.app'}>
+            <Link href={'https://www.dralegawebops.com/'}>
             Built By Dralega Web Ops
             </Link>
           </Text>
