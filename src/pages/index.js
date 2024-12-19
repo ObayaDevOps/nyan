@@ -82,7 +82,7 @@ export default function Home() {
                 rounded={'none'} 
                 fontFamily='sidebarFont' 
                 border={'2px'}
-                w={'200px'} 
+                w={'250px'} 
                 variant='outline' 
                 href='/events'
               >
@@ -112,11 +112,11 @@ export default function Home() {
                 fontFamily='sidebarFont' 
                 border={'2px'} 
                 variant='outline' 
-                w={'200px'} 
+                w={'250px'} 
 
                 href='/rental-interest'
               >
-                Rental Space
+                Rental Space Query
                 {/* <Icon boxSize={4} ml={1} viewBox="0 0 20 20" fill="currentColor">
                             <path
                             fillRule="evenodd"
