@@ -16,7 +16,6 @@ import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryIm
 import NextLink from 'next/link'
 import SideBar from '../components/sidebar.js' 
 
-import cat from '../../public/'
 
 export default function Home() {
   return (
