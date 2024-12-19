@@ -17,8 +17,8 @@ import { defineField, defineType, defineConfig } from 'sanity'
 
 
 export default defineType({
-  name: 'eventPage',
-  title: 'Event Page',
+  name: 'rentalInterestPage',
+  title: 'Rental Interest Page',
   icon: PackageIcon,
   type: 'document',
   fields: [
@@ -29,8 +29,8 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'eventName',
-      title: 'Event Name',
+      name: 'pageName',
+      title: 'Page Name',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -42,62 +42,33 @@ export default defineType({
 
     //Archive Images
     defineField({
-        name: 'eventLandingDisplayImage',
-        title: 'Event Landing Display Image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      }),
-      defineField({
-        name: 'sharingUrlImage',
-        title: 'Sharing URL Image (should be very small < 30kb)',
+        name: 'mainDisplayImage',
+        title: 'Main Display Image',
         type: 'image',
         options: {
           hotspot: true,
         },
       }),
 
-      defineField({
-        name: 'eventStartTime',
-        title: 'Event Start Time',
-        type: 'datetime',
-        validation: (rule) => rule.required(),
-      }), 
-
-      defineField({
-        name: 'eventEndTime',
-        title: 'Event End Time',
-        type: 'datetime',
-        validation: (rule) => rule.required(),
-      }), 
-
-      //For the Archive Page
-      defineField({
-        name: 'eventLandingPageDisplayShortDescription',
-        title: 'Event Landing Page Display Short Description',
-        type: 'string',
-        validation: (rule) => rule.required(),
-      }),
 
     defineField({
-      name: 'eventParagraphText1',
-      title: 'Event Description Paragraph 1',
+      name: 'paragraphText1',
+      title: 'Description Paragraph 1',
       type: 'text',
       validation: (rule) => rule.required(),
     }),
 
     defineField({
-      name: 'eventParagraphText2',
-      title: 'Event Paragraph Text 2 (Optional)',
+      name: 'paragraphText2',
+      title: 'Description Paragraph 2 (Optional)',
       type: 'text',
     }),
 
     defineField({
-      name: 'eventParagraphText3',
-      title: 'Event Paragraph Text 3 (Optional)',
-      type: 'text',
-    }),
+        name: 'paragraphText3',
+        title: 'Description Paragraph 3 (Optional)',
+        type: 'text',
+      }),
 
     defineField({
       name: 'contactSocialLink',
@@ -106,21 +77,6 @@ export default defineType({
       validation: (rule) => rule.required(),
 
     }),
-
-    //Slug - URL
-    {
-        title: 'Slug (This will be the url link name - just click generate)',
-        name: 'slug',
-        type: 'slug',
-        options: {
-          source: 'title',
-          maxLength: 200, // will be ignored if slugify is set
-          slugify: input => input
-                               .toLowerCase()
-                               .replace(/\s+/g, '-')
-                               .slice(0, 200)
-        }
-    }
 
 
   ],

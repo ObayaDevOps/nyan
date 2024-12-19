@@ -76,6 +76,8 @@ import { BsFillCalendarDayFill } from "react-icons/bs";
 import { BsFillCalendarHeartFill } from "react-icons/bs";
 import { BiSolidHomeAlt2 } from "react-icons/bi";
 import { FaClockRotateLeft } from "react-icons/fa6";
+import { FaBuildingCircleCheck } from "react-icons/fa6";
+
 
 import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryImageRetreival';
 import Image from 'next/image'
@@ -93,6 +95,11 @@ const LinkCategoriesTop = [
     label:'Events',
     icon: BsFillCalendarHeartFill, 
     href: '/events'
+  },
+  {
+    label:'Register Rental Interest',
+    icon: FaBuildingCircleCheck, 
+    href: '/rental-interest'
   },
 ]
 
@@ -216,7 +223,7 @@ export default function SimpleSidebar(props) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
-  console.log('tenantListData:', tenantListData);
+  // console.log('tenantListData:', tenantListData);
   return (
     <Box>
       <Box
