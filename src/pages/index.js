@@ -82,7 +82,7 @@ export default function Home() {
                 rounded={'none'} 
                 fontFamily='sidebarFont' 
                 border={'2px'}
-                w={'250px'} 
+                w={'280px'} 
                 variant='outline' 
                 href='/events'
               >
@@ -112,7 +112,7 @@ export default function Home() {
                 fontFamily='sidebarFont' 
                 border={'2px'} 
                 variant='outline' 
-                w={'250px'} 
+                w={'280px'} 
 
                 href='/rental-interest'
               >

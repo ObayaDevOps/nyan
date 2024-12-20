@@ -27,6 +27,11 @@ import {
   Avatar
 } from '@chakra-ui/react';
 
+import BoxWithYoutubeBackground from '@/components/boxWithYTBackground';
+import {  ChevronDown } from "lucide-react";
+
+
+
 import { FaSearch } from "react-icons/fa";
 
 import DatePicker from "react-datepicker";
@@ -138,7 +143,7 @@ const DateButtons = ({ selectedFilter, onFilterChange }) => {
   ];
 
   return (
-    <Container mt={10}>
+    <Container mt={10} mb={{base:6, lg:-12}}>
       <Flex flexWrap="wrap" justifyContent="center" gap={2}>
         {buttons.map((button, index) => (
           <Button
@@ -252,8 +257,11 @@ const EventList = ({eventPages}) => {
     }
   };
 
+
+
+
   return (
-    <Box bgColor={'yellow.300'} marginTop={-5} minH='100vh'>
+    <Box bgColor={'yellow.300'} marginTop={-5} minH='95vh'>
       <Head>
         <title>Events at Nekosero: A creative shopping, dining, brewing, fashion, and contemporary arts space</title>
         <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
@@ -270,7 +278,13 @@ const EventList = ({eventPages}) => {
         <SideBar showNavIcon={true} />
       </Box>
 
-      <Container>
+      <BoxWithYoutubeBackground 
+      // videoId={'dSZQNOvpszQ'}
+      videoId={'OgBI2ewu8Yo'}
+
+      OgBI2ewu8Yo
+      >
+      <Container mt={{base: '60%' ,md: '40%', lg: '15%'}}>
         <Heading
           as={'h1'}
           mb={{base: 2, md: 6}}
@@ -279,7 +293,7 @@ const EventList = ({eventPages}) => {
           fontWeight="bold"
           lineHeight="none"
           letterSpacing={{base: "normal", md: "tight" }}
-          color="black"
+          color="yellow.400"
           textAlign='center'
         >
           <Text
@@ -288,40 +302,70 @@ const EventList = ({eventPages}) => {
             fontFamily='sidebarFont'
             transition="all .65s ease" 
             _hover={{ transform: 'scale(1.005)', filter: "brightness(120%)" }}
+            
             pt={8}
             pb={6}
           >
             What's On at Nekosero
           </Text>
         </Heading>
-
-        <InputGroup mb={4}>
-          <InputLeftElement pointerEvents='none'>
-            <FaSearch color='black' />
-          </InputLeftElement>
-          <Input 
-            placeholder={eventSearchPlaceholder}
-            value={searchItem}
-            onChange={handleInputChange}
-            bg={searchItem ? "white" : "transparent"}
-            border={{base: "1px", md: "2px"}}
-            borderColor="black"
-            color="black"
-            _placeholder={{ color: 'black' }}
-            _hover={{
-              bg: "rgba(255, 255, 255, 0.1)"
-            }}
-            _focus={{
-              bg: "white"
-            }}
-            transition="all 0.3s"
-            rounded="none"
-            fontFamily="sidebarFont"
-          />
-        </InputGroup>
       </Container>
+    </BoxWithYoutubeBackground>
 
-      <DateButtons selectedFilter={selectedFilter} onFilterChange={handleFilterChange} />
+    <Container>
+      <Heading
+            as={'h1'}
+            mb={{base: 2, md: 6}}
+            fontSize={{ base: "5xl", md: "6xl", lg:"7xl" }}
+            minHeight={'1vh'}
+            fontWeight="bold"
+            lineHeight="none"
+            letterSpacing={{base: "normal", md: "tight" }}
+            color="black"
+            textAlign='center'
+          >
+            <Text
+              w="full"
+              fontWeight="extrabold"
+              fontFamily='sidebarFont'
+              transition="all .65s ease" 
+              _hover={{ transform: 'scale(1.005)', filter: "brightness(120%)" }}
+              
+              pt={20}
+              pb={6}
+            >
+              Our Events
+            </Text>
+          </Heading>
+
+          <InputGroup mb={4}>
+              <InputLeftElement pointerEvents='none'>
+                <FaSearch color='black' />
+              </InputLeftElement>
+              <Input 
+                placeholder={eventSearchPlaceholder}
+                value={searchItem}
+                onChange={handleInputChange}
+                bg={searchItem ? "white" : "transparent"}
+                border={{base: "1px", md: "2px"}}
+                borderColor="black"
+                color="black"
+                _placeholder={{ color: 'black' }}
+                _hover={{
+                  bg: "rgba(255, 255, 255, 0.1)"
+                }}
+                _focus={{
+                  bg: "white"
+                }}
+                transition="all 0.3s"
+                rounded="none"
+                fontFamily="sidebarFont"
+              />
+            </InputGroup>
+
+          <DateButtons selectedFilter={selectedFilter} onFilterChange={handleFilterChange} />
+        </Container>
+
 
       <Center mt={{base: 0, md: 'auto'}} p={{base:0, md:10, lg:32}} h={'full'} w={'100vw'}>
         {filteredEvents.length > 0 ? (
