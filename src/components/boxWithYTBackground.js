@@ -44,7 +44,7 @@ const BoxWithYoutubeBackground = ({ videoId, children }) => {
 
             // overflow='hidden'
             transform={{base:"scale(4.5)", md: "scale(4.5)", lg: "scale(1.25)" }}
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted? 1: 0}&controls=0&loop=1&playlist=${videoId}&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted? 0: 1}&controls=0&loop=1&playlist=${videoId}&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
