@@ -212,8 +212,8 @@ const Event = ({eventPage}) => {
          
           
           <meta property="og:image:type" content="image/png" /> 
-          <meta property="og:image:width" content="120" />
-          <meta property="og:image:height" content="120" />
+          {/* <meta property="og:image:width" content="120" />
+          <meta property="og:image:height" content="120" /> */}
           <meta property="og:url" content="https://www.nekosero.ug/" />
           <meta property="og:type" content="website" />
           
