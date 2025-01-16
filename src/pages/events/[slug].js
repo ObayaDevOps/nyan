@@ -204,11 +204,11 @@ const Event = ({eventPage}) => {
 
           <meta property="og:title" content={eventPage.eventName} /> 
           <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
-          <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710196588/nekosero5_-_Landscape_Post_1_vviwsg.png" />
-          <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710196588/nekosero5_-_Landscape_Post_1_vviwsg.png" />
+          <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+          <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
           <meta property="og:image:type" content="image/png" /> 
-          <meta property="og:image:width" content="400" />
-          <meta property="og:image:height" content="300" /> */}
+          <meta property="og:image:width" content="120" />
+          <meta property="og:image:height" content="120" /> */}
           <meta property="og:url" content="https://www.nekosero.ug/" />
           <meta property="og:type" content="website" />
           
