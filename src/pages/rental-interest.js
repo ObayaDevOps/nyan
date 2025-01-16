@@ -55,17 +55,21 @@ const RentalInterestPage = ({registerInterestPage}) => {
             >
         <Head>
           <title>{pageContentSanity.title} | Nekosero</title>
-          <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
+          <meta name="description" content="Nekosero Register Rental Interest" />
           {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
           <meta property="og:title" content="Nekosero Register Rental Interest" /> 
-          <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
-          <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710195370/nekosero5_-_Landscape_Post_1_d9yvq5.png" />
-          <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710196588/nekosero5_-_Landscape_Post_1_vviwsg.png" />
+          <meta property="og:description" content="Nekosero Register Rental Interest" />
+          <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+          <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+          <meta property="og:image:type" content="image/png" /> 
+          <meta property="og:image:width" content="120" />
+          <meta property="og:image:height" content="120" /> 
+          
           <meta property="og:url" content="https://www.nekosero.ug/" />
           <meta property="og:type" content="website" />
           
-          <link rel="icon" href="/neko-logo.svg" />
+          {/* <link rel="icon" href="/neko-logo.svg" /> */}
         </Head>
 
         <Box>

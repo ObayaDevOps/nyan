@@ -32,12 +32,18 @@ export default function Home() {
 
         <meta property="og:title" content="Nekosero" /> 
         <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
-        <meta property="og:image" content="../../public/neko-logo.svg" />
-        <meta property="og:image:secure_url" content="../../public/neko-logo.svg" />
+        
+        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+        <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+        <meta property="og:image:type" content="image/png" /> 
+        <meta property="og:image:width" content="120" />
+        <meta property="og:image:height" content="120" /> 
+
+
         <meta property="og:url" content="https://www.nekosero.ug" />
         <meta property="og:type" content="website" />
         
-        <link rel="icon" href="/neko-logo.svg" />
+        {/* <link rel="icon" href="/neko-logo.svg" /> */}
       </Head>
       
       <Box>
