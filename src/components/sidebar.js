@@ -33,11 +33,8 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 
-
-
 import * as Icons from "react-icons/fa";
 import NextImage from 'next/image'
-
 
 
 import {
