@@ -2,7 +2,7 @@ import nodemailer from "nodemailer"
 
 //make this a promise: https://stackoverflow.com/questions/60684227/api-resolved-without-sending-a-response-in-nextjs
 export default async (req, res) => {
-  const { BusinessName, BusinessWebsiteOrSocials, ExtraInfo, Name, Email, PhoneNumber } = req.body;
+  const { BusinessName, BusinessWebsiteOrSocials, ClientName, ClientEmail, ClientPhoneNumber, ExtraInfo, } = req.body;
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -23,9 +23,9 @@ const data={ from: Email,
 
         <p><strong>BusinessName: </strong> ${BusinessName}</p><br>
         <p><strong>Business Website Or Socials: </strong> ${BusinessWebsiteOrSocials}</p><br>
-        <p><strong>Interested Person Name: </strong> ${Name}</p><br>
-        <p><strong>Interested Person Email: </strong> ${Email}</p><br>
-        <p><strong>Interested Person Phone Number: </strong> ${PhoneNumber}</p><br>
+        <p><strong>Interested Person Name: </strong> ${ClientName}</p><br>
+        <p><strong>Interested Person Email: </strong> ${ClientEmail}</p><br>
+        <p><strong>Interested Person Phone Number: </strong> ${ClientPhoneNumber}</p><br>
         <p><strong>Extra Information (optional): </strong> ${ExtraInfo}</p><br>
       `}
 

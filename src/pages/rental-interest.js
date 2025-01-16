@@ -97,9 +97,12 @@ const SignUpForm = () => {
   const toast = useToast();
   
   const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      phone: ''
+    businessName: '',
+    businessWeb: '',
+    clientName: '',
+    clientEmail: '',
+    clientPhone: '',
+    extraInfo: '',
   });
   
   const [errors, setErrors] = useState({});
@@ -121,23 +124,23 @@ const SignUpForm = () => {
   const validateForm = () => {
       const newErrors = {};
       
-      if (!formData.name.trim()) {
+      if (!formData.clientName.trim()) {
           newErrors.name = 'Name is required';
-      } else if (formData.name.length < 2) {
+      } else if (formData.clientName.length < 2) {
           newErrors.name = 'Name must be at least 2 characters';
       }
       
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!formData.email) {
+      if (!formData.clientEmail) {
           newErrors.email = 'Email is required';
-      } else if (!emailRegex.test(formData.email)) {
+      } else if (!emailRegex.test(formData.clientEmail)) {
           newErrors.email = 'Please enter a valid email';
       }
       
       const phoneRegex = /^\+?[\d\s-]{10,}$/;
-      if (!formData.phone) {
+      if (!formData.clientPhone) {
           newErrors.phone = 'Phone number is required';
-      } else if (!phoneRegex.test(formData.phone)) {
+      } else if (!phoneRegex.test(formData.clientPhone)) {
           newErrors.phone = 'Please enter a valid phone number';
       }
       
@@ -152,9 +155,9 @@ const SignUpForm = () => {
         let userTypedData = {
           BusinessName: e.target.businessName.value,
           BusinessWebsiteOrSocials: e.target.businessWeb.value,
-          ClientName: e.target.name.value,
-          ClientEmail: e.target.email.value,
-          ClientPhoneNumber: e.target.phone.value,
+          ClientName: e.target.clientName.value,
+          ClientEmail: e.target.clientEmail.value,
+          ClientPhoneNumber: e.target.clientPhone.value,
           ExtraInfo: e.target.extraInfo.value
         }
   
@@ -190,7 +193,7 @@ const SignUpForm = () => {
                   </Box>
               )
           });
-          setFormData({ name: '', email: '', phone: '' });
+          // setFormData({ name: '', email: '', phone: '' });
       } else {
           toast({
               title: "Form validation failed",
@@ -333,8 +336,8 @@ const SignUpForm = () => {
                                   Your Name
                                 </FormLabel>
                                 <Input 
-                                  name="name"
-                                  value={formData.name}
+                                  name="clientName"
+                                  value={formData.clientName}
                                   onChange={handleChange}
                                   fontFamily='sidebarFont'
                                   rounded='none'
@@ -363,9 +366,9 @@ const SignUpForm = () => {
                                   Contact Email
                                 </FormLabel>
                                 <Input 
-                                  name="email"
+                                  name="clientEmail"
                                   type="email"
-                                  value={formData.email}
+                                  value={formData.clientEmail}
                                   onChange={handleChange}
                                   fontFamily='sidebarFont'
                                   rounded='none'
@@ -392,9 +395,9 @@ const SignUpForm = () => {
                                   Phone Number
                                 </FormLabel>
                                 <Input 
-                                  name="phone"
+                                  name="clientPhone"
                                   type="tel"
-                                  value={formData.phone}
+                                  value={formData.clientPhone}
                                   onChange={handleChange}
                                   fontFamily='sidebarFont'
                                   rounded='none'
