@@ -172,12 +172,6 @@ const Event = ({eventPage}) => {
         }
     };
 
-    // console.log('EVENT ')
-    // console.log(eventPage)
-
-    // console.log('EVENT START')
-    // console.log(eventPage.eventStartTime)
-
 
     const start = new Date(eventPage.eventStartTime);
     const startDateFormatted = start.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
@@ -208,17 +202,17 @@ const Event = ({eventPage}) => {
           <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
           {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
-          <meta property="og:title" content="Nekosero" /> 
+          <meta property="og:title" content={eventPage.eventName} /> 
           <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
           <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710196588/nekosero5_-_Landscape_Post_1_vviwsg.png" />
           <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1710196588/nekosero5_-_Landscape_Post_1_vviwsg.png" />
-          {/* <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:type" content="image/png" /> 
           <meta property="og:image:width" content="400" />
           <meta property="og:image:height" content="300" /> */}
           <meta property="og:url" content="https://www.nekosero.ug/" />
           <meta property="og:type" content="website" />
           
-          <link rel="icon" href="/neko-logo.svg" />
+          {/* <link rel="icon" href="/neko-logo.svg" /> */}
         </Head>
 
         <Box>
