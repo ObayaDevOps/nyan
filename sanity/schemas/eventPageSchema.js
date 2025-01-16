@@ -51,7 +51,7 @@ export default defineType({
       }),
       defineField({
         name: 'sharingUrlImage',
-        title: 'Sharing URL Image (should be very small < 30kb)',
+        title: 'Thumbnail Sharing URL Image (should be very small < 30kb and square)',
         type: 'image',
         options: {
           hotspot: true,

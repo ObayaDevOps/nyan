@@ -203,9 +203,14 @@ const Event = ({eventPage}) => {
           {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
           <meta property="og:title" content={eventPage.eventName} /> 
-          <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
-          <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+          <meta property="og:description" content={eventPage.subTitle} />
+          {/* <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
           <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+           */}
+          <meta property="og:image" content={eventPage.sharingUrlImage} />
+          <meta property="og:image:secure_url" content={eventPage.sharingUrlImage} />
+         
+          
           <meta property="og:image:type" content="image/png" /> 
           <meta property="og:image:width" content="120" />
           <meta property="og:image:height" content="120" />
@@ -344,164 +349,7 @@ const Event = ({eventPage}) => {
                             />
                         </Icon>
                         </Button>
-
-                        {/* <Button
-                        maxW={'2xl'}
-                        as="a"
-                        variant='outline'
-                        display="inline-flex"
-                        alignItems="center"
-                        justifyContent="center"
-                        border={'2px'}
-                        borderColor='black'
-                        rounded='none'
-                        fontFamily='sidebarFont'
-                        onClick={onToggle}
-                        bg={isOpen ? 'black' : 'transparent'}
-                        color={isOpen ? 'yellow.300' : 'black'}
-                        _hover={{
-                          bg: isOpen ? 'black' : 'transparent',
-                          color: isOpen ? 'yellow.300' : 'black'
-                        }}
-                        w={{
-                            base: "full",
-                            sm: "auto",
-                        }}
-                        mb={{
-                            base: 2,
-                            sm: 0,
-                        }}
-                        size="lg"
-                        cursor="pointer"
-                        >
-                        Register Interest
-                        </Button>
-
-                        <Collapse in={isOpen} animateOpacity>
-                        <Text fontFamily='sidebarFont' fontSize={{base:'md', md:'lg'}}>
-                          Give us your details and we'll get back to you soon!
-                          </Text>
-                          <Box
-                            as="form"
-                            onSubmit={handleSubmit}
-                            mt={4}
-                            p={6}
-                            bg="black"
-                            borderWidth="2px"
-                            borderColor='black'
-                            borderRadius="none"
-                            maxW={'2xl'}
-                          >
-                            <VStack spacing={4}>
-                              <FormControl isRequired isInvalid={errors.name}>
-                                <FormLabel 
-                                  fontFamily='sidebarFont' 
-                                  color="yellow.300"
-                                  fontSize={{base: 'md', md: 'lg'}}
-                                  fontWeight={500}
-                                >
-                                  Name
-                                </FormLabel>
-                                <Input 
-                                  name="name"
-                                  value={formData.name}
-                                  onChange={handleChange}
-                                  fontFamily='sidebarFont'
-                                  rounded='none'
-                                  borderWidth="2px"
-                                  borderColor={errors.name ? 'red.500' : 'yellow.300'}
-                                  bg="yellow.300"
-                                  color="black"
-                                  _hover={{ borderColor: 'yellow.400' }}
-                                />
-                                {errors.name && (
-                                  <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.name}
-                                  </Text>
-                                )}
-                              </FormControl>
-                              
-                              <FormControl isRequired isInvalid={errors.email}>
-                                <FormLabel 
-                                  fontFamily='sidebarFont' 
-                                  color="yellow.300"
-                                  fontSize={{base: 'md', md: 'lg'}}
-                                  fontWeight={500}
-                                >
-                                  Email
-                                </FormLabel>
-                                <Input 
-                                  name="email"
-                                  type="email"
-                                  value={formData.email}
-                                  onChange={handleChange}
-                                  fontFamily='sidebarFont'
-                                  rounded='none'
-                                  borderWidth="2px"
-                                  borderColor={errors.email ? 'red.500' : 'yellow.300'}
-                                  bg="yellow.300"
-                                  color="black"
-                                  _hover={{ borderColor: 'yellow.400' }}
-                                />
-                                {errors.email && (
-                                  <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.email}
-                                  </Text>
-                                )}
-                              </FormControl>
-                              
-                              <FormControl isRequired isInvalid={errors.phone}>
-                                <FormLabel 
-                                  fontFamily='sidebarFont' 
-                                  color="yellow.300"
-                                  fontSize={{base: 'md', md: 'lg'}}
-                                  fontWeight={500}
-                                >
-                                  Phone Number
-                                </FormLabel>
-                                <Input 
-                                  name="phone"
-                                  type="tel"
-                                  value={formData.phone}
-                                  onChange={handleChange}
-                                  fontFamily='sidebarFont'
-                                  rounded='none'
-                                  borderWidth="2px"
-                                  borderColor={errors.phone ? 'red.500' : 'yellow.300'}
-                                  bg="yellow.300"
-                                  color="black"
-                                  _hover={{ borderColor: 'yellow.400' }}
-                                />
-                                {errors.phone && (
-                                  <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.phone}
-                                  </Text>
-                                )}
-                              </FormControl>
-                              
-                              <Button
-                                type="submit"
-                                variant='outline'
-                                border={'2px'}
-                                rounded='none'
-                                fontFamily='sidebarFont'
-                                w="full"
-                                mt={4}
-                                borderColor="yellow.300"
-                                color="yellow.300"
-                                _hover={{
-                                  bg: 'yellow.300',
-                                  color: 'black'
-                                }}
-                              >
-                                Submit
-                              </Button>
-                            </VStack>
-                          </Box>
-                        </Collapse> */}
-
                   </Stack>
-        
                 </Stack>
               </SimpleGrid>
             </Container>
@@ -510,10 +358,6 @@ const Event = ({eventPage}) => {
       </Box>
     )
 }
-
-
-
-
 
 
 
@@ -533,6 +377,7 @@ export async function getStaticPaths() {
 const query = groq`*[_type == "eventPage" && slug.current == $slug][0]{
     artistName,
     "eventLandingDisplayImage":eventLandingDisplayImage.asset->url,
+    "sharingUrlImage":sharingUrlImage.asset->url,
     eventStartTime,
     eventEndTime,
     eventName,
