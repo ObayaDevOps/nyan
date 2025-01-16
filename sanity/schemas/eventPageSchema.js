@@ -36,7 +36,7 @@ export default defineType({
     }),
     defineField({
       name: 'subTitle',
-      title: 'Sub Title',
+      title: 'Sub Title (Optional)',
       type: 'string',
     }),
 

@@ -199,11 +199,11 @@ const Event = ({eventPage}) => {
             >
         <Head>
           <title>{eventPage.eventName} | Nekosero Events</title>
-          <meta name="description" content="A creative shopping, dining, brewing, fashion, and contemporary arts space." />
+          <meta name="description" content="Nekosero Events"  />
           {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
 
           <meta property="og:title" content={eventPage.eventName} /> 
-          <meta property="og:description" content={eventPage.subTitle} />
+          <meta property="og:description" content="Nekosero Events" />
           {/* <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
           <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
            */}
