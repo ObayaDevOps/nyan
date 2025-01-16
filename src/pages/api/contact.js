@@ -12,7 +12,7 @@ export default async (req, res) => {
       pass: process.env.SMTP_PASSWORD
     }
   });
-const data={ from: Email,
+const data={ from: ClientEmail,
     to: process.env.RECIPIENT_ADDRESS,
     subject: `Nekosero - New Registered Interest!`,
       html: `
