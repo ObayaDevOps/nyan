@@ -8,22 +8,12 @@ import {
     Container,
     Stack,
     Text,
-    Flex,
     VStack,
     Button,
     Heading,
     Icon,
-    Center,
     SimpleGrid,
-    StackDivider,
     useColorModeValue,
-    AbsoluteCenter,
-    Image,
-    Tag,
-    List,
-    ListItem,
-    HStack,
-    Link,
     useDisclosure,
     FormControl,
     FormLabel,
@@ -182,7 +172,7 @@ const Event = ({eventPage}) => {
     const endHourFormatted = end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
 
 
-
+    const thumbnailImage = eventPage.sharingUrlImage || "https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png";
 
 
 
@@ -207,11 +197,11 @@ const Event = ({eventPage}) => {
           {/* <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
           <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
            */}
-          <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
-          <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+          <meta property="og:image" content={thumbnailImage} />
+          <meta property="og:image:secure_url" content={thumbnailImage} />
          
           
-          <meta property="og:image:type" content="image/png" /> 
+          {/* <meta property="og:image:type" content="image/png" />  */}
           <meta property="og:image:width" content="120" />
           <meta property="og:image:height" content="120" />
           <meta property="og:url" content="https://www.nekosero.ug/" />

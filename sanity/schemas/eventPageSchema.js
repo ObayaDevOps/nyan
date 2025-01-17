@@ -49,14 +49,14 @@ export default defineType({
           hotspot: true,
         },
       }),
-      // defineField({
-      //   name: 'sharingUrlImage',
-      //   title: 'Thumbnail Sharing URL Image (should be very small < 30kb and square)',
-      //   type: 'image',
-      //   options: {
-      //     hotspot: true,
-      //   },
-      // }),
+      defineField({
+        name: 'sharingUrlImage',
+        title: 'Thumbnail Sharing URL Image (should be very small < 30kb and 120x120 square)',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      }),
 
       defineField({
         name: 'eventStartTime',
