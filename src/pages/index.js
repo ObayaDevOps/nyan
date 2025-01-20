@@ -122,7 +122,7 @@ export default function Home() {
 
                 href='/rental-interest'
               >
-                Rental Space Query
+                Come Join Us
                 {/* <Icon boxSize={4} ml={1} viewBox="0 0 20 20" fill="currentColor">
                             <path
                             fillRule="evenodd"

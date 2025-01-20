@@ -107,6 +107,9 @@ const SignUpForm = () => {
     clientEmail: '',
     clientPhone: '',
     extraInfo: '',
+    rentalBudget: '',
+    floorArea: '',
+    findOut: '',
   });
   
   const [errors, setErrors] = useState({});
@@ -162,7 +165,10 @@ const SignUpForm = () => {
           ClientName: e.target.clientName.value,
           ClientEmail: e.target.clientEmail.value,
           ClientPhoneNumber: e.target.clientPhone.value,
-          ExtraInfo: e.target.extraInfo.value
+          ExtraInfo: e.target.extraInfo.value,
+          RentalBudget: e.target.rentalBudget.value,
+          FloorArea: e.target.floorArea.value,
+          FindOut: e.target.findOut.value
         }
   
         const res = await fetch('/api/contact', {
@@ -259,12 +265,6 @@ const SignUpForm = () => {
                         </Button>
 
                         <Collapse in={isOpen} animateOpacity>
-                        {/* <Text fontFamily='sidebarFont' 
-                        fontSize={{base:'md', md:'lg'}}
-                        pt={4}
-                        >
-                          Give us your details and we'll get back to you soon!
-                          </Text> */}
                           <Box
                             as="form"
                             onSubmit={handleSubmit}
@@ -327,6 +327,58 @@ const SignUpForm = () => {
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
                               </FormControl>
+
+
+
+                              <FormControl isRequired>
+                                <FormLabel 
+                                  fontFamily='sidebarFont' 
+                                  color="yellow.300"
+                                  fontSize={{base: 'md', md: 'lg'}}
+                                  fontWeight={500}
+                                >
+                                  Monthly Rental Budget (UGX)
+                                </FormLabel>
+                                <Input 
+                                  name="rentalBudget"
+                                  value={formData.rentalBudget}
+                                  onChange={handleChange}
+                                  fontFamily='sidebarFont'
+                                  rounded='none'
+                                  borderWidth="2px"
+                                  borderColor={'yellow.300'}
+                                  bg="yellow.300"
+                                  color="black"
+                                  _hover={{ borderColor: 'yellow.400' }}
+                                />
+                              </FormControl>
+
+
+
+
+                              <FormControl isRequired>
+                                <FormLabel 
+                                  fontFamily='sidebarFont' 
+                                  color="yellow.300"
+                                  fontSize={{base: 'md', md: 'lg'}}
+                                  fontWeight={500}
+                                >                                  
+                                  Requested Floor Area (Square Meters)
+                                </FormLabel>
+                                <Input 
+                                  name="floorArea"
+                                  value={formData.floorArea}
+                                  onChange={handleChange}
+                                  fontFamily='sidebarFont'
+                                  rounded='none'
+                                  borderWidth="2px"
+                                  borderColor={'yellow.300'}
+                                  bg="yellow.300"
+                                  color="black"
+                                  _hover={{ borderColor: 'yellow.400' }}
+                                />
+                              </FormControl>
+
 
 
 
@@ -418,6 +470,32 @@ const SignUpForm = () => {
                                 )}
                               </FormControl>
 
+
+                              <FormControl>
+                                <FormLabel 
+                                  fontFamily='sidebarFont' 
+                                  color="yellow.300"
+                                  fontSize={{base: 'md', md: 'lg'}}
+                                  fontWeight={500}
+                                >
+                                  How did you find out about us?
+                                </FormLabel>
+                                <Textarea
+                                  name="findOut"
+                                  value={formData.findOut}
+                                  onChange={handleChange}
+                                  fontFamily='sidebarFont'
+                                  rounded='none'
+                                  borderWidth="2px"
+                                  borderColor={'yellow.300'}
+                                  bg="yellow.300"
+                                  color="black"
+                                  _hover={{ borderColor: 'yellow.400' }}
+                                />
+
+                                
+                              </FormControl>
+
                               <FormControl>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
@@ -427,18 +505,6 @@ const SignUpForm = () => {
                                 >
                                   Anything else you would like us to know?
                                 </FormLabel>
-                                {/* <Input 
-                                  name="extraInfo"
-                                  value={formData.extraInfo}
-                                  onChange={handleChange}
-                                  fontFamily='sidebarFont'
-                                  rounded='none'
-                                  borderWidth="2px"
-                                  borderColor={'yellow.300'}
-                                  bg="yellow.300"
-                                  color="black"
-                                  _hover={{ borderColor: 'yellow.400' }}
-                                /> */}
                                 <Textarea
                                   name="extraInfo"
                                   value={formData.extraInfo}
@@ -506,17 +572,17 @@ const PageInfo = ({content}) => {
 
                 <Box pb={{base: 20,lg:12}}>
                 <Text fontSize={{base:'2xl',md: '2xl'}}
-                  fontFamily='textFont'
+                  fontFamily='registerInterestPageFont'
                 >
                   {content.paragraphText1}
                 </Text>
                 <Text fontSize={{base:'2xl',md: '2xl'}} 
-                pt={{base:10, lg: 6}} fontFamily='textFont'  >
+                pt={{base:10, lg: 6}} fontFamily='registerInterestPageFont'  >
                   {content.paragraphText2}
                 </Text>
 
                 <Text fontSize={{base:'2xl',md: '2xl'}} 
-                pt={{base:10, lg: 6}} fontFamily='textFont'  >
+                pt={{base:10, lg: 6}} fontFamily='registerInterestPageFont'  >
                   {content.paragraphText3}               
                 </Text>
                 </Box>
