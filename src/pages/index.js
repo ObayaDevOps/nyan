@@ -44,6 +44,9 @@ export default function Home() {
         <meta property="og:type" content="website" />
         
         {/* <link rel="icon" href="/neko-logo.svg" /> */}
+
+         {/* Umami Analytics */}
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="0e1e9375-cc65-4765-bc9e-f7923eb47aa4"></script>
       </Head>
       
       <Box>
