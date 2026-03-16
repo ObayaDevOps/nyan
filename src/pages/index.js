@@ -10,9 +10,8 @@ Flex,Icon,   ScaleFade, VStack
 
   } from '@chakra-ui/react'
 
-  import { FaBuildingCircleCheck } from "react-icons/fa6";
+import { FaBuildingCircleCheck } from "react-icons/fa6";
 
-import { getCloudinaryImage, getCloudinaryImageBlur } from '../util/cloudinaryImageRetreival';
 import NextLink from 'next/link'
 import SideBar from '../components/sidebar.js' 
 
@@ -33,8 +32,8 @@ export default function Home() {
         <meta property="og:title" content="Nekosero" /> 
         <meta property="og:description" content="A creative Shopping, Dining, Brewing, Fashion, and Contemporary Arts Space" />
         
-        <meta property="og:image" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
-        <meta property="og:image:secure_url" content="https://res.cloudinary.com/medoptics-image-cloud/image/upload/v1737052416/neko-logo_f5fiok.png" />
+        <meta property="og:image" content="/neko-logo_f5fiok.png" />
+        <meta property="og:image:secure_url" content="/neko-logo_f5fiok.png" />
         <meta property="og:image:type" content="image/png" /> 
         <meta property="og:image:width" content="120" />
         <meta property="og:image:height" content="120" /> 
@@ -62,13 +61,11 @@ export default function Home() {
           >
             <NextLink href='/#'>
               <Image
-                src={getCloudinaryImage('nekosero5.png')} 
+                src="/nekosero5.png"
                 alt="Nekosero Brand Logo"
                 width={250}
                 height={250}
                 priority
-                placeholder="blur"
-                blurDataURL={getCloudinaryImageBlur('nekosero5.png')}
               />
             </NextLink>
           </motion.div>
