@@ -99,8 +99,7 @@ const PageBody = ({pageContent}) => {
 const SignUpForm = () => {
   const { isOpen, onToggle } = useDisclosure();
   const toast = useToast();
-  
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     businessName: '',
     businessWeb: '',
     clientName: '',
@@ -110,7 +109,9 @@ const SignUpForm = () => {
     rentalBudget: '',
     floorArea: '',
     findOut: '',
-  });
+  };
+  
+  const [formData, setFormData] = useState(initialFormData);
   
   const [errors, setErrors] = useState({});
 
@@ -130,25 +131,41 @@ const SignUpForm = () => {
 
   const validateForm = () => {
       const newErrors = {};
+
+      if (!formData.businessName.trim()) {
+          newErrors.businessName = 'Business name is required';
+      }
+
+      if (!formData.businessWeb.trim()) {
+          newErrors.businessWeb = 'Business website or socials is required';
+      }
+
+      if (!formData.rentalBudget.trim()) {
+          newErrors.rentalBudget = 'Monthly rental budget is required';
+      }
+
+      if (!formData.floorArea.trim()) {
+          newErrors.floorArea = 'Requested floor area is required';
+      }
       
       if (!formData.clientName.trim()) {
-          newErrors.name = 'Name is required';
+          newErrors.clientName = 'Name is required';
       } else if (formData.clientName.length < 2) {
-          newErrors.name = 'Name must be at least 2 characters';
+          newErrors.clientName = 'Name must be at least 2 characters';
       }
       
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!formData.clientEmail) {
-          newErrors.email = 'Email is required';
+          newErrors.clientEmail = 'Email is required';
       } else if (!emailRegex.test(formData.clientEmail)) {
-          newErrors.email = 'Please enter a valid email';
+          newErrors.clientEmail = 'Please enter a valid email';
       }
       
       const phoneRegex = /^\+?[\d\s-]{10,}$/;
       if (!formData.clientPhone) {
-          newErrors.phone = 'Phone number is required';
+          newErrors.clientPhone = 'Phone number is required';
       } else if (!phoneRegex.test(formData.clientPhone)) {
-          newErrors.phone = 'Please enter a valid phone number';
+          newErrors.clientPhone = 'Please enter a valid phone number';
       }
       
       setErrors(newErrors);
@@ -158,53 +175,7 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       
-      if (validateForm()) {
-        let userTypedData = {
-          BusinessName: e.target.businessName.value,
-          BusinessWebsiteOrSocials: e.target.businessWeb.value,
-          ClientName: e.target.clientName.value,
-          ClientEmail: e.target.clientEmail.value,
-          ClientPhoneNumber: e.target.clientPhone.value,
-          ExtraInfo: e.target.extraInfo.value,
-          RentalBudget: e.target.rentalBudget.value,
-          FloorArea: e.target.floorArea.value,
-          FindOut: e.target.findOut.value
-        }
-  
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(userTypedData)
-        })
-
-
-          toast({
-              title: "Thanks for registering interest!",
-              description: "We'll get back to you soon.",
-              status: "success",
-              duration: 5000,
-              isClosable: true,
-              position: 'top',
-              render: ({ onClose }) => (
-                  <Box
-                      p={4}
-                      bg="green"
-                      border="2px"
-                      borderColor="yellow.300"
-                      color="white"
-                      fontFamily="sidebarFont"
-                  >
-                      <VStack align="start" spacing={2}>
-                          <Text fontWeight={600}>Thanks for registering interest!</Text>
-                          <Text>We'll get back to you soon.</Text>
-                      </VStack>
-                  </Box>
-              )
-          });
-          // setFormData({ name: '', email: '', phone: '' });
-      } else {
+      if (!validateForm()) {
           toast({
               title: "Form validation failed",
               description: "Please check the form and try again.",
@@ -228,6 +199,90 @@ const SignUpForm = () => {
                   </Box>
               )
           });
+          return;
+      }
+
+      const userTypedData = {
+        BusinessName: formData.businessName.trim(),
+        BusinessWebsiteOrSocials: formData.businessWeb.trim(),
+        ClientName: formData.clientName.trim(),
+        ClientEmail: formData.clientEmail.trim(),
+        ClientPhoneNumber: formData.clientPhone.trim(),
+        ExtraInfo: formData.extraInfo.trim(),
+        RentalBudget: formData.rentalBudget.trim(),
+        FloorArea: formData.floorArea.trim(),
+        FindOut: formData.findOut.trim()
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userTypedData)
+        });
+
+        let payload = {};
+        try {
+          payload = await res.json();
+        } catch (_error) {
+          payload = {};
+        }
+
+        if (!res.ok) {
+          throw new Error(payload.error || 'Could not submit form. Please try again.');
+        }
+
+        toast({
+            title: "Thanks for registering interest!",
+            description: "We'll get back to you soon.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: 'top',
+            render: ({ onClose }) => (
+                <Box
+                    p={4}
+                    bg="green"
+                    border="2px"
+                    borderColor="yellow.300"
+                    color="white"
+                    fontFamily="sidebarFont"
+                >
+                    <VStack align="start" spacing={2}>
+                        <Text fontWeight={600}>Thanks for registering interest!</Text>
+                        <Text>We'll get back to you soon.</Text>
+                    </VStack>
+                </Box>
+            )
+        });
+        setFormData(initialFormData);
+        setErrors({});
+      } catch (error) {
+        toast({
+            title: "Could not submit form",
+            description: error.message || "Please try again in a moment.",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: 'top',
+            render: ({ onClose }) => (
+                <Box
+                    p={4}
+                    bg="black"
+                    border="2px"
+                    borderColor="red.500"
+                    color="red.500"
+                    fontFamily="sidebarFont"
+                >
+                    <VStack align="start" spacing={2}>
+                        <Text fontWeight={600}>Could not submit form</Text>
+                        <Text>{error.message || "Please try again in a moment."}</Text>
+                    </VStack>
+                </Box>
+            )
+        });
       }
   };
   return (
@@ -277,7 +332,7 @@ const SignUpForm = () => {
                             maxW={{base:'2xl', md: '6xl'}}
                           >
                             <VStack spacing={4}>
-                            <FormControl isRequired isInvalid={errors.name}>
+                            <FormControl isRequired isInvalid={errors.businessName}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -293,19 +348,19 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={errors.name ? 'red.500' : 'yellow.300'}
+                                  borderColor={errors.businessName ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
-                                {errors.name && (
+                                {errors.businessName && (
                                   <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.name}
+                                    {errors.businessName}
                                   </Text>
                                 )}
                               </FormControl>
 
-                              <FormControl isRequired>
+                              <FormControl isRequired isInvalid={errors.businessWeb}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -321,16 +376,21 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={'yellow.300'}
+                                  borderColor={errors.businessWeb ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
+                                {errors.businessWeb && (
+                                  <Text color="red.500" fontSize="sm" mt={1}>
+                                    {errors.businessWeb}
+                                  </Text>
+                                )}
                               </FormControl>
 
 
 
-                              <FormControl isRequired>
+                              <FormControl isRequired isInvalid={errors.rentalBudget}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -346,17 +406,22 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={'yellow.300'}
+                                  borderColor={errors.rentalBudget ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
+                                {errors.rentalBudget && (
+                                  <Text color="red.500" fontSize="sm" mt={1}>
+                                    {errors.rentalBudget}
+                                  </Text>
+                                )}
                               </FormControl>
 
 
 
 
-                              <FormControl isRequired>
+                              <FormControl isRequired isInvalid={errors.floorArea}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -372,17 +437,22 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={'yellow.300'}
+                                  borderColor={errors.floorArea ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
+                                {errors.floorArea && (
+                                  <Text color="red.500" fontSize="sm" mt={1}>
+                                    {errors.floorArea}
+                                  </Text>
+                                )}
                               </FormControl>
 
 
 
 
-                              <FormControl isRequired isInvalid={errors.name}>
+                              <FormControl isRequired isInvalid={errors.clientName}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -398,21 +468,21 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={errors.name ? 'red.500' : 'yellow.300'}
+                                  borderColor={errors.clientName ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
-                                {errors.name && (
+                                {errors.clientName && (
                                   <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.name}
+                                    {errors.clientName}
                                   </Text>
                                 )}
                               </FormControl>
 
 
                               
-                              <FormControl isRequired isInvalid={errors.email}>
+                              <FormControl isRequired isInvalid={errors.clientEmail}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -429,19 +499,19 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={errors.email ? 'red.500' : 'yellow.300'}
+                                  borderColor={errors.clientEmail ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
-                                {errors.email && (
+                                {errors.clientEmail && (
                                   <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.email}
+                                    {errors.clientEmail}
                                   </Text>
                                 )}
                               </FormControl>
                               
-                              <FormControl isRequired isInvalid={errors.phone}>
+                              <FormControl isRequired isInvalid={errors.clientPhone}>
                                 <FormLabel 
                                   fontFamily='sidebarFont' 
                                   color="yellow.300"
@@ -458,14 +528,14 @@ const SignUpForm = () => {
                                   fontFamily='sidebarFont'
                                   rounded='none'
                                   borderWidth="2px"
-                                  borderColor={errors.phone ? 'red.500' : 'yellow.300'}
+                                  borderColor={errors.clientPhone ? 'red.500' : 'yellow.300'}
                                   bg="yellow.300"
                                   color="black"
                                   _hover={{ borderColor: 'yellow.400' }}
                                 />
-                                {errors.phone && (
+                                {errors.clientPhone && (
                                   <Text color="red.500" fontSize="sm" mt={1}>
-                                    {errors.phone}
+                                    {errors.clientPhone}
                                   </Text>
                                 )}
                               </FormControl>
