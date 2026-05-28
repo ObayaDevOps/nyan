@@ -101,40 +101,76 @@ const Event = ({eventPage}) => {
             Email: e.target.email.value,
             PhoneNumber: e.target.phone.value
           }
-    
-          const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userTypedData)
-          })
 
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(userTypedData)
+            })
+
+            let payload = {};
+            try {
+              payload = await res.json();
+            } catch (_error) {
+              payload = {};
+            }
+
+            if (!res.ok) {
+              throw new Error(payload.error || 'Could not submit form. Please try again.');
+            }
 
             toast({
-                title: "Thanks for registering interest!",
-                description: "We'll get back to you soon.",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-                position: 'top',
-                render: ({ onClose }) => (
-                    <Box
-                        p={4}
-                        bg="green"
-                        border="2px"
-                        borderColor="yellow.300"
-                        color="white"
-                        fontFamily="sidebarFont"
-                    >
-                        <VStack align="start" spacing={2}>
-                            <Text fontWeight={600}>Thanks for registering interest!</Text>
-                            <Text>We'll get back to you soon.</Text>
-                        </VStack>
-                    </Box>
-                )
+              title: "Thanks for registering interest!",
+              description: "We'll get back to you soon.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+              position: 'top',
+              render: ({ onClose }) => (
+                <Box
+                  p={4}
+                  bg="green"
+                  border="2px"
+                  borderColor="yellow.300"
+                  color="white"
+                  fontFamily="sidebarFont"
+                >
+                  <VStack align="start" spacing={2}>
+                    <Text fontWeight={600}>Thanks for registering interest!</Text>
+                    <Text>{payload.message || "We'll get back to you soon."}</Text>
+                  </VStack>
+                </Box>
+              )
             });
             setFormData({ name: '', email: '', phone: '' });
+          } catch (error) {
+            toast({
+              title: "Could not submit form",
+              description: error.message || "Please try again in a moment.",
+              status: "error",
+              duration: 5000,
+              isClosable: true,
+              position: 'top',
+              render: ({ onClose }) => (
+                <Box
+                  p={4}
+                  bg="black"
+                  border="2px"
+                  borderColor="red.500"
+                  color="red.500"
+                  fontFamily="sidebarFont"
+                >
+                  <VStack align="start" spacing={2}>
+                    <Text fontWeight={600}>Could not submit form</Text>
+                    <Text>{error.message || "Please try again in a moment."}</Text>
+                  </VStack>
+                </Box>
+              )
+            });
+          }
         } else {
             toast({
                 title: "Form validation failed",

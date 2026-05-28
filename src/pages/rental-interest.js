@@ -252,7 +252,7 @@ const SignUpForm = () => {
                 >
                     <VStack align="start" spacing={2}>
                         <Text fontWeight={600}>Thanks for registering interest!</Text>
-                        <Text>We'll get back to you soon.</Text>
+                        <Text>{payload.message || "We'll get back to you soon."}</Text>
                     </VStack>
                 </Box>
             )
