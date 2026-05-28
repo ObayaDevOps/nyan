@@ -12,7 +12,6 @@ const DEFAULT_FROM_ADDRESS = 'Nekosero <forms@nekosero.ug>';
 const sendWithResend = async (resend, payload) => {
   const response = await resend.emails.send(payload);
   if (response.error) {
-    console.error('Resend error object:', JSON.stringify(response.error));
     throw new Error(response.error.message || JSON.stringify(response.error) || 'Failed to send email');
   }
   return response;
