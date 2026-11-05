@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import Head from 'next/head'
 import * as React from 'react'
 import { ChakraBaseProvider, ChakraProvider, extendBaseTheme, extendTheme} from '@chakra-ui/react'
 import Footer from '../components/footer' 
@@ -30,6 +31,11 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
+      <Head>
+        <link rel="icon" href="/favicon.ico?v=nekosero" sizes="any" />
+        <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png?v=nekosero" />
+        <link rel="apple-touch-icon" href="/favicon.png?v=nekosero" />
+      </Head>
       {/* <SideBar /> */}
       <Component {...pageProps} />
       {/* <Footer /> */}

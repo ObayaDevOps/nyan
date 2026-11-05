@@ -27,7 +27,6 @@ import {
 
 
 import {
-  HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
@@ -35,11 +34,10 @@ import {
 
 import * as Icons from "react-icons/fa";
 import NextImage from 'next/image'
+import localFont from 'next/font/local'
 
 
-import {
-  FiMenu,
-} from 'react-icons/fi'
+import { Menu } from 'lucide-react'
 
 
 import { PiBowlFoodLight } from "react-icons/pi";
@@ -81,6 +79,7 @@ import Image from 'next/image'
 
 import tenantListData from '../data/preBuild/tenantListData.json'
 
+const tiny5 = localFont({ src: '../fonts/tiny5-regular.ttf', weight: '400', display: 'swap', preload: false })
 
 const LinkCategoriesTop = [
   {
@@ -285,7 +284,8 @@ const SocialsStack = () => {
   return (
     <Flex
     >
-      <Stack direction={'row'} spacing={6} p={{base:1, md:1}}>
+      <Flex flexWrap="nowrap" alignItems="center" gap={{ base: 0, md: 6 }} p={1}
+        sx={{ '& > button, & > a': { width: { base: '32px', md: '48px' }, minWidth: { base: '32px', md: '48px' }, height: { base: '32px', md: '48px' } } }}>
 
         <Tooltip        
           label={hasCopied ? 'Email Copied!' : 'Copy Email'}
@@ -373,14 +373,17 @@ const SocialsStack = () => {
             isRound
           /> */}
 
-          <Text fontFamily={'sidebarFont'} fontSize={{base:'9px', md: '10px'}} mt={4}>
-             
-            <Link href={'https://www.dralegawebops.com/'}>
-            Built By Dralega Web Ops
+          <Text fontFamily={'sidebarFont'} fontSize={{base:'9px', md: '10px'}} whiteSpace="nowrap" flexShrink={0}>
+            <Link href="https://www.twofivesix.online/" display="inline-flex" alignItems="center" gap="6px" minH="32px"
+              px={2} py={1} borderRadius="full" color="black"
+              _hover={{ bg: 'black', color: 'yellow.400', textDecoration: 'none' }}
+              _focusVisible={{ bg: 'black', color: 'yellow.400', boxShadow: 'outline' }}>
+              <span>built by</span>
+              <Box as="span" className={tiny5.className} fontSize={{ base: '18px', md: '20px' }} lineHeight={1}>twofivesix</Box>
             </Link>
           </Text>
    
-      </Stack>
+      </Flex>
   </Flex>
     
   )
@@ -503,7 +506,7 @@ const MobileNav = ({ onOpen, showNavIcon, ...rest }) => {
         variant="ghost"
         onClick={onOpen}
         aria-label="open menu"
-        icon={<FiMenu />}
+        icon={<Menu size={24} color="black" />}
         size='xl'
         color='black'
         p={6}
