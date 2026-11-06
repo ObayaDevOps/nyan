@@ -3,38 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node src/functions/preBuildScripts/preBuildDev.js",
     "dev": "next dev",
-    "prebuild:dev": "node src/functions/preBuildScripts/preBuildDev.js",
-    "build:dev": "next build",
-    "prebuild": "node src/functions/preBuildScripts/preBuildProd.js",
-    "build:prod": "next build",
-    "build": "next build",
+    "build": "next build --webpack",
+    "build:dev": "npm run build",
+    "build:prod": "npm run build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "test": "node --test --test-isolation=none tests/*.test.mjs",
+    "test:browser": "playwright test",
+    "migrate:content": "node --env-file=.env.local scripts/migrate-content.mjs"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.1.1",
-    "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@react-email/render": "^2.0.4",
-    "@sanity/image-url": "^1.0.2",
-    "@sanity/vision": "^3.42.1",
-    "@vercel/og": "^0.6.4",
-    "axios": "^1.7.2",
-    "cloudinary-build-url": "^0.2.4",
-    "framer-motion": "^10.18.0",
-    "lucide-react": "^0.469.0",
-    "next": "14.2.3",
-    "next-sanity": "^9.1.0",
-    "nodemailer": "^6.9.16",
-    "react": "^18",
-    "react-datepicker": "^6.9.0",
-    "react-dom": "^18",
-    "react-icons": "^5.0.1",
-    "resend": "^6.9.4",
-    "sanity": "^3.9.0",
-    "styled-components": "^6.1.11"
+    "@react-email/render": "2.2.0",
+    "@sanity/client": "8.14.1",
+    "@sanity/image-url": "2.1.1",
+    "@sanity/webhook": "4.0.4",
+    "next": "16.4.5",
+    "next-sanity": "13.4.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "resend": "6.37.0",
+    "sanity": "6.22.0",
+    "styled-components": "6.6.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.5"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "overrides": {
+    "js-yaml@^3.0.0": "3.15.2",
+    "smol-toml@^1.0.0": "1.9.1",
+    "undici@^7.0.0": "7.30.1"
   }
 }

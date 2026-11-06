@@ -1,22 +1,19 @@
-import Head from 'next/head'
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../sanity.config'
-
-import {
-  Box
-} from '@chakra-ui/react';
-
+import dynamic from "next/dynamic";
+import Head from "next/head";
+const Studio = dynamic(() => import("../../components/StudioClient"), {
+  ssr: false,
+  loading: () => <p>Loading editor…</p>,
+});
 export default function StudioPage() {
   return (
-    <Box minHeight={'120vh'} position="fixed" top="0" minWidth={'100vw'} zIndex={9999}>
-        <Head>
-            <title>Editor Studio | Nekosero </title>
-            <meta name="description" content="Nekosero Webpage" />
-            <link rel="icon" href="/cat-face.svg" />
-
-        </Head>
-        
-        <NextStudio config={config} />
-      </Box>
-  )
+    <>
+      <Head>
+        <title>Editor Studio | Nekosero</title>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <div className="studio">
+        <Studio />
+      </div>
+    </>
+  );
 }

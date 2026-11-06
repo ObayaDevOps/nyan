@@ -1,0 +1,22 @@
+name: Check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: 7foz0wph
+      NEXT_PUBLIC_SANITY_DATASET: fixtures
+      NYAN_TEST_MODE: fixture
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      # Deterministic offline build; separately verify real published content in staging.
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser

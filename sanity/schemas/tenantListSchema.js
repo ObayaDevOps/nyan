@@ -1,6 +1,4 @@
-import { PackageIcon } from '@sanity/icons'
-import { format, parseISO } from 'date-fns'
-import { defineField, defineType, defineConfig } from 'sanity'
+import { defineField, defineType } from "sanity";
 // import { muxInput } from 'sanity-plugin-mux-input'
 
 /**
@@ -14,68 +12,48 @@ import { defineField, defineType, defineConfig } from 'sanity'
 
  */
 
-
-
 export default defineType({
-  name: 'tenantList',
-  title: 'TenantList',
-  icon: PackageIcon,
-  type: 'document',
+  name: "tenantList",
+  title: "TenantList",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "title",
+      title: "Title",
+      type: "string",
       validation: (rule) => rule.required(),
     }),
 
     defineField({
-      name: 'icon',
-      title: 'Icon (Do Not Change!)',
-      type: 'string',
+      name: "icon",
+      title: "Icon (Do Not Change!)",
+      type: "string",
       validation: (rule) => rule.required(),
     }),
 
     defineField({
-      name: 'tenantNameAndURL',
-      title: 'Tenant List',
-      type: 'array',
-      of:[{
-            type: 'object',
-            fields: [
-              {
-                name: 'tenantName',
-                title: 'Tenant Name',
-                type: 'string'
-              },
-              {
-                name: 'tenantLink',
-                title: 'Tenant Link',
-                type: 'url'
-              }
-            ]
-          
-          }],
+      name: "tenantNameAndURL",
+      title: "Tenant List",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "tenantName",
+              title: "Tenant Name",
+              type: "string",
+            },
+            {
+              name: "tenantLink",
+              title: "Tenant Link",
+              type: "url",
+            },
+          ],
+        },
+      ],
       validation: (rule) => rule.required(),
     }),
-
-
-
   ],
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      date: 'date',
-      media: 'coverImage',
-    },
-    prepare({ title, media, author, date }) {
-      const subtitles = [
-        author && `by ${author}`,
-        date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
-      ].filter(Boolean)
-
-      return { title, media, subtitle: subtitles.join(' ') }
-    },
-  },
-})
+  preview: { select: { title: "title" } },
+});
